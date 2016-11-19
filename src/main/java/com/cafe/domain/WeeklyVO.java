@@ -1,5 +1,7 @@
 package com.cafe.domain;
 
+import com.cafe.flags.WeekFlag;
+
 /**
  * Value Object for Weekly
  * @author YJH
@@ -10,7 +12,7 @@ public class WeeklyVO {
 	//fields
 	private String cafeName;
 	private String menuName;
-	private String wFlag;
+	private WeekFlag wFlag;
 	private String dateFlag;
 	
 	/* getter, setter, toString methods */
