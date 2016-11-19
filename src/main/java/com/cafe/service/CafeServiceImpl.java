@@ -8,7 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.cafe.domain.CafeVO;
 import com.cafe.persistence.CafeDAO;
-
+/**
+ * Cafeteria Service class
+ * @author YJH
+ * 2016.11.08.Tue
+ * register, list
+ */
 @Service
 public class CafeServiceImpl implements CafeService{
 

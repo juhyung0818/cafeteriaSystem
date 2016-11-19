@@ -32,7 +32,6 @@ public class MenuTest {
 	private static final Logger logger = LoggerFactory.getLogger(MenuController.class);
 		
 	/**
-	 * Test source
 	 * insert menu in database
 	 * @throws Exception 
 	 */
@@ -40,14 +39,13 @@ public class MenuTest {
 	public void testMenuRegister() throws Exception{
 		
 		MenuVO menu = new MenuVO();
-		menu.setCafeName("Dorm");
-		menu.setMenuName("Buffet");
+		menu.setCafeName("기숙사식당");
+		menu.setMenuName("조식뷔페");
 
 		menuDao.menuRegister(menu);
 	}
 	
 	/**
-	 * Test source
 	 * select menu list in database
 	 * @throws Exception 
 	 */
@@ -55,6 +53,18 @@ public class MenuTest {
 	public void testMenuList() throws Exception{
 		List<MenuVO> list = new ArrayList<>();
 		list = menuDao.menuList();
+		for(int i=0; i<list.size(); i++){
+			logger.info(list.get(i).toString());
+		}
+	}
+	
+	/**
+	 * @throws Exception
+	 */
+	@Test
+	public void testSearchMenu() throws Exception{
+		List<MenuVO> list = new ArrayList<>();
+		list = menuDao.searchMenu("기숙사식당", "식");
 		for(int i=0; i<list.size(); i++){
 			logger.info(list.get(i).toString());
 		}
