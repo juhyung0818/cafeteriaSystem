@@ -5,14 +5,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.cafe.mapper.CafeteriaMapper">
 
+	<!-- Add cafe -->
 	<insert id="register">
 		insert into cafeteria
 		(cafeName, info)
 		values (#{cafeName}, #{info})
 	</insert> 	
 	
+	<!-- display cafe list -->
 	<select id="cafeList" resultType="com.cafe.domain.CafeVO">
-		select * from cafeteria
+		select cafeName, info
+		from cafeteria
 	</select>
 
 </mapper>

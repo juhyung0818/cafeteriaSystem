@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cafe.domain.CafeVO;
 import com.cafe.service.CafeService;
 
 /**
@@ -19,7 +18,7 @@ import com.cafe.service.CafeService;
  */
 
 @Controller
-@RequestMapping("/cafe")
+@RequestMapping("/cafe/*")
 public class CafeController {
 
 	//use log4j

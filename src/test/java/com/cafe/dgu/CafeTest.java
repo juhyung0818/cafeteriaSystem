@@ -40,7 +40,7 @@ public class CafeTest {
 	public void testCafeRegister() throws Exception {
 		logger.info("@Test cafe register");
 		CafeVO cafe = new CafeVO();
-		cafe.setCafeName("SangRokWon");
+		cafe.setCafeName("기숙사식당");
 		cafe.setInfo("Hello Big Cafeteria NyamNyam");
 		cafeDao.cafeRegister(cafe);
 	}

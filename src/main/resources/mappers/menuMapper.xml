@@ -5,14 +5,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.cafe.mapper.MenuMapper">
 
+	<!-- Menu insert in cafe -->
 	<insert id="register">
 		insert into menu
 		(cafeName, menuName, point, likeNum, path)
 		values (#{cafeName}, #{menuName}, 0, 0, "default")
 	</insert> 	
-	
+
+	<!-- All menu display in cafe -->	
 	<select id="menuList" resultType="com.cafe.domain.MenuVO">
 		select * from menu
 	</select>
 
+	<!-- Menu remove in cafe -->
+	<delete id="delete">
+		delete from menu
+		where menuName=#{menuName} and cafeName=#{cafeName}
+	</delete>
+	
+	
 </mapper>
