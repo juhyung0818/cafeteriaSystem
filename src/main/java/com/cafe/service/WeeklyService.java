@@ -1,9 +1,8 @@
-package com.cafe.persistence;
+package com.cafe.service;
 
 import com.cafe.domain.WeeklyVO;
 
-public interface FlagDAO {
-	
-	//menu table register
+public interface WeeklyService {
+
 	public void register(WeeklyVO weekly) throws Exception;
 }
