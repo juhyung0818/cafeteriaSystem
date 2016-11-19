@@ -1,5 +1,8 @@
 package com.cafe.domain;
 
+import com.cafe.flag.DateFlag;
+import com.cafe.flag.WeeklyFlag;
+
 /**
  * Value Object for Weekly
  * @author YJH
@@ -10,10 +13,10 @@ public class WeeklyVO {
 	//fields
 	private String cafeName;
 	private String menuName;
-	private String wFlag;
-	private String dateFlag;
+	private	WeeklyFlag wFlag;
+	private DateFlag dateFlag;
 	
-	/* getter, setter, toString methods */
+	/* getter, setter methods */
 	public String getCafeName() {
 		return cafeName;
 	}
@@ -26,23 +29,23 @@ public class WeeklyVO {
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
 	}
-	public String getwFlag() {
+	public WeeklyFlag getwFlag() {
 		return wFlag;
 	}
-	public void setwFlag(String wFlag) {
+	public void setwFlag(WeeklyFlag wFlag) {
 		this.wFlag = wFlag;
 	}
-	public String getDateFlag() {
+	public DateFlag getDateFlag() {
 		return dateFlag;
 	}
-	public void setDateFlag(String dateFlag) {
+	public void setDateFlag(DateFlag dateFlag) {
 		this.dateFlag = dateFlag;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Weekly [cafeName=" + cafeName + ", menuName=" + menuName + ", wFlag=" + wFlag + ", dateFlag=" + dateFlag
-				+ "]";
+		return "WeeklyVO [cafeName=" + cafeName + ", menuName=" + menuName + ", wFlag=" + wFlag + ", dateFlag="
+				+ dateFlag + "]";
 	}
-
+	
 }
