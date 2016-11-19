@@ -9,13 +9,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="register">
 		insert into weekly
 		(cafeName, menuName, wFlag, dateFlag)
-		values (#{cafeName}, #{menuName}, #{wFlage}, #{dateFlag})
+		values (#{cafeName}, #{menuName}, #{wFlag}, #{dateFlag})
 	</insert> 	
 	
 	<!-- display day menu list -->
 	<select id="dayList" resultType="com.cafe.domain.WeeklyVO">
-		select cafeName, info
-		from cafeteria
+		select menuName, dateFlag 
+		from weekly
+		where cafeName=#{cafeName} and wFlag=#{wFlag}
 	</select>
+	
+	<!-- all delete weekly -->
+	<delete id="clear">
+		delete from weekly
+	</delete>
+	
+	<!-- delete a weekly menu -->
+	<delete id="delete">
+		delete from weekly
+		where menuName=#{menuName} and wFlag=#{wFlag} and dateFlag=#{dateFlag}
+	</delete>
 
 </mapper>

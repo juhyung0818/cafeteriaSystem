@@ -53,5 +53,4 @@ public class MenuVO {
 				+ ", path=" + path + "]";
 	}
 	
-	
 }
