@@ -34,7 +34,7 @@ public class MenuDAOImpl implements MenuDAO{
 
 	/**
 	 * search menu in menu table
-	 * retrun : menu list contain keyword
+	 * return : menu list contain keyword
 	 */
 	@Override
 	public List<MenuVO> searchMenu(String cafeName, String keyword) throws Exception {

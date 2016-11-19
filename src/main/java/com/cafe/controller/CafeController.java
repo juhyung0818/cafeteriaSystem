@@ -29,8 +29,8 @@ public class CafeController {
 
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void registGET(Model model) throws Exception {
-		logger.info("Cafeteria register....");
+	public void cafeListGET(Model model) throws Exception {
+		logger.info("Cafeteria list....");
 		model.addAttribute("list", cafeService.cafeList());
 	}
 }

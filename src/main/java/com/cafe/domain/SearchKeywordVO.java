@@ -1,5 +1,10 @@
 package com.cafe.domain;
 
+/**
+ * Value Object for searching keyword
+ * @author YJH
+ * 2016.11.19.Sat
+ */
 public class SearchKeywordVO {
 	
 	//fields

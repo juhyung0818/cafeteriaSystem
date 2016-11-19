@@ -1,6 +1,6 @@
 package com.cafe.domain;
 /**
- * Value Object
+ * Value Object for cafeteria
  * @author YJH
  * 2016.11.08.Tue
  */
