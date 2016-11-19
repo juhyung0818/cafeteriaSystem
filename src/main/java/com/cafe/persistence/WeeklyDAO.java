@@ -1,7 +1,5 @@
 package com.cafe.persistence;
 
-import java.sql.Date;
-
 import com.cafe.domain.WeeklyVO;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;

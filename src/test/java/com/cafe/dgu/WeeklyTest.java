@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.cafe.controller.Weekly;
+import com.cafe.controller.WeeklyController;
 import com.cafe.domain.WeeklyVO;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
@@ -28,7 +28,7 @@ public class WeeklyTest {
 	@Inject
 	private WeeklyDAO flagDao;
 	// log
-	private static final Logger logger = LoggerFactory.getLogger(Weekly.class);
+	private static final Logger logger = LoggerFactory.getLogger(WeeklyController.class);
 	
 	//register weekly
 	@Test
