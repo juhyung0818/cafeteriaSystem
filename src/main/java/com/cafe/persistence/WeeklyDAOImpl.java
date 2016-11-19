@@ -9,8 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.cafe.domain.WeeklyVO;
-import com.cafe.flag.DateFlag;
-import com.cafe.flag.WeeklyFlag;
+import com.cafe.flags.DateFlag;
+import com.cafe.flags.WeeklyFlag;
 
 /**
  * Weekly menu dao class

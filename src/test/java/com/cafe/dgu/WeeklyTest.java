@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.cafe.controller.WeeklyController;
 import com.cafe.domain.WeeklyVO;
-import com.cafe.flag.DateFlag;
-import com.cafe.flag.WeeklyFlag;
+import com.cafe.flags.DateFlag;
+import com.cafe.flags.WeeklyFlag;
 import com.cafe.persistence.WeeklyDAO;
 
 /**

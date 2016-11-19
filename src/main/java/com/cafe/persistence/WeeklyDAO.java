@@ -1,8 +1,8 @@
 package com.cafe.persistence;
 
 import com.cafe.domain.WeeklyVO;
-import com.cafe.flag.DateFlag;
-import com.cafe.flag.WeeklyFlag;
+import com.cafe.flags.DateFlag;
+import com.cafe.flags.WeeklyFlag;
 
 /**
  * Weekly menu dao interface

@@ -1,7 +1,7 @@
 package com.cafe.domain;
 
-import com.cafe.flag.DateFlag;
-import com.cafe.flag.WeeklyFlag;
+import com.cafe.flags.DateFlag;
+import com.cafe.flags.WeeklyFlag;
 
 /**
  * Value Object for Weekly menu
