@@ -3,6 +3,7 @@ package com.cafe.domain;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
 
+
 /**
  * Value Object for Weekly menu
  * @author YJH

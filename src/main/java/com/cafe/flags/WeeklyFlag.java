@@ -5,7 +5,7 @@ package com.cafe.flags;
  * @author YJH
  * 2016.11.19.Sat
  */
-public enum WeekFlag {
+public enum WeeklyFlag {
 
 	/* enums */
 	SUNDAY(0, "weekend"),
@@ -24,7 +24,7 @@ public enum WeekFlag {
 	 * @param num 
 	 * @param week
 	 */
-	private WeekFlag(int num, String week) {
+	private WeeklyFlag(int num, String week) {
 		this.num = num;
 		this.week = week;
 	}

@@ -18,5 +18,5 @@ public class WeeklyController {
 	private WeeklyService weekly;
 	
 	//TODO register, delete, reset, list
-	
+
 }
