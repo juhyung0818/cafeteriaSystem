@@ -12,8 +12,12 @@ import com.cafe.domain.WeeklyVO;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
 
+/**
+ * Weekly menu dao class
+ * @author YJH
+ * 2016.11.19.Sat
+ */
 @Repository
-
 public class WeeklyDAOImpl implements WeeklyDAO{
 
 	@Inject 

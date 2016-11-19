@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe.mapper.FixedMapper">
+
+	<!-- fixed menu register -->
+	<insert id="register">
+		insert into fixed
+		(cafeName, menuName)
+		values (#{cafeName}, #{menuName})
+	</insert>
+	
+	<!-- fixed menu delete -->
+	<delete id="delete">
+		delete from fixed
+		where cafeName=#{cafeName} and menuName=#{menuName}
+	</delete>
+	
+	<!-- fixed menu display -->
+	<select id="fixedList" resultType="com.cafe.domain.MenuVO">
+		select m.menuName, m.point, m.likeNum, m.path
+		from fixed as f join menu as m
+		on f.menuName = m.menuName
+		where f.cafeName=#{cafeName}
+	</select>
+
+
+</mapper>

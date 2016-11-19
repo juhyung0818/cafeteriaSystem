@@ -36,7 +36,7 @@ public class WeeklyTest {
 		WeeklyVO weekly = new WeeklyVO();
 		weekly.setCafeName("기숙사식당");
 		weekly.setMenuName("조식뷔페");
-		weekly.setwFlag(WeeklyFlag.SUNDAY);
+		weekly.setwFlag(WeeklyFlag.MONDAY);
 		weekly.setDateFlag(DateFlag.DINER);
 		flagDao.register(weekly);
 	}

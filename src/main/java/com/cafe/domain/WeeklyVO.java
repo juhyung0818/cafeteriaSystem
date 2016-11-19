@@ -4,7 +4,7 @@ import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
 
 /**
- * Value Object for Weekly
+ * Value Object for Weekly menu
  * @author YJH
  * 2016.11.19.Sat
  */

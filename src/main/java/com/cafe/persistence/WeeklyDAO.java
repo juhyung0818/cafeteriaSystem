@@ -4,6 +4,11 @@ import com.cafe.domain.WeeklyVO;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
 
+/**
+ * Weekly menu dao interface
+ * @author YJH
+ * 2016.11.19.Sat
+ */
 public interface WeeklyDAO {
 	
 	//menu table register
