@@ -18,6 +18,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from complain
 	</select>
 	
+	<!-- delete complain -->
+	<delete id="delete">
+		delete from complain
+		where complainNum=#{complainNum}
+	</delete>
+	
 	<!-- admin read a complain-->
 	<select id="read" resultType="com.cafe.domain.ComplainVO">
 		select *
@@ -30,5 +36,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update complain set reply=#{reply} 
 		where complainNum=#{complainNum}
 	</update>
+	
+	<!-- delete reply -->
+	<delete id="delete">
+		update complain set reply=""
+		where complainNum=#{complainNum}
+	</delete>
 
 </mapper>

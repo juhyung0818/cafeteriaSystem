@@ -97,10 +97,13 @@
 								'<button type="submit" class="w3-btn w3-white w3-border "> 등록 </button>' +
 								'</form>');
 							}else{
-								document.write('<label">REPLY</label>' +
-									'<input type="text" class="jh"' +
-									'name="uid" class="form-control jh" value="${complainVO.reply}"' +
-									'readonly="readonly">'
+								document.write('<form action="/complain/delete" method="post">' +
+								'<label">REPLY</label>' +
+								'<input type="hidden" name="complainNum" value="${complainVO.complainNum}">' + 
+								'<input type="text" class="jh" name="uid" class="form-control jh"' + 
+								'value="${complainVO.reply}"readonly="readonly">' +
+								'<button type="submit" class="w3-btn w3-white w3-border "> 삭제 </button>' +
+								'</form>'
 								);
 							}
 						</script>

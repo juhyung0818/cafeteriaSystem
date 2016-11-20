@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.ComplainVO;
-import com.cafe.domain.MenuVO;
 import com.cafe.domain.ResultVO;
-import com.cafe.domain.SearchKeywordVO;
 import com.cafe.service.ComplainService;
 
 /**
@@ -100,10 +98,10 @@ public class ComplainController {
 	@RequestMapping(value = "/inReply", method = RequestMethod.POST)
 	public String replyRegisterPOST(@RequestParam("complainNum") int complainNum,
 			@RequestParam("reply") String reply,
-			Model model) throws Exception {
+			Model model, RedirectAttributes rttr) throws Exception {
 		logger.info("menu register....");
 		complainService.registerReply(complainNum, reply);
-		model.addAttribute("complainNum", complainNum);
+		rttr.addAttribute("complainNum", complainNum);
 		return "redirect:/complain/read";
 	}
 }

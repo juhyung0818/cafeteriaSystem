@@ -44,7 +44,12 @@ public class ComplainDAOImpl implements ComplainDAO{
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("complainNum", complainNum);
 		param.put("reply", reply);
-		session.insert(namespace + ".registerReply");
+		session.insert(namespace + ".registerReply", param);
+	}
+
+	@Override
+	public void deleteReply(int complainNum) throws Exception {
+		session.delete(namespace + ".deleteReply", complainNum);
 	}
 
 }

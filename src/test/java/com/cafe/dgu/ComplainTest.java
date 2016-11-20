@@ -65,4 +65,10 @@ public class ComplainTest {
 		complainDao.registerReply(complainNum, reply);
 	}
 	
+	//delete reply test
+	@Test
+	public void testDeleteReply() throws Exception{
+		int complainNum =1;
+		complainDao.deleteReply(complainNum);
+	}
 }
