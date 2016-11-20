@@ -290,7 +290,7 @@ h1 {
 				</table>
 			</li>
 			<li><a href='#'>평가보기</a></li>
-			<li class='last'><a href='#'>소리함</a></li>
+			<li class='last'><a href='/complain/list'>소리함</a></li>
 		</ul>
 	</div>
 
