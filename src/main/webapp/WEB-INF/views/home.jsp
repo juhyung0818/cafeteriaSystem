@@ -283,7 +283,7 @@ h1 {
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
-							<li class='sub'><a href='/menu/register?cafeName=${cafeVO.cafeName}'> ${cafeVO.cafeName}</a>
+							<li class='sub'><a href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'> ${cafeVO.cafeName}</a>
 							</li>
 						</c:forEach>
 					</ul>

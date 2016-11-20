@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.cafe.domain.MenuVO;
+import com.cafe.exception.PrimaryKeyDuplicatedException;
 import com.cafe.persistence.MenuDAO;
 /**
  * Menu Service class
@@ -22,12 +24,16 @@ public class MenuServiceImpl implements MenuService{
 	
 	@Override
 	public void menuRegister(MenuVO menu) throws Exception {
-		menuDao.menuRegister(menu);
+		if(menuDao.checkMenu(menu.getCafeName(), menu.getMenuName()) == 0){
+			menuDao.menuRegister(menu);
+		}else{
+			throw new PrimaryKeyDuplicatedException();
+		}
 	}
 
 	@Override
-	public List<MenuVO> menuList() throws Exception {
-		return menuDao.menuList();
+	public List<MenuVO> menuList(String cafeName) throws Exception {
+		return menuDao.menuList(cafeName);
 	}
 	
 	/**
@@ -36,6 +42,11 @@ public class MenuServiceImpl implements MenuService{
 	@Override
 	public List<MenuVO> searchMenu(String cafeName, String keyword) throws Exception {
 		return menuDao.searchMenu(cafeName, keyword);
+	}
+
+	@Override
+	public void deleteMenu(String cafeName, String menuName) throws Exception {
+		menuDao.deleteMenu(cafeName, menuName);
 	}
 	
 }

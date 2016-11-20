@@ -28,10 +28,10 @@ public class MenuDAOImpl implements MenuDAO{
 	}
 
 	@Override
-	public List<MenuVO> menuList() throws Exception {
-		return session.selectList(namespace + ".menuList");
+	public List<MenuVO> menuList(String cafeName) throws Exception {
+		return session.selectList(namespace + ".menuList", cafeName);
 	}
-
+	
 	/**
 	 * search menu in menu table
 	 * return : menu list contain keyword
@@ -42,6 +42,22 @@ public class MenuDAOImpl implements MenuDAO{
 		param.put("cafeName", cafeName);
 		param.put("keyword", keyword);
 		return session.selectList(namespace + ".searchMenu", param);
+	}
+
+	@Override
+	public int checkMenu(String cafeName, String menuName) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("menuName", menuName);
+		return session.selectOne(namespace + ".check", param);
+	}
+
+	@Override
+	public void deleteMenu(String cafeName, String menuName) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("menuName", menuName);
+		session.update(namespace + ".delete", param);
 	}
 
 }

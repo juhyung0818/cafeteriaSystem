@@ -51,8 +51,9 @@ public class MenuTest {
 	 */
 	@Test
 	public void testMenuList() throws Exception{
+		String cafeName="상록원";
 		List<MenuVO> list = new ArrayList<>();
-		list = menuDao.menuList();
+		list = menuDao.menuList(cafeName);
 		for(int i=0; i<list.size(); i++){
 			logger.info(list.get(i).toString());
 		}
