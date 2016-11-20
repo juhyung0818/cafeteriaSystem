@@ -40,5 +40,19 @@ public enum WeeklyFlag {
 	public String getWeek() {
 		return week;
 	}
+	
+	public static WeeklyFlag valueOf(int num){
+		switch(num){
+			case 0: return WeeklyFlag.SUNDAY;
+			case 1: return WeeklyFlag.MONDAY;
+			case 2: return WeeklyFlag.TUESDAY;
+			case 3: return WeeklyFlag.WEDNESDAY;
+			case 4: return WeeklyFlag.THURSDAY;
+			case 5: return WeeklyFlag.FRIDAY;
+			case 6: return WeeklyFlag.SATURDAY;
+			//TODO need exception define
+			default: throw new AssertionError(); 
+		}
+	}
 
 }

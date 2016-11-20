@@ -26,7 +26,7 @@ public class WeeklyTest {
 	
 	// FlagDAO생성
 	@Inject
-	private WeeklyDAO flagDao;
+	private WeeklyDAO weeklyDao;
 	// log
 	private static final Logger logger = LoggerFactory.getLogger(WeeklyController.class);
 	
@@ -36,22 +36,32 @@ public class WeeklyTest {
 		WeeklyVO weekly = new WeeklyVO();
 		weekly.setCafeName("기숙사식당");
 		weekly.setMenuName("조식뷔페");
-		weekly.setwFlag(WeeklyFlag.MONDAY);
-		weekly.setDateFlag(DateFlag.DINER);
-		flagDao.register(weekly);
+		weekly.setwFlag(WeeklyFlag.WEDNESDAY);
+		weekly.setDateFlag(DateFlag.BREAKFAST);
+		weeklyDao.register(weekly);
 	}
 	
 	//clear weekly
 	@Test
 	public void testClear() throws Exception{
-		flagDao.clearWeekly();
+		weeklyDao.clearWeekly();
 	}
 	
 	//delete a weekly menu
 	@Test
 	public void testDelete() throws Exception{
-		String menuName = "조식뷔페";
-		flagDao.delete(menuName, WeeklyFlag.SUNDAY, DateFlag.DINER);
+		WeeklyVO weekly = new WeeklyVO();
+		weekly.setCafeName("기숙사식당");
+		weekly.setMenuName("조식뷔페");
+		weekly.setwFlag(WeeklyFlag.SUNDAY);
+		weekly.setDateFlag(DateFlag.BREAKFAST);
+		weeklyDao.delete(weekly);
+	}
+	
+	//print weekly list
+	@Test
+	public void testList() throws Exception{
+		logger.info(weeklyDao.weeklyList("기숙사식당").toString());
 	}
 
 }

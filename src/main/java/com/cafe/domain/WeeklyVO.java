@@ -34,22 +34,22 @@ public class WeeklyVO {
 		this.menuName = menuName;
 	}
 
-	public int getwFlag() {
-		return wFlag.getNum();
+	public WeeklyFlag getwFlag() {
+		return wFlag;
 	}
 
 	public void setwFlag(WeeklyFlag wFlag) {
 		this.wFlag = wFlag;
 	}
 
-	public int getDateFlag() {
-		return dateFlag.getNum();
+	public DateFlag getDateFlag() {
+		return dateFlag;
 	}
 
 	public void setDateFlag(DateFlag dateFlag) {
 		this.dateFlag = dateFlag;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "WeeklyVO [cafeName=" + cafeName + ", menuName=" + menuName + ", wFlag=" + wFlag + ", dateFlag="
