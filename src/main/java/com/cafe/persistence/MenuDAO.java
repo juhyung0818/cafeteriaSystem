@@ -10,10 +10,14 @@ import com.cafe.domain.MenuVO;
  */
 public interface MenuDAO {
 
-	// insert menu 
+	// insert a menu 
 	public void menuRegister(MenuVO menu) throws Exception;
 	// diplay all menu list
-	public List<MenuVO> menuList() throws Exception;
+	public List<MenuVO> menuList(String cafeName) throws Exception;
+	// delete a menu
+	public void deleteMenu(String cafeName, String menuName) throws Exception;
 	//menu search
 	public List<MenuVO> searchMenu(String cafeName, String keyword) throws Exception;
+	//menu check exist of not
+	public int checkMenu(String cafeName, String menuName) throws Exception;
 }

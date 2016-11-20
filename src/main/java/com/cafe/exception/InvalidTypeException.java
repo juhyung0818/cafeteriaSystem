@@ -1,7 +1,7 @@
 package com.cafe.exception;
 /**
  * InvalidTypeException
- * type of sql attribute and type of application variable are different  
+ * type of sql attributes and type of application variables are different  
  * @author YJH
  * 2016.11.20.Sun
  */

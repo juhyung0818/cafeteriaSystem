@@ -15,6 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- All menu display in cafe -->	
 	<select id="menuList" resultType="com.cafe.domain.MenuVO">
 		select * from menu
+		where cafeName=${cafeName}
 	</select>
 
 	<!-- Menu remove in cafe -->
@@ -28,6 +29,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select *
 		from menu
 		where menuName like CONCAT('%', #{keyword}, '%') and cafeName=#{cafeName}
+	</select>
+	
+	<select id="check" resultType="int">
+		select count(*)
+		from menu
+		where menuName=#{menuName} and cafeName=#{cafeName}
 	</select>
 	
 </mapper>
