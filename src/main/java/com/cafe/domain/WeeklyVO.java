@@ -12,7 +12,8 @@ public class WeeklyVO {
 	//fields
 	private String cafeName;
 	private String menuName;
-	private WeekFlag wFlag;
+	//private WeekFlag wFlag;
+	private String wFlag;
 	private String dateFlag;
 	
 	/* getter, setter, toString methods */
