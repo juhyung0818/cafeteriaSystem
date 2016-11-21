@@ -3,8 +3,16 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cafe.mapper.FlagMapper">
-
+<mapper namespace="com.cafe.mapper.WeeklyMapper">
+	
+	<!-- enum type mapping -->
+	<resultMap type="com.cafe.domain.WeeklyVO" id="WeeklyVO">
+		<result column="cafeName" property="cafeName"/>
+		<result column="menuName" property="menuName"/>
+		<result column="wFlag" property="wFlag" javaType="com.cafe.flag.WeeklyFlag"/>
+		<result column="dateFlag" property="dateFlag" javaType="com.cafe.flag.DateFlag"/>
+	</resultMap>
+	
 	<!-- Add weekly menu -->
 	<insert id="register">
 		insert into weekly
@@ -12,11 +20,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{cafeName}, #{menuName}, #{wFlag}, #{dateFlag})
 	</insert> 	
 	
-	<!-- display day menu list -->
-	<select id="dayList" resultType="com.cafe.domain.WeeklyVO">
-		select menuName, dateFlag 
+	<!-- display weekly menu list -->
+	<select id="weeklyList" resultMap="WeeklyVO">
+		select *
 		from weekly
-		where cafeName=#{cafeName} and wFlag=#{wFlag}
+		where cafeName=#{cafeName}
+		order by dateFlag, wFlag
 	</select>
 	
 	<!-- all delete weekly -->
@@ -27,7 +36,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- delete a weekly menu -->
 	<delete id="delete">
 		delete from weekly
-		where menuName=#{menuName} and wFlag=#{wFlag} and dateFlag=#{dateFlag}
+		where cafeName=#{cafeName} and menuName=#{menuName} 
+				and wFlag=#{wFlag} and dateFlag=#{dateFlag}
 	</delete>
 
+	
 </mapper>

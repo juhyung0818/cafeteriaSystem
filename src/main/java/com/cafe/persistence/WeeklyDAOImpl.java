@@ -1,6 +1,7 @@
 package com.cafe.persistence;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.cafe.domain.MenuVO;
 import com.cafe.domain.WeeklyVO;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
@@ -22,7 +24,7 @@ public class WeeklyDAOImpl implements WeeklyDAO{
 
 	@Inject 
 	private SqlSession session;
-	private String namespace = "com.cafe.mapper.FlagMapper";
+	private String namespace = "com.cafe.mapper.WeeklyMapper";
 	
 	@Override
 	public void register(WeeklyVO weekly) throws Exception {
@@ -38,11 +40,13 @@ public class WeeklyDAOImpl implements WeeklyDAO{
 	}
 
 	@Override
-	public void delete(String menuName, WeeklyFlag wFlag, DateFlag dateFlag) throws Exception {
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("wFlag", wFlag.getNum());
-		param.put("dateFlag", dateFlag.getNum());
-		session.delete(namespace + ".delete", param);
+	public void delete(WeeklyVO weekly) throws Exception {
+		session.delete(namespace + ".delete", weekly);
+	}
+
+	@Override
+	public List<WeeklyVO> weeklyList(String cafeName) throws Exception {
+		return session.selectList(namespace + ".weeklyList", cafeName);
 	}
 	
 }

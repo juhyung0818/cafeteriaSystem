@@ -273,7 +273,7 @@ h1 {
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
-							<li class='sub'><a href='#'> ${cafeVO.cafeName}</a>
+							<li class='sub'><a href='/weekly/table?cafeName=${cafeVO.cafeName}'> ${cafeVO.cafeName}</a>
 							</li>
 						</c:forEach>
 					</ul>
@@ -283,14 +283,15 @@ h1 {
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
-							<li class='sub'><a href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'> ${cafeVO.cafeName}</a>
+							<li class='sub'><a href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'> 
+								${cafeVO.cafeName}</a>
 							</li>
 						</c:forEach>
 					</ul>
 				</table>
 			</li>
 			<li><a href='#'>평가보기</a></li>
-			<li class='last'><a href='#'>소리함</a></li>
+			<li class='last'><a href='/complain/list'>소리함</a></li>
 		</ul>
 	</div>
 
