@@ -13,6 +13,8 @@ public interface ComplainDAO {
 
 	//customer register complain
 	public void register(ComplainVO complain) throws Exception;
+	//delete complain
+	public void delete(int complainNum) throws Exception;
 	//display complain board list
 	public List<ComplainVO> complainList() throws Exception;
 	//read complain

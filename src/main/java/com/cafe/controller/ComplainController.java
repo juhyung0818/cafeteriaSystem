@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.ComplainVO;
+import com.cafe.domain.MenuVO;
 import com.cafe.domain.ResultVO;
+import com.cafe.domain.SearchKeywordVO;
 import com.cafe.service.ComplainService;
 
 /**
@@ -94,7 +96,15 @@ public class ComplainController {
 		logger.info("complain read...");
 		model.addAttribute("complainVO", complainService.complainRead(complainNum));
 	}
-	
+	/**
+	 * 
+	 * @param complainNum
+	 * @param reply
+	 * @param model
+	 * @param rttr
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/inReply", method = RequestMethod.POST)
 	public String replyRegisterPOST(@RequestParam("complainNum") int complainNum,
 			@RequestParam("reply") String reply,
@@ -103,5 +113,41 @@ public class ComplainController {
 		complainService.registerReply(complainNum, reply);
 		rttr.addAttribute("complainNum", complainNum);
 		return "redirect:/complain/read";
+	}
+	
+	/**
+	 * 
+	 * @param complainNum
+	 * @param model
+	 * @param rttr
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/outReply", method = RequestMethod.POST)
+	public String replyDeletePOST(@RequestParam("complainNum") int complainNum,
+			Model model, RedirectAttributes rttr) throws Exception {
+		logger.info("menu register....");
+		complainService.deleteReply(complainNum);
+		rttr.addAttribute("complainNum", complainNum);
+		return "redirect:/complain/read";
+	}
+	
+	/**
+	 * 
+	 * @param cafeName
+	 * @param menuName
+	 * @param model
+	 * @param key
+	 * @param rttr
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String complainDeletePOST(@RequestParam("complainNum") int complainNum,
+			Model model, RedirectAttributes rttr) throws Exception {
+		logger.info("complain delete....");
+		complainService.delete(complainNum);
+		rttr.addAttribute("complainNum", complainNum);
+		return "redirect:/complain/list";
 	}
 }

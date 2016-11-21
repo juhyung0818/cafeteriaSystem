@@ -43,4 +43,16 @@ public class ComplainServiceImpl implements ComplainService{
 		complainDao.registerReply(complainNum, reply);
 	}
 
+	//delete reply
+	@Override
+	public void deleteReply(int complainNum) throws Exception {
+		complainDao.deleteReply(complainNum);
+	}
+
+	//delete complain
+	@Override
+	public void delete(int complainNum) throws Exception {
+		complainDao.delete(complainNum);
+	}
+
 }

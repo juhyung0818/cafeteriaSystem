@@ -52,4 +52,10 @@ public class ComplainDAOImpl implements ComplainDAO{
 		session.delete(namespace + ".deleteReply", complainNum);
 	}
 
+	//delete complain
+	@Override
+	public void delete(int complainNum) throws Exception {
+		session.delete(namespace + ".delete", complainNum);
+	}
+
 }

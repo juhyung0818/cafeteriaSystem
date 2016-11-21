@@ -91,19 +91,20 @@
 						<script>
 							if(!"${complainVO.reply}"){
 							document.write('<form action="/complain/inReply" method="post">' +
-								'<label">REPLY</label>' +
-								'<input type="hidden" name="complainNum" value="${complainVO.complainNum}">' + 
-								'<input type="text" name="reply" class="form-control jh" id="reply">' +
-								'<button type="submit" class="w3-btn w3-white w3-border "> 등록 </button>' +
-								'</form>');
+									'<label">REPLY</label>' +
+									'<input type="hidden" name="complainNum" value="${complainVO.complainNum}">' + 
+									'<input type="text" name="reply" class="form-control jh" id="reply">' +
+									'<button type="submit" class="w3-btn w3-white w3-border "> 등록 </button>' +
+									'</form>'
+								);
 							}else{
-								document.write('<form action="/complain/delete" method="post">' +
-								'<label">REPLY</label>' +
-								'<input type="hidden" name="complainNum" value="${complainVO.complainNum}">' + 
-								'<input type="text" class="jh" name="uid" class="form-control jh"' + 
-								'value="${complainVO.reply}"readonly="readonly">' +
-								'<button type="submit" class="w3-btn w3-white w3-border "> 삭제 </button>' +
-								'</form>'
+								document.write('<form action="/complain/outReply" method="post">' +
+									'<label">REPLY</label>' +
+									'<input type="hidden" name="complainNum" value="${complainVO.complainNum}">' + 
+									'<input type="text" class="jh" name="uid" class="form-control jh"' + 
+									'value="${complainVO.reply}"readonly="readonly">' +
+									'<button type="submit" class="w3-btn w3-white w3-border "> 삭제 </button>' +
+									'</form>'
 								);
 							}
 						</script>
@@ -112,7 +113,9 @@
 				<!-- /.box-body -->
 
 				<div class="box-footer">
-					<button type="submit" >REMOVE</button>
+					<form action="/complain/delete?complainNum=${complainVO.complainNum}" method="post">
+						<button type="submit" class="w3-btn w3-white w3-border">REMOVE</button>
+					</form>
 					<a href="/complain/list">
 						<button type="submit">BACK</button>
 					</a>

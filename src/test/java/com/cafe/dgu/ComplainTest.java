@@ -68,7 +68,7 @@ public class ComplainTest {
 	//delete reply test
 	@Test
 	public void testDeleteReply() throws Exception{
-		int complainNum =1;
+		int complainNum =2;
 		complainDao.deleteReply(complainNum);
 	}
 }

@@ -18,4 +18,8 @@ public interface ComplainService {
 	public ComplainVO complainRead(int complainNum) throws Exception;
 	//register reply
 	public void registerReply(int complainNum, String reply) throws Exception;
+	//delete reply
+	public void deleteReply(int complainNum) throws Exception;
+	//delete complain
+	public void delete(int complainNum) throws Exception;
 }

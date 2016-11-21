@@ -38,9 +38,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- delete reply -->
-	<delete id="delete">
+	<update id="deleteReply">
 		update complain set reply=""
 		where complainNum=#{complainNum}
-	</delete>
+	</update>
 
 </mapper>
