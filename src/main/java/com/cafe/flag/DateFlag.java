@@ -30,6 +30,16 @@ public enum DateFlag {
 		return time;
 	}
 	
+	public static DateFlag valueOF(int num){
+		switch(num){
+			case 0: return DateFlag.BREAKFAST;
+			case 1: return DateFlag.LUNCH;
+			case 2: return DateFlag.DINER;
+			// TODO need exception define
+			default: throw new AssertionError();
+		}
+	}
+	
 }
 
 

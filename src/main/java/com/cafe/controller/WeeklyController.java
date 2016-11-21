@@ -1,22 +1,70 @@
 package com.cafe.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cafe.domain.WeeklyVO;
+import com.cafe.flag.DateFlag;
+import com.cafe.flag.WeeklyFlag;
 import com.cafe.service.WeeklyService;
 
+/**
+ * Weekly menu Controller class
+ * @author YJH
+ * 2016.11.20.SUN
+ */
 @Controller
 @RequestMapping("/weekly/*")
 public class WeeklyController {
 	//use log4j
 	private static final Logger logger = LoggerFactory.getLogger(WeeklyController.class);
 	@Inject
-	private WeeklyService weekly;
+	private WeeklyService weeklyService;
 	
-	//TODO register, delete, reset, list
-
+	@RequestMapping(value="/table", method = RequestMethod.GET)
+	public void tableGET(@RequestParam("cafeName") String cafeName, Model model) throws Exception{
+		logger.info("Weekly table...");
+		List<WeeklyVO> list = weeklyService.weeklyList(cafeName);
+		model.addAttribute("list", list);
+		model.addAttribute("cafeName", cafeName);
+	}
+	
+	@RequestMapping(value="/register", method = RequestMethod.POST)
+	public void registerPOST(@RequestParam("cafeName") String cafeName, 
+			@RequestParam("menuName") String menuName,
+			@RequestParam("wFlag") int wFlag,
+			@RequestParam("dateFlag") int dateFlag,
+			Model model) throws Exception{
+		logger.info("Weekly register...");
+		
+		List<WeeklyVO> list = weeklyService.weeklyList(cafeName);
+		model.addAttribute("list", list);
+	}	
+	
+	@RequestMapping(value="/delete", method = RequestMethod.POST)
+	public String deletePOST(@RequestParam("cafeName") String cafeName, 
+			@RequestParam("menuName") String menuName,
+			@RequestParam("wFlag") WeeklyFlag wFlag,
+			@RequestParam("dateFlag") DateFlag dateFlag,
+			Model model, RedirectAttributes rttr) throws Exception{
+		logger.info("Weekly delete...");
+		WeeklyVO weekly = new WeeklyVO();
+		weekly.setCafeName(cafeName);
+		weekly.setMenuName(menuName);
+		weekly.setwFlag(wFlag);
+		weekly.setDateFlag(dateFlag);
+		weeklyService.delete(weekly);
+		rttr.addAttribute("cafeName", cafeName);
+		return "redirect:/weekly/table";
+	}
 }
