@@ -50,6 +50,7 @@ public class MenuController {
 		MenuVO menu = new MenuVO();
 		menu.setCafeName(cafeName);
 		menu.setMenuName(menuName);
+		menu.setPrice(price);
 		menuService.menuRegister(menu);
 		rttr.addAttribute("cafeName", cafeName);
 		rttr.addAttribute("keyword", key.getKeyword());
