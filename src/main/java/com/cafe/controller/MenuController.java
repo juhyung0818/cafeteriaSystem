@@ -44,6 +44,7 @@ public class MenuController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String menuRegisterPOST(@RequestParam("cafeName") String cafeName, @RequestParam("menuName") String menuName,
+			@RequestParam("price") int price,
 			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
 		logger.info("menu register....");
 		MenuVO menu = new MenuVO();

@@ -24,9 +24,12 @@
 
 <body>
 
-	<form action="/menu/register?cafeName=${cafeName}&keyword=${keyword}" method="post">
+	<form action="/menu/register" method="post">
 		<label for="menuName">menu name</label>
+		<input type="hidden" name="cafeName" value="${cafeName}"/>
 		<input type="text" name="menuName" placeholder="Menu name"/>
+		<input type="text" name="price" placeholder="Menu price"/>
+		<input type='hidden' name='keyword' value="${keyword}">
 		<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
 		<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
 	</form>
@@ -44,6 +47,7 @@
 		<table>
 			<tr>
 				<th> MENU NAME </th>
+				<th> MENU PRICE </th>
 				<th> MENU POINT </th>
 				<th> MENU LIKE </th>
 				<th> MODIFY </th>
@@ -52,6 +56,7 @@
 			<c:forEach items="${list}" var="menuVO">
 			<tr>
 				<td>${menuVO.menuName} </td>
+				<td>${menuVO.price} </td>
 				<td>${menuVO.point} </td>
 				<td>${menuVO.likeNum} </td>
 				<td>
@@ -63,7 +68,7 @@
 				</td>
 				<td>
 					<form action="/menu/delete?cafeName=${menuVO.cafeName}&menuName=${menuVO.menuName}&keyword=${keyword}" method="post">
-						<button type="submit" class="w3-btn w3-white w3-border btn-danger">REMOVE</button>
+						<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
 					</form>
 				</td>
 			</tr>
@@ -71,7 +76,6 @@
 		</table>
 
 </body>
-
 <!-- <script>
 $(document).ready(function() {
 	var formObj = $("form[role='form']");

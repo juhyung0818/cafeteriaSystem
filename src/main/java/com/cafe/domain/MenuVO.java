@@ -10,6 +10,7 @@ public class MenuVO {
 
 	private String cafeName;
 	private String menuName;
+	private int price;
 	private float point;
 	private int likeNum;
 	private String path;
@@ -26,6 +27,12 @@ public class MenuVO {
 	}
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public float getPoint() {
 		return point;
@@ -49,8 +56,8 @@ public class MenuVO {
 	//toString method for log
 	@Override
 	public String toString() {
-		return "MenuVO [cafeName=" + cafeName + ", menuName=" + menuName + ", point=" + point + ", likeNum=" + likeNum
-				+ ", path=" + path + "]";
+		return "MenuVO [cafeName=" + cafeName + ", menuName=" + menuName + ", price=" + price + ", point=" + point
+				+ ", likeNum=" + likeNum + ", path=" + path + "]";
 	}
 	
 }
