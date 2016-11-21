@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe.mapper.WeeklyMapper">
+	
+	<!-- enum type mapping -->
+	<resultMap type="com.cafe.domain.WeeklyVO" id="WeeklyVO">
+		<result column="cafeName" property="cafeName"/>
+		<result column="menuName" property="menuName"/>
+		<result column="wFlag" property="wFlag" javaType="com.cafe.flag.WeeklyFlag"/>
+		<result column="dateFlag" property="dateFlag" javaType="com.cafe.flag.DateFlag"/>
+	</resultMap>
+	
+	<!-- Add weekly menu -->
+	<insert id="register">
+		insert into weekly
+		(cafeName, menuName, wFlag, dateFlag)
+		values (#{cafeName}, #{menuName}, #{wFlag}, #{dateFlag})
+	</insert> 	
+	
+	<!-- display weekly menu list -->
+	<select id="weeklyList" resultMap="WeeklyVO">
+		select *
+		from weekly
+		where cafeName=#{cafeName}
+		order by dateFlag, wFlag
+	</select>
+	
+	<!-- all delete weekly -->
+	<delete id="clear">
+		delete from weekly
+	</delete>
+	
+	<!-- delete a weekly menu -->
+	<delete id="delete">
+		delete from weekly
+		where cafeName=#{cafeName} and menuName=#{menuName} 
+				and wFlag=#{wFlag} and dateFlag=#{dateFlag}
+	</delete>
+
+	
+</mapper>

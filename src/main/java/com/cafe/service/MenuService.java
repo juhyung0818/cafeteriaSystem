@@ -11,7 +11,9 @@ import com.cafe.domain.MenuVO;
 public interface MenuService {
 
 	public void menuRegister(MenuVO menu) throws Exception;
-	public List<MenuVO> menuList() throws Exception;
+	public List<MenuVO> menuList(String cafeName) throws Exception;
 	//menu search
 	public List<MenuVO> searchMenu(String cafeName, String keyword) throws Exception;
+	//delete a menu
+	public void deleteMenu(String cafeName, String menuName) throws Exception;
 }
