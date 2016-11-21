@@ -269,7 +269,7 @@ h1 {
 	<div class='menu'>
 		<ul>
 
-			<li class='active sub'>식단등록
+			<a><li class='active sub'>식단등록</a>
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
@@ -279,7 +279,7 @@ h1 {
 					</ul>
 				</table>
 			</li>
-			<li class='active sub'>메뉴추가
+			<a><li class='active sub'>메뉴추가</a>
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
