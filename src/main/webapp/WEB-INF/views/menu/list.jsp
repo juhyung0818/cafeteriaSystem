@@ -44,6 +44,7 @@
 		<table>
 			<tr>
 				<th> MENU NAME </th>
+				<th> MENU PRICE </th>
 				<th> MENU POINT </th>
 				<th> MENU LIKE </th>
 				<th> MODIFY </th>
@@ -52,6 +53,7 @@
 			<c:forEach items="${list}" var="menuVO">
 			<tr>
 				<td>${menuVO.menuName} </td>
+				<td>${menuVO.price} </td>
 				<td>${menuVO.point} </td>
 				<td>${menuVO.likeNum} </td>
 				<td>
