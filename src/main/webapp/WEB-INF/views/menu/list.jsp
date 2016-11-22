@@ -28,7 +28,7 @@
 		<label for="menuName">menu name</label>
 		<input type="hidden" name="cafeName" value="${cafeName}"/>
 		<input type="text" name="menuName" placeholder="Menu name"/>
-		<input type="text" name="price" placeholder="Menu price"/>
+		<input type="number" name="price" placeholder="Menu price"/>
 		<input type='hidden' name='keyword' value="${keyword}">
 		<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
 		<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
