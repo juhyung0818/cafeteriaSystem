@@ -37,11 +37,10 @@ public class MenuTest {
 	 */
 	@Test
 	public void testMenuRegister() throws Exception{
-		
 		MenuVO menu = new MenuVO();
 		menu.setCafeName("상록원");
+		menu.setDetailName("일품");
 		menu.setMenuName("치즈돈까스");
-
 		menuDao.menuRegister(menu);
 	}
 	

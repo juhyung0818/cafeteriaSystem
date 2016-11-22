@@ -206,12 +206,12 @@ a#add_pop:hover {
 						<p>추가 할 음식을 검색하세요</p>
 						<div>
 
-							<input type="text" id="search" value="" /> <input type="button"
-								value="검색" />
+							<input type="text" id="search" value="" />
+							<input type="button" value="검색" />
 						</div>
 
 
-						<a class="close" href="#close"></a>
+						<a class="close"></a>
 					</div>
 
 

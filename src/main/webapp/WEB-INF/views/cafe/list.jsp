@@ -21,7 +21,6 @@
 #box1 {
 	width: 225px;
 	height: 225px;
-	background-image: url("c:\User\Desktop\admin\teachr.jpg")
 }
 
 .tg {
@@ -64,14 +63,36 @@
 <section class="content">
 	<h1> CAFE NAME </h1>
 	<table class="w3-table w3-bordered">
-		<c:forEach items="${list}" var="cafeVO">
+			<tr>
+				<th>CAFE NAME</th>
+				<th>코너 보기</th>
+				<th>수정</th>
+				<th>삭제</th>
+			</tr>
+			<c:forEach items="${cafes}" var="cafeVO">
 			<tr>
 				<td>
-
-					${cafeVO.cafeName} <br>
+					${cafeVO.cafeName}
+				</td>
+				<td>
+					VIEW
+				</td>
+				<td>
+					<form action="/cafe/modify?cafeName=${cafeVO.cafeName}" method="post">
+						<input type='hidden' name='cafeName' value="${cafeVO.cafeName}">
+						<input type='hidden' name='menuName' value="${cafeVO.menuName}">
+						<button type="submit" class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
+					</form>
+				</td>
+				<td>
+					<form action="/cafe/delete?cafeName=${cafeVO.cafeName}" method="post">
+						<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
+					</form>
 				</td>
 			</tr>
-		</c:forEach>
+			</c:forEach>
 	</table>
+	
+	
 </section>
 </div>
