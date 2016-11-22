@@ -19,6 +19,27 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script><head>
 	<title> 학 식 세 끼 </title>	
+	
+	<style>
+	.dropdown {
+    	position: relative;
+    	display: inline-block;
+	}	
+
+	.dropdown-content {
+    	display: none;
+    	position: absolute;
+    	background-color: #f9f9f9;
+    	min-width: 160px;
+    	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    	padding: 12px 16px;
+    	z-index: 1;
+	}
+
+	.dropdown:hover .dropdown-content {
+    	display: block;
+	}
+	</style>
 </head>
 
 <body>
@@ -27,12 +48,16 @@
 		<label for="menuName">menu name</label>
 		<input type="hidden" name="cafeName" value="${cafeName}"/>
 		<input type="text" name="menuName" placeholder="Menu name"/>
+		<select name="detailName" size="${detailSize}">
+			<c:forEach items="${details}" var="detailVO">
+        		<option>${detailVO.detailName}</option>
+        	</c:forEach>
+		</select>
 		<input type="number" name="price" placeholder="Menu price"/>
 		<input type='hidden' name='keyword' value="${keyword}">
 		<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
 		<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
 	</form>
-	
 	
 	<form action="/menu/search?cafeName=${cafeName}" method="post">
 		<label for="keyword">Search</label>
@@ -52,9 +77,9 @@
 				<th> MODIFY </th>
 				<th> DELETE </th>
 			</tr>
-			<c:forEach items="${list}" var="menuVO">
+			<c:forEach items="${menus}" var="menuVO">
 			<tr>
-				<td>${menuVO.menuName} </td>
+				<td>${menuVO.menuName}(${menuVO.detailName}) </td>
 				<td>${menuVO.price} </td>
 				<td>${menuVO.point} </td>
 				<td>${menuVO.likeNum} </td>
