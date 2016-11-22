@@ -269,7 +269,7 @@ h1 {
 	<div class='menu'>
 		<ul>
 
-			<li class='active sub'>식단등록
+			<li class='active sub'><a>식단관리</a>
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
@@ -279,7 +279,17 @@ h1 {
 					</ul>
 				</table>
 			</li>
-			<li class='active sub'>메뉴추가
+			<li class='active sub'><a>항시메뉴 관리</a>
+				<table class="w3-table w3-bordered">
+					<ul>
+						<c:forEach items="${list}" var="cafeVO">
+							<li class='sub'><a href='/weekly/table?cafeName=${cafeVO.cafeName}'> ${cafeVO.cafeName}</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</table>
+			</li>
+			<li class='active sub'><a>메뉴관리</a>
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
@@ -290,7 +300,19 @@ h1 {
 					</ul>
 				</table>
 			</li>
-			<li><a href='#'>평가보기</a></li>
+			
+			<li class='active sub'><a>식당관리</a>
+				<table class="w3-table w3-bordered">
+					<ul>
+						<c:forEach items="${list}" var="cafeVO">
+							<li class='sub'><a href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'> 
+								${cafeVO.cafeName}</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</table>
+			</li>
+			
 			<li class='last'><a href='/complain/list'>소리함</a></li>
 		</ul>
 	</div>

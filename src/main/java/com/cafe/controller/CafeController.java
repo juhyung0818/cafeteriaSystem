@@ -34,28 +34,5 @@ public class CafeController {
 		model.addAttribute("list", cafeService.cafeList());
 	}
 	
-	@RequestMapping(value = "/menu", method = RequestMethod.GET)
-	public void mainGET(Model model) throws Exception {
-		logger.info("Cafeteria register....");
-	}	
-	
-	@RequestMapping(value = "/addmenu", method = RequestMethod.GET)
-	public void addmenuGet(Model model) throws Exception {
-		logger.info("addmenu....");
-	}
-	
-	@RequestMapping(value = "/menulist", method = RequestMethod.GET)
-	public void menulistGet(Model model) throws Exception {
-		logger.info("menulist....");
-	}
-	
-	@RequestMapping(value = "/review", method = RequestMethod.GET)
-	public void reviewGet(Model model) throws Exception {
-		logger.info("review....");
-	}
-	
-	@RequestMapping(value = "/complain", method = RequestMethod.GET)
-	public void complainGet(Model model) throws Exception {
-		logger.info("review....");
-	}
+
 }
