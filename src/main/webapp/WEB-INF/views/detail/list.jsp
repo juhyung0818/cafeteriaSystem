@@ -64,22 +64,18 @@
 	<h1> CAFE NAME </h1>
 	<table class="w3-table w3-bordered">
 			<tr>
-				<th>${cafeName}</th>
-				<th>코너 보기</th>
+				<th>CAFE NAME</th>
 				<th>수정</th>
 				<th>삭제</th>
 			</tr>
-			<c:forEach items="${cafes}" var="cafeVO">
+			<c:forEach items="${list}" var="detailVO">
 			<tr>
 				<td>
-					<form action="/detail/list" method="post">
-						<input type='hidden' name='cafeName' value="${cafeVO.cafeName}">
-						<button type="submit" class="w3-btn w3-white w3-border btn-warning">${cafeVO.cafeName}</button>
-					</form>
+					${detailVO.detailName}
 				</td>
-					<form action="/cafe/modify?cafeName=${cafeVO.cafeName}" method="post">
-						<input type='hidden' name='cafeName' value="${cafeVO.cafeName}">
-						<input type='hidden' name='menuName' value="${cafeVO.menuName}">
+				<td>
+					<form action="/cafe/modify?cafeName=${detailVO.cafeName}" method="post">
+						<input type='hidden' name='menuName' value="${detailVO.detailName}">
 						<button type="submit" class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
 					</form>
 				</td>

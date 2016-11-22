@@ -37,4 +37,12 @@ public class DetailDAOImpl implements DetailDAO{
 		return session.selectList(namespace + ".detailList", cafeName);
 	}
 
+	@Override
+	public void deleteDetail(String cafeName, String detailName) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		session.delete(namespace + ".deleteDetail", param);
+	}
+
 }
