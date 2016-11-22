@@ -260,11 +260,14 @@ h1 {
 	font-family: arial, sans-serif;
 	width: 80%;
 }
+
+
 </style>
 </head>
 <body>
 	<div align="center">
 		<h1>학 식 세 끼</h1>
+	
 	</div>
 	<div class='menu'>
 		<ul>
