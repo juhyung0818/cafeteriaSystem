@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cafe.domain.DetailVO;
 import com.cafe.domain.MenuVO;
 import com.cafe.domain.SearchKeywordVO;
+import com.cafe.service.DetailService;
 import com.cafe.service.MenuService;
 
 /**
@@ -30,25 +32,33 @@ public class MenuController {
 	private static final Logger logger = LoggerFactory.getLogger(MenuController.class);
 	@Inject
 	private MenuService menuService;
+	@Inject
+	private DetailService detailService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void menuListGET(@RequestParam("cafeName") String cafeName,
 			@RequestParam("keyword") String keyword, Model model) throws Exception {
 		logger.info("menu register....");
-		List<MenuVO> list = menuService.searchMenu(cafeName, keyword);
-
-		model.addAttribute("list", list);
+		List<MenuVO> menus = menuService.searchMenu(cafeName, keyword);
+		model.addAttribute("menus", menus);
+		List<DetailVO> details = detailService.detailList(cafeName);
+		model.addAttribute("details", details);
+		model.addAttribute("detailSize", details.size());
 		model.addAttribute("cafeName", cafeName);
 		model.addAttribute("keyword", keyword);
+		
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String menuRegisterPOST(@RequestParam("cafeName") String cafeName, @RequestParam("menuName") String menuName,
+	public String menuRegisterPOST(@RequestParam("cafeName") String cafeName, 
+			@RequestParam("detailName") String detailName,
+			@RequestParam("menuName") String menuName,
 			@RequestParam("price") int price,
 			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
 		logger.info("menu register....");
 		MenuVO menu = new MenuVO();
 		menu.setCafeName(cafeName);
+		menu.setDetailName(detailName);
 		menu.setMenuName(menuName);
 		menu.setPrice(price);
 		menuService.menuRegister(menu);
@@ -59,11 +69,14 @@ public class MenuController {
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String menuDeletePOST(@RequestParam("cafeName") String cafeName, @RequestParam("menuName") String menuName,
+	public String menuDeletePOST(@RequestParam("cafeName") String cafeName, 
+			@RequestParam("detailName") String detailName,
+			@RequestParam("menuName") String menuName,
 			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
 		logger.info("menu search....");
 		MenuVO menu = new MenuVO();
 		menu.setCafeName(cafeName);
+		menu.setDetailName(detailName);
 		menu.setMenuName(menuName);
 		menuService.deleteMenu(cafeName, menuName);
 		rttr.addAttribute("cafeName", cafeName);
