@@ -37,7 +37,7 @@ public class DetailTest {
 	@Test
 	public void testRegisterDetail() throws Exception{
 		String cafeName="기숙사식당";
-		String detailName="일품";
+		String detailName="스파게티";
 		DetailVO detail = new DetailVO();
 		detail.setCafeName(cafeName);
 		detail.setDetailName(detailName);

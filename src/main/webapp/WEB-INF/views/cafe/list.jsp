@@ -91,6 +91,15 @@
 				</td>
 			</tr>
 			</c:forEach>
+			<tr>
+				<td>
+					<form action="/cafe/register?cafeName=${cafeVO.cafeName}" method="post">
+						<input type='hidden' name='cafeName' value="${cafeVO.cafeName}">
+						<input type='text' name='menuName' value="${cafeVO.menuName}">
+						<button type="submit" class="w3-btn w3-white w3-border btn-warning">ADD</button>
+					</form>
+				</td>
+			</tr>
 	</table>
 	
 	

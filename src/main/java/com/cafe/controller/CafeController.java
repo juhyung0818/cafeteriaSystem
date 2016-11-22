@@ -33,8 +33,6 @@ public class CafeController {
 	//create services
 	@Inject
 	private CafeService cafeService;
-	@Inject
-	private DetailService detailService;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void cafeListGET(Model model) throws Exception {
@@ -43,15 +41,6 @@ public class CafeController {
 		List<CafeVO> cafes= cafeService.cafeList();
 		model.addAttribute("cafes", cafes);
 		
-		//cafeteria and detail matching
-		List<DetailVO> details = new ArrayList<>();
-		for(CafeVO cafe : cafes){
-			List<DetailVO> temp = new ArrayList<>();
-			temp = detailService.detailList(cafe.getCafeName());
-			for(DetailVO detail : temp){
-				details.add(detail);
-			}
-		}
-		model.addAttribute("details", details);
 	}
+	
 }
