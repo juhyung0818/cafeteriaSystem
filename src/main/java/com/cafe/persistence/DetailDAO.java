@@ -15,4 +15,6 @@ public interface DetailDAO {
 	public void registerDetail(String cafeName, String detailName) throws Exception;
 	//list detail
 	public List<DetailVO> detailList(String cafeName) throws Exception;
+	//delete detail
+	public void deleteDetail(String cafeName, String detailName) throws Exception;
 }

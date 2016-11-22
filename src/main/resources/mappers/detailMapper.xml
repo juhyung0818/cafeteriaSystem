@@ -20,4 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by detailName
 	</select>
 
+	<!-- dekete detail -->
+	<delete id="delete">
+		delete from detail
+		where cafeName=#{cafeName} and detailName=#{detailName}
+	</delete>
+
 </mapper>
