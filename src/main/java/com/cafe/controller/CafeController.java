@@ -53,6 +53,7 @@ public class CafeController {
 			}
 		}
 		model.addAttribute("details", details);
-	}
+		model.addAttribute("list", cafeService.cafeList());
 
+	}
 }

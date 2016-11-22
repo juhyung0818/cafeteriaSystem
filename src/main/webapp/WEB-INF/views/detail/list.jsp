@@ -68,7 +68,7 @@
 				<th>수정</th>
 				<th>삭제</th>
 			</tr>
-			<c:forEach items="${list}" var="detailVO">
+			<c:forEach items="${details}" var="detailVO">
 			<tr>
 				<td>
 					${detailVO.detailName}

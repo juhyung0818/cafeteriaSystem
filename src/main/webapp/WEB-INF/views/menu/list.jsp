@@ -64,10 +64,8 @@
 		<input type="text" name="keyword" placeholder="Write menu name"/>
 		<button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
 	</form>
-
 	
 		<h1> Menu list </h1>
-
 		<table>
 			<tr>
 				<th> MENU NAME </th>

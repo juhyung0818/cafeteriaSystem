@@ -41,8 +41,7 @@ public class DetailController {
 	public void readDetailGET(@RequestParam("cafeName") String cafeName, Model model) throws Exception{
 		model.addAttribute("cafeName", cafeName);
 		List<DetailVO> list = detailService.detailList(cafeName);
-		model.addAttribute("list", list);
-		model.addAttribute("cafeName", cafeName);
+		model.addAttribute("details", list);
 	}
 	
 	@RequestMapping(value="/delete", method=RequestMethod.POST)

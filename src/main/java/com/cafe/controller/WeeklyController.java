@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cafe.domain.WeeklyVO;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
+import com.cafe.service.CafeService;
 import com.cafe.service.WeeklyService;
 
 /**
@@ -30,13 +31,16 @@ public class WeeklyController {
 	private static final Logger logger = LoggerFactory.getLogger(WeeklyController.class);
 	@Inject
 	private WeeklyService weeklyService;
-	
+	@Inject
+	private CafeService cafeService;
+
 	@RequestMapping(value="/table", method = RequestMethod.GET)
 	public void tableGET(@RequestParam("cafeName") String cafeName, Model model) throws Exception{
 		logger.info("Weekly table...");
-		List<WeeklyVO> list = weeklyService.weeklyList(cafeName);
-		model.addAttribute("list", list);
+		List<WeeklyVO> weeklis = weeklyService.weeklyList(cafeName);
+		model.addAttribute("weeklis", weeklis);
 		model.addAttribute("cafeName", cafeName);
+		model.addAttribute("list", cafeService.cafeList());
 	}
 	
 	@RequestMapping(value="/register", method = RequestMethod.POST)

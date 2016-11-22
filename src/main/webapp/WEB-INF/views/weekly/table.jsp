@@ -58,7 +58,7 @@
 		var time = new Array();
 		var day = new Array();
 	</script>
-	<c:forEach items='${list}' var='menuVO' varStatus='i'>
+	<c:forEach items='${weeklis}' var='menuVO' varStatus='i'>
 		<script>
 		time[${i.index}] = Times.${menuVO.dateFlag};
 		day[${i.index}] = Days.${menuVO.wFlag};

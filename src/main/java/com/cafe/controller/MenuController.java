@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cafe.domain.DetailVO;
 import com.cafe.domain.MenuVO;
 import com.cafe.domain.SearchKeywordVO;
+import com.cafe.service.CafeService;
 import com.cafe.service.DetailService;
 import com.cafe.service.MenuService;
 
@@ -34,11 +35,13 @@ public class MenuController {
 	private MenuService menuService;
 	@Inject
 	private DetailService detailService;
+	@Inject
+	private CafeService cafeService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void menuListGET(@RequestParam("cafeName") String cafeName,
 			@RequestParam("keyword") String keyword, Model model) throws Exception {
-		logger.info("menu register....");
+		logger.info("menu list....");
 		List<MenuVO> menus = menuService.searchMenu(cafeName, keyword);
 		model.addAttribute("menus", menus);
 		List<DetailVO> details = detailService.detailList(cafeName);
@@ -46,7 +49,7 @@ public class MenuController {
 		model.addAttribute("detailSize", details.size());
 		model.addAttribute("cafeName", cafeName);
 		model.addAttribute("keyword", keyword);
-		
+		model.addAttribute("list", cafeService.cafeList());
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -73,7 +76,7 @@ public class MenuController {
 			@RequestParam("detailName") String detailName,
 			@RequestParam("menuName") String menuName,
 			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
-		logger.info("menu search....");
+		logger.info("menu delete....");
 		MenuVO menu = new MenuVO();
 		menu.setCafeName(cafeName);
 		menu.setDetailName(detailName);

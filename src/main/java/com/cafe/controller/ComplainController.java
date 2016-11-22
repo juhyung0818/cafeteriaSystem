@@ -17,9 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.ComplainVO;
-import com.cafe.domain.MenuVO;
 import com.cafe.domain.ResultVO;
-import com.cafe.domain.SearchKeywordVO;
+import com.cafe.service.CafeService;
 import com.cafe.service.ComplainService;
 
 /**
@@ -36,6 +35,8 @@ public class ComplainController {
 		
 	@Inject
 	private ComplainService complainService;
+	@Inject
+	private CafeService cafeService;
 	
 	/**
 	 * complains are registered by customers
@@ -46,9 +47,10 @@ public class ComplainController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public ResultVO regist(@RequestBody ComplainVO complain) throws Exception{
+	public ResultVO regist(@RequestBody ComplainVO complain, Model model) throws Exception{
 		logger.info("complain register ......");
 		complainService.register(complain);
+		model.addAttribute("list", cafeService.cafeList());
 		return new ResultVO();
 	}
 	
@@ -79,8 +81,7 @@ public class ComplainController {
 	public void complainListGET(Model model, RedirectAttributes rttr) throws Exception {
 		logger.info("complain list...");
 		List<ComplainVO> list = complainService.complainList();
-
-		model.addAttribute("list", list);
+		model.addAttribute("complains", list);
 	}
 
 	/**

@@ -39,7 +39,6 @@ public class HomeController {
 	@Inject
 	private CafeService cafeService;
 
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String cafeListGET(Model model) throws Exception {
 		logger.info("Cafeteria list ....");
