@@ -270,6 +270,7 @@ h1 {
 		<ul>
 
 			<a><li class='active sub'>식단등록</a>
+			<li class='active sub'> <a>식단관리</a>
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
@@ -279,7 +280,17 @@ h1 {
 					</ul>
 				</table>
 			</li>
-			<a><li class='active sub'>메뉴추가</a>
+			<li class='active sub'> <a>항시메뉴관리</a>
+				<table class="w3-table w3-bordered">
+					<ul>
+						<c:forEach items="${list}" var="cafeVO">
+							<li class='sub'><a href='/fixed/list?cafeName=${cafeVO.cafeName}'> ${cafeVO.cafeName}</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</table>
+			</li>
+			<li class='active sub'> <a>메뉴관리</a>
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
@@ -290,7 +301,6 @@ h1 {
 					</ul>
 				</table>
 			</li>
-			<li><a href='#'>평가보기</a></li>
 			<li class='last'><a href='/complain/list'>소리함</a></li>
 		</ul>
 	</div>
