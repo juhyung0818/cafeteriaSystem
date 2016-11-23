@@ -260,70 +260,54 @@ h1 {
 	font-family: arial, sans-serif;
 	width: 80%;
 }
-
-
 </style>
 </head>
 <body>
 	<div align="center">
 		<h1>학 식 세 끼</h1>
-	
+
 	</div>
 	<div class='menu'>
 		<ul>
 
 
-			<li class='active sub'> <a>식단관리</a>
+			<li class='active sub'><a>식단관리</a>
 
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
-							<li class='sub'>
-								<a href='/weekly/table?cafeName=${cafeVO.cafeName}'> ${cafeVO.cafeName}</a>
-							</li>
+							<li class='sub'><a
+								href='/weekly/table?cafeName=${cafeVO.cafeName}'>
+									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
-				</table>
-			</li>
+				</table></li>
 
-					<li class='active sub'> <a>항시메뉴관리</a>
+			<li class='active sub'><a>항시메뉴관리</a>
 
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
-							<li class='sub'>
-								<a href='/weekly/table?cafeName=${cafeVO.cafeName}'> ${cafeVO.cafeName}</a>
-							</li>
+							<li class='sub'><a
+								href='/weekly/table?cafeName=${cafeVO.cafeName}'>
+									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
-				</table>
-			</li>
-			
+				</table></li>
 
-			<li class='active sub'> <a>메뉴관리</a>
+
+			<li class='active sub'><a>메뉴관리</a>
 				<table class="w3-table w3-bordered">
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
-							<li class='sub'>
-								<a href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'> 
-								${cafeVO.cafeName}</a>
-							</li>
+							<li class='sub'><a
+								href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'>
+									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
-				</table>
-			</li>
+				</table></li>
 
-				<li class='active sub'> <a>식당관리</a>
-				<table class="w3-table w3-bordered">
-					<ul>
-						<c:forEach items="${list}" var="cafeVO">
-							<li class='sub'><a href='/cafe/list'> 
-								${cafeVO.cafeName}</a>
-							</li>
-						</c:forEach>
-					</ul>
-				</table>
-			</li>
+			<li class='last'><a href='/complain/list'>식당관리</a></li>
 
 
 			<li class='last'><a href='/complain/list'>소리함</a></li>
