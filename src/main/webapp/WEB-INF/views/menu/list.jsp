@@ -176,7 +176,6 @@ table tr:hover td {
 		<!-- cellspacing='0' is important, must stay -->
 
 		<!-- Table Header -->
-		<thead>
 			<tr>
 				<th>MENU NAME</th>
 				<th>MENU PRICE</th>
@@ -185,11 +184,9 @@ table tr:hover td {
 				<th>MODIFY</th>
 				<th>DELETE</th>
 			</tr>
-		</thead>
 		<!-- Table Header -->
 
 		<!-- Table Body -->
-		<tbody>
 
 			<c:forEach items="${menus}" var="menuVO">
 				<tr>
@@ -216,7 +213,6 @@ table tr:hover td {
 				</tr>
 			</c:forEach>
 
-		</tbody>
 		<!-- Table Body -->
 
 	</table>
