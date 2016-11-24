@@ -40,7 +40,7 @@ public class ComplainVO {
 	public String getReply() {
 		return reply;
 	}
-	public void setRelpy(String relpy) {
+	public void setRelpy(String reply) {
 		this.reply = reply;
 	}
 	
