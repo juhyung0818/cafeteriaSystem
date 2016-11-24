@@ -39,12 +39,11 @@ public class HomeController {
 	@Inject
 	private CafeService cafeService;
 
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String cafeListGET(Model model) throws Exception {
 		logger.info("Cafeteria list ....");
 		model.addAttribute("list", cafeService.cafeList());
-		return "home";
+		return "/include/p_header";
 	}
 	
 }

@@ -13,4 +13,5 @@ public interface CafeService {
 	
 	public void cafeRegister(CafeVO cafe) throws Exception;
 	public List<CafeVO> cafeList() throws Exception;
+	
 }
