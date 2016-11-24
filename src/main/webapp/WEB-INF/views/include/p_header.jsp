@@ -307,7 +307,7 @@ h1 {
 					</ul>
 				</table></li>
 
-			<li class='last'><a href='/complain/list'>식당관리</a></li>
+			<li class='last'><a href='/cafe/list'>식당관리</a></li>
 
 
 			<li class='last'><a href='/complain/list'>소리함</a></li>

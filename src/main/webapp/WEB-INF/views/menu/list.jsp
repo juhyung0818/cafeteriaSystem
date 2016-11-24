@@ -41,10 +41,10 @@ table a:active, table a:hover {
 }
 
 table {
-	width: 600px;
+	width: 1000px;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #666;
-	font-size: 12px;
+	font-size: 14px;
 	text-shadow: 1px 1px 0px #fff;
 	background: #eaebec;
 	border: #ccc 1px solid;
@@ -146,72 +146,84 @@ table tr:hover td {
 		to(#f0f0f0));
 	background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
+#text1 { font-size:19pt; }
 </style>
 <body>
-	<br> 
+	<br>
 	<br>
 	<h3>메뉴 추가하기</h3>
 	<form action="/menu/register" method="post">
-		<label for="menuName">menu name</label>
-		<input type="hidden" name="cafeName" value="${cafeName}"/>
-		<input type="text" name="menuName" placeholder="Menu name"/>
-		<select name="detailName" size="${detailSize}">
-			<c:forEach items="${details}" var="detailVO">
-        		<option>${detailVO.detailName}</option>
-        	</c:forEach>
-		</select>
-		<input type="number" name="price" placeholder="Menu price"/>
-		<input type='hidden' name='keyword' value="${keyword}">
-		<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
-		<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
+		<table>
+			<tr>
+				<th class="tg-031e">이름</th>
+				<th class="tg-yw4l"><label for="menuName"></label> <input
+					type="hidden" name="cafeName" value="${cafeName}" /> <input
+					type="text" name="menuName" placeholder="Menu name" /></th>
+				<th class="tg-yw4l">구분</th>
+				<th class="tg-yw4l"><select name="detailName" size="1}">
+						<c:forEach items="${details}" var="detailVO">
+							<option>${detailVO.detailName}</option>
+						</c:forEach>
+				</select></th>
+				<th class="tg-yw4l">가격</th>
+				<th class="tg-yw4l"><input type="number" name="price"
+					placeholder="Menu price" /> <input type='hidden' name='keyword'
+					value="${keyword}"></th>
+				<th class="tg-yw4l"><button type="submit"
+						class="w3-btn w3-white w3-border ">추가</button>
+					<button type="reset" class="w3-btn w3-white w3-border ">취소</button></th>
+			</tr>
+		</table>
 	</form>
+
+
 	
+
 	<form action="/menu/search?cafeName=${cafeName}" method="post">
-		<label for="keyword">Search</label>
+		<label for="keyword" id="text1">메뉴 목록</label>
 		<input type="text" name="keyword" placeholder="Write menu name"/>
 		<button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
-	</form>
-	<h3>메뉴 목록</h3>
-	<table width="100%" cellspacing='0'>
-		<!-- cellspacing='0' is important, must stay -->
+	</form>  
+	<table>
+		<!-- cell spacing='0' is important, must stay -->
 
 		<!-- Table Header -->
-			<tr>
-				<th>MENU NAME</th>
-				<th>MENU PRICE</th>
-				<th>MENU POINT</th>
-				<th>MENU LIKE</th>
-				<th>MODIFY</th>
-				<th>DELETE</th>
-			</tr>
+		<tr>
+			<th>MENU NAME</th>
+			<th>MENU PRICE</th>
+			<th>MENU POINT</th>
+			<th>MENU LIKE</th>
+			<th>MODIFY</th>
+			<th>DELETE</th>
+		</tr>
 		<!-- Table Header -->
 
 		<!-- Table Body -->
 
-			<c:forEach items="${menus}" var="menuVO">
-				<tr>
-					<td>${menuVO.menuName}(${menuVO.detailName})</td>
-					<td>${menuVO.price}</td>
-					<td>${menuVO.point}</td>
-					<td>${menuVO.likeNum}</td>
-					<td>
-						<form method="post">
-							<input type='hidden' name='cafeName' value="${menuVO.cafeName}">
-							<input type='hidden' name='menuName' value="${menuVO.menuName}">
-							<button type="submit"
-								class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
-						</form>
-					</td>
-					<td>
-						<form
-							action="/menu/delete?cafeName=${menuVO.cafeName}&menuName=${menuVO.menuName}&keyword=${keyword}"
-							method="post">
-							<button type="submit"
-								class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
-						</form>
-					</td>
-				</tr>
-			</c:forEach>
+		<c:forEach items="${menus}" var="menuVO">
+			<tr>
+				<td>${menuVO.menuName}(${menuVO.detailName})</td>
+				<td>${menuVO.price}</td>
+				<td>${menuVO.point}</td>
+				<td>${menuVO.likeNum}</td>
+				<td>
+					<form method="post">
+						<input type='hidden' name='cafeName' value="${menuVO.cafeName}">
+						<input type='hidden' name='menuName' value="${menuVO.menuName}">
+						<button type="submit"
+							class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
+					</form>
+				</td>
+				<td>
+					<form
+						action="/menu/delete?cafeName=${menuVO.cafeName}&menuName=${menuVO.menuName}&keyword=${keyword}"
+						method="post">
+						<button type="submit" class="w3-btn w3-white w3-border btn-danger"
+							value="${keyword}">REMOVE</button>
+					</form>
+				</td>
+			</tr>
+		</c:forEach>
 
 		<!-- Table Body -->
 
