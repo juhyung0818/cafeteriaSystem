@@ -1,6 +1,5 @@
 package com.cafe.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cafe.domain.CafeVO;
-import com.cafe.domain.DetailVO;
 import com.cafe.service.CafeService;
-import com.cafe.service.DetailService;
 
 /**
  * Cafeteria Controller class
@@ -33,8 +30,6 @@ public class CafeController {
 	//create services
 	@Inject
 	private CafeService cafeService;
-	@Inject
-	private DetailService detailService;
 	
 	/**
 	 * display cafe list
@@ -47,18 +42,5 @@ public class CafeController {
 		
 		List<CafeVO> cafes= cafeService.cafeList();
 		model.addAttribute("cafes", cafes);
-		
-		//cafeteria and detail matching
-		List<DetailVO> details = new ArrayList<>();
-		for(CafeVO cafe : cafes){
-			List<DetailVO> temp = new ArrayList<>();
-			temp = detailService.detailList(cafe.getCafeName());
-			for(DetailVO detail : temp){
-				details.add(detail);
-			}
-		}
-		model.addAttribute("details", details);
-		model.addAttribute("list", cafeService.cafeList());
-
 	}
 }
