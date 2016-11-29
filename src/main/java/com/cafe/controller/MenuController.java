@@ -27,8 +27,8 @@ import com.cafe.service.MenuService;
 
 /**
  * Menu Controller class
- * 
- * @author YJH 2016.11.09.Wed
+ * @author YJH 
+ * 2016.11.09.Wed
  */
 @Controller
 @RequestMapping("/menu/*")
@@ -102,11 +102,7 @@ public class MenuController {
 			@RequestParam("menuName") String menuName,
 			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
 		logger.info("menu delete....");
-		MenuVO menu = new MenuVO();
-		menu.setCafeName(cafeName);
-		menu.setDetailName(detailName);
-		menu.setMenuName(menuName);
-		menuService.deleteMenu(cafeName, menuName);
+		menuService.deleteMenu(cafeName, detailName, menuName);
 		rttr.addAttribute("cafeName", cafeName);
 		rttr.addAttribute("keyword", key.getKeyword());
 		return "redirect:/menu/list";

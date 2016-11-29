@@ -1,10 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
+   
 <head>
 <script type="text/javascript"
    src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+   
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
@@ -16,11 +19,10 @@
 </script>
 <script
    src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-</head>
-<html>
-<style type="text/css">
+   
+<title>학 식 세 끼</title>
 
-
+<style>
 table a:link {
    color: #666;
    font-weight: bold;
@@ -39,7 +41,7 @@ table a:active, table a:hover {
 }
 
 table {
-   width: 600px;
+   width: 1000px;
    font-family: Arial, Helvetica, sans-serif;
    color: #666;
    font-size: 14px;
@@ -144,63 +146,51 @@ table tr:hover td {
       to(#f0f0f0));
    background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
+#text1 { font-size:19pt; }
 </style>
-<body>
-<br>
-<br>
-  <div align="center">
-   <table>
-  <tr>
-    <th class="tg-031e">제목</th>
-    <th class="tg-031e" colspan="2"><input type="text"  name='title'
-            " value="${complainVO.title}" size=50 readonly="readonly"></th>
-  </tr>
-  <tr>
-    <td class="tg-031e">내용</td>
-    <td class="tg-031e" colspan="2"><textarea class="form-control" name="content" cols=60 rows="3"
-            readonly="readonly">${complainVO.content}</textarea></td>
-  </tr>
-  <tr>
-    <td class="tg-031e">작성자</td>
-    <td class="tg-031e" colspan="2"> <input type="text" name="uid" size=60
-            class="form-control" value="${complainVO.uid}"
-            readonly="readonly"></td>
-  </tr>
-  <tr>
-    <td class="tg-031e">답변</td>
-    <td class="tg-031e"><script>
-                     if(!"${complainVO.reply}"){
-                     document.write('<form action="/complain/inReply" method="post">' +
-                           '<input type="hidden" name="complainNum" value="${complainVO.complainNum}">' + 
-                           '<input type="text" name="reply" class="form-control" size=50  id="reply ">&nbsp &nbsp' +
-                           '<button type="submit" class="w3-btn w3-white w3-border "> 등록 </button>' +
-                           '</form>'
-                        );
-                     }else{
-                        document.write('<form action="/complain/outReply" method="post">' +
-                           '<input type="hidden" name="complainNum"  value="${complainVO.complainNum}">' + 
-                           '<input type="text"  name="uid" size=50 class="form-control "' + 
-                           'value="${complainVO.reply}"readonly="readonly"> &nbsp &nbsp' +
-                           '<button type="submit" class="w3-btn w3-white w3-border "> 삭제 </button>' +
-                           '</form>'
-                        );
-                     }
-                  </script></td>
-   
-  </tr>
-</table>
-<br>
-<br>
-   <div>
-      <form action="/complain/delete?complainNum=${complainVO.complainNum}"
-         method="post">
-         <button type="submit" class="w3-btn w3-white w3-border">글 삭제</button>
-      </form>
-      <a href="/complain/list">
-         <button type="submit" class="w3-btn w3-white w3-border">뒤로가기</button>
-      </a>
-   </div>
-</div>
+</head>
 
+<body>
+
+   <br>
+   <br>
+      <h1>고정 메뉴 목록</h1>
+      <table>
+      	<tr>
+	      	<td>
+		      <form action="/fixed/search" method="post">
+		         <label for="keyword">검색</label>
+		         <input type="text" name="keyword" placeholder="Write keyword name" value='${keyword}'/>
+		         <input type="hidden" name="cafeName" value="${cafeName}">
+		         <button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
+		      </form>
+	      </td>
+	      <td>
+	      	<a href="/fixed/register?cafeName=${cafeName}&keyword=">
+	      		<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
+	      	</a>
+	      </td>
+      	</tr>
+      </table>
+   
+      <table>
+         <tr>
+            <th> 메뉴 이름 </th>
+            <th> 삭제 </th>
+         </tr>
+         <c:forEach items="${fixeds}" var="fixedVO">
+         <tr>
+            <td>${fixedVO.menuName}(${fixedVO.detailName}) </td>
+            <td>
+               <form action="/fixed/delete" method="post">
+	               <input type="hidden" name="cafeName" value="${fixedVO.cafeName}">
+	               <input type="hidden" name="detailName" value="${fixedVO.detailName}">
+	               <input type="hidden" name="menuName" value="${fixedVO.menuName}">
+	               <input type="hidden" name="keyword" value="${keyword}">
+	               <button type="submit" class="w3-btn w3-white w3-border btn-danger">REMOVE</button>
+               </form>
+            </td>
+         </tr>
+         </c:forEach>
+      </table>
 </body>
-</html>

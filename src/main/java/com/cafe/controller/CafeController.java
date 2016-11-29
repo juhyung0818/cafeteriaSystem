@@ -24,10 +24,9 @@ import com.cafe.service.CafeService;
 
 /**
  * Cafeteria Controller class
- * @author Cho, YJH
+ * @author YJH, Kwon
  * 2016.11.22.Tue
  */
-
 @Controller
 @RequestMapping("/cafe/*")
 public class CafeController {
@@ -40,9 +39,11 @@ public class CafeController {
 	private CafeService cafeService;
 	
 	/**
-	 * display cafe list
+	 * web :display cafe list
+	 * web client only use this method
 	 * @param model
 	 * @throws Exception
+	 * @author YJH
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void cafeListGET(@RequestParam("keyword") String keyword, Model model) throws Exception {
@@ -55,6 +56,15 @@ public class CafeController {
 
 	}
 
+	/**
+	 * web :add cafeteria
+	 * @param cafeName
+	 * @param model
+	 * @param key
+	 * @param rttr
+	 * @throws Exception
+	 * @author YJH
+	 */
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String menuRegisterPOST(@RequestParam("cafeName") String cafeName, 
 			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
@@ -71,6 +81,16 @@ public class CafeController {
 		return "redirect:/cafe/list";
 	}
 
+	/**
+	 * web :remove cafeteria
+	 * @param cafeName
+	 * @param model
+	 * @param key
+	 * @param rttr
+	 * @return
+	 * @throws Exception
+	 * @author YJH
+	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String menuDeletePOST(@RequestParam("cafeName") String cafeName, 
 			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
@@ -83,6 +103,14 @@ public class CafeController {
 		return "redirect:/cafe/list";
 	}
 
+	/**
+	 * web :search cafeteria
+	 * @param keyword
+	 * @param model
+	 * @param rttr
+	 * @throws Exception
+	 * @author YJH
+	 */
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public String menuSearhPOST(@RequestParam("keyword") String keyword,
 			Model model, RedirectAttributes rttr) throws Exception {

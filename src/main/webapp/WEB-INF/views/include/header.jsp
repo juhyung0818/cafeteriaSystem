@@ -13,8 +13,7 @@
 <html lang='ko'>
 <head>
 <meta charset="utf-8" />
-<title>Nowstartwebdesign.com- Pure CSS Horizontal Drop Down Menu
-	Bar</title>
+<title>학교식당 관리 시스템 </title>
 <style>
 body {
 	font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco,
@@ -27,7 +26,7 @@ body {
 .menu {
 	position: relative;
 	height: 44px;
-	background: #2b2f3a;
+	background: #EF6C00;
 	width: auto;
 }
 
@@ -41,7 +40,7 @@ body {
 .menu>ul {
 	position: relative;
 	display: block;
-	background: #2b2f3a;
+	background: #EF6C00;
 	width: 100%;
 	z-index: 500;
 }
@@ -260,9 +259,14 @@ h1 {
 	font-family: arial, sans-serif;
 	width: 80%;
 }
+h1 {
+    font-size: 2.5em; /* 40px/16=2.5em */
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 </style>
 </head>
-<body>
+<body bgcolor="#EF6C00">
 	<div align="center">
 		<h1>학 식 세 끼</h1>
 
@@ -277,7 +281,7 @@ h1 {
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
 							<li class='sub'><a
-								href='/weekly/table?cafeName=${cafeVO.cafeName}'>
+								href='/weekly/weeklyList?cafeName=${cafeVO.cafeName}&detailName=&keyword='>
 									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
@@ -289,7 +293,7 @@ h1 {
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
 							<li class='sub'><a
-								href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'>
+								href='/fixed/list?cafeName=${cafeVO.cafeName}&keyword='>
 									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
@@ -301,7 +305,7 @@ h1 {
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
 							<li class='sub'><a
-								href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'>
+								href='/menu/list?cafeName=${cafeVO.cafeName}&keyword='>
 									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
@@ -309,7 +313,6 @@ h1 {
 				</table>
 			</li>
 			<li class='last'><a href='/cafe/list?keyword=${keyword}'>식당관리</a></li>
-
 			<li class='last'><a href='/complain/list'>소리함</a></li>
 		</ul>
 	</div>

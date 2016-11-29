@@ -53,9 +53,10 @@ public class MenuDAOImpl implements MenuDAO{
 	}
 
 	@Override
-	public void deleteMenu(String cafeName, String menuName) throws Exception {
+	public void deleteMenu(String cafeName, String detailName, String menuName) throws Exception {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
 		param.put("menuName", menuName);
 		session.update(namespace + ".delete", param);
 	}
@@ -107,5 +108,17 @@ public class MenuDAOImpl implements MenuDAO{
 		return temp;
 	}
 
+
+	/**
+	 * cafeteria + detail search
+	 */
+	@Override
+	public List<MenuVO> searchMenu(String cafeName, String detailName, String keyword) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("keyword", keyword);
+		return session.selectList(namespace + ".searchDetailMenu", param);
+	}
 
 }
