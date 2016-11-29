@@ -98,6 +98,7 @@ public class ComplainController {
 			Model model, RedirectAttributes rttr) throws Exception {
 		logger.info("complain read...");
 		model.addAttribute("complainVO", complainService.complainRead(complainNum));
+		model.addAttribute("list", cafeService.cafeList());
 	}
 	/**
 	 * 
