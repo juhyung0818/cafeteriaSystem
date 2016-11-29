@@ -30,13 +30,13 @@ public class FixedDAOImpl implements FixedDAO{
 	}
 
 	@Override
-	public void remove(FixedVO fixed) throws Exception {
+	public void delete(FixedVO fixed) throws Exception {
 		session.delete(namespace+".delete", fixed);
 	}
 
 	@Override
 	public List<FixedVO> fixedList(String cafeName) throws Exception {
-		return session.selectList(namespace+".fixedList", cafeName);
+		return session.selectList(namespace + ".fixedList", cafeName);
 	}
 
 	@Override
