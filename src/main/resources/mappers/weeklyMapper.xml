@@ -46,4 +46,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where m.cafeName=w.cafeName and m.menuName=w.menuName
 		and w.cafeName=#{cafeName} and w.wFlag=#{wFlag} 
 	</select>
+	
+	<!-- fixed menu already exist -->
+	<select id="check" resultType="int">
+		select count(*)
+		from weekly
+		where cafeName=#{cafeName} and menuName=#{menuName} and detailName = #{detailName}
+				and wFlag=#{wFlag} and dateFlag=#{dateFlag}
+	</select>
 </mapper>

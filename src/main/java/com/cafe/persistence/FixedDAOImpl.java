@@ -47,4 +47,9 @@ public class FixedDAOImpl implements FixedDAO{
 		return session.selectList(namespace + ".searchFixed", param);
 	}
 
+	@Override
+	public int check(FixedVO fixed) throws Exception {
+		return session.selectOne(namespace + ".check", fixed);
+	}
+
 }

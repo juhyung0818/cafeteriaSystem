@@ -182,7 +182,7 @@ table tr:hover td {
                            '<input type="text"  name="uid" size=50 class="form-control "' + 
                            'value="${complainVO.reply}"readonly="readonly"> &nbsp &nbsp' +
                            '<button type="submit" class="w3-btn w3-white w3-border "> 삭제 </button>' +
-                           '</form>'
+                           '</form>' + '${complainVO.replyDate}'
                         );
                      }
                   </script></td>

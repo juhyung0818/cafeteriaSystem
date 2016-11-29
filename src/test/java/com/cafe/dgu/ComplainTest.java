@@ -38,7 +38,7 @@ public class ComplainTest {
 		complain.setContent("content");
 		complain.setUid("user");
 		
-	//	complainDao.register(complain);
+		complainDao.registerApp(complain);
 	}
 	
 	//display complain list test

@@ -179,9 +179,11 @@ table tr:hover td {
 				${detailVO.detailName}
 			</td>
 			<td>
-				<form action="/detail/delete?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}" method="post">
+				<form action="/detail/delete" method="post">
+					<input type="hidden" name="cafeName" value="${detailVO.cafeName}">
+					<input type="hidden" name="detailName" value="${detailVO.detailName}">
 					<input type='hidden' name='keyword' value="${keyword}">
-					<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
+					<button type="submit" class="w3-btn w3-white w3-border btn-danger">REMOVE</button>
 				</form>
 			</td>
 		</tr>

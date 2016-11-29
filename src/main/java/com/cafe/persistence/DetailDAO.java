@@ -21,5 +21,5 @@ public interface DetailDAO {
 	//search detail
 	public List<DetailVO> detailSearch(String cafeName, String keyword) throws Exception;
 	//check detail name
-	public int detailCheck(String detailName) throws Exception;
+	public int detailCheck(String cafeName, String detailName) throws Exception;
 }

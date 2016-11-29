@@ -21,6 +21,7 @@ import com.cafe.domain.MenuVO;
 import com.cafe.domain.ResultVO;
 import com.cafe.domain.WeeklyVO;
 import com.cafe.dto.WeeklyDTO;
+import com.cafe.exception.NotExistResultException;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
 import com.cafe.service.CafeService;
@@ -59,13 +60,16 @@ public class WeeklyController {
 
 		List<WeeklyVO> weeklis = weeklyService.weeklyList(cafeName);
 		model.addAttribute("weeklis", weeklis);
-		model.addAttribute("weekSize", weeklis.size());
+		if(weeklis.size() == 0){
+			model.addAttribute("weekSize", 1);
+		}else{
+			model.addAttribute("weekSize", weeklis.size());
+		}
 		model.addAttribute("cafeName", cafeName);
 		model.addAttribute("list", cafeService.cafeList()); // list for menu bar 
 		List<DetailVO> details = detailService.detailList(cafeName);
 		model.addAttribute("details", details);
 		model.addAttribute("size", details.size());
-		model.addAttribute("menus", menuService.searchMenu(cafeName, detailName, keyword));
 
 	}
 	
@@ -127,6 +131,7 @@ public class WeeklyController {
 		List<MenuVO> menus = menuService.searchMenu(cafeName, detailName, keyword);
 		model.addAttribute("menus", menus);
 		model.addAttribute("cafeName", cafeName);
+		model.addAttribute("detailName", detailName);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("wFlag", wFlag);
 		model.addAttribute("dateFlag", dateFlag);
@@ -141,17 +146,23 @@ public class WeeklyController {
 			@RequestParam("dateFlag") int dateFlag,
 			Model model, RedirectAttributes rttr) throws Exception {
 		
-		logger.info("weekly search search....");
+		logger.info("weekly search ....");
 		
-		rttr.addAttribute("wFlag", wFlag);
-		rttr.addAttribute("dateFlag", dateFlag);
+		model.addAttribute("cafeName", cafeName);
+		model.addAttribute("detailName", detailName);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("wFlag", wFlag);
+		model.addAttribute("dateFlag", dateFlag);
+		
 		rttr.addAttribute("cafeName", cafeName);
 		rttr.addAttribute("detailName", detailName);
 		rttr.addAttribute("keyword", keyword);
-		return "redirect:/weekly/searchList";
+		rttr.addAttribute("wFlag", wFlag);
+		rttr.addAttribute("dateFlag", dateFlag);
+		return "redirect:/weekly/list";
 	}
 	
-	
+	//add weekly
 	@RequestMapping(value="/register", method = RequestMethod.POST)
 	public String registerPOST(@RequestParam("cafeName") String cafeName, 
 			@RequestParam("detailName") String detailName,
@@ -162,6 +173,7 @@ public class WeeklyController {
 	Model model, RedirectAttributes rttr) throws Exception{
 		logger.info("Weekly register...");
 		
+		//insert weekly to db
 		WeeklyVO weekly = new WeeklyVO();
 		weekly.setCafeName(cafeName);
 		weekly.setDetailName(detailName);
@@ -170,6 +182,7 @@ public class WeeklyController {
 		weekly.setDateFlag(DateFlag.valueOF(dateFlag));
 		weeklyService.register(weekly);
 		
+		//redirect attributes
 		rttr.addAttribute("cafeName", cafeName);
 		rttr.addAttribute("detailName", detailName);
 		rttr.addAttribute("keyword", keyword);

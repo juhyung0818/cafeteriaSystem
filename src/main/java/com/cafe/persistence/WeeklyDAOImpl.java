@@ -70,5 +70,14 @@ public class WeeklyDAOImpl implements WeeklyDAO{
 		}
 		return dto;
 	}
+
+	/**
+	 * check exist or not
+	 * @author YJH
+	 */
+	@Override
+	public int check(WeeklyVO weekly) throws Exception {
+		return session.selectOne(namespace + ".check", weekly);
+	}
 	
 }

@@ -157,6 +157,7 @@ table tr:hover td {
 			<th>CONTENT</th>
 			<th>WRITER</th>
 			<th>REPLY</th>
+			<th>DATE</th>
 		</tr>
 
 		<c:forEach items="${complains}" var="complainVO">
@@ -176,7 +177,8 @@ table tr:hover td {
 					}
 				</script>
 			</td>
-			</tr>
+			<td>${complainVO.regDate}</td>
+		</tr>
 
 		</c:forEach>
 

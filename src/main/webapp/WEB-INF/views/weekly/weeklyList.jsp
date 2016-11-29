@@ -207,11 +207,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	                  time = 0;
+	                  week = 1;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-		            	 time = 0;
-		               	 week = 1;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 0) && ('${weeklyVO.wFlag.num}' == 1)){
 	                    	 isExist = true;
@@ -230,8 +230,8 @@ a#add_pop:hover {
 	                       		"<input type='hidden' name='wFlag' value=" + week + ">" +
 	                       		"<input type='hidden' name='dateFlag' value=" + time + ">" +
 	                       		"<input type='hidden' name='keyword' value=''>" + 
-	         	               "<button class='button button1'>삭제</button>" +
-	                       "</form>");
+	         	               	"<button class='button button1'>삭제</button>" +
+	                       		"</form>");
 	               }else{
 	            	   document.write('<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=' +
 	            			   '&wFlag=' + week + '&dateFlag=' + time + '"> 추가 </a>');
@@ -246,11 +246,12 @@ a#add_pop:hover {
            <td>
 	            <script>
 	                  isExist = false;
+	                  time = 1;
+	                  week = 1;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 1;
-	               	 week = 1;
+	            	 
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 1) && ('${weeklyVO.wFlag.num}' == 1)){
 	                    	 isExist = true;
@@ -285,11 +286,12 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	                  time = 2;
+	                  week = 1;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 2;
-	               	 week = 1;
+	            	 
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 2) && ('${weeklyVO.wFlag.num}' == 1)){
 	                    	 isExist = true;
@@ -313,7 +315,7 @@ a#add_pop:hover {
 	               }else{
 	            	   document.write('<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=' +
 	            			   '&wFlag=' + week + '&dateFlag=' + time + '"> 추가 </a>');
-	            	   }
+	            	}
                </script>
             </td>
             </c:forEach>
@@ -339,11 +341,12 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	                  time = 0;
+	                  week = 2;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 0;
-	               	 week = 2;
+	            	 
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 0) && ('${weeklyVO.wFlag.num}' == 2)){
 	                    	 isExist = true;
@@ -378,11 +381,11 @@ a#add_pop:hover {
            <td>
 	            <script>
 	                  isExist = false;
+	                  time = 1;
+	                  week = 2;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 1;
-	               	 week = 2;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 1) && ('${weeklyVO.wFlag.num}' == 2)){
 	                    	 isExist = true;
@@ -417,11 +420,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 2;
+	               	 week = 2;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 2;
-	               	 week = 2;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 2) && ('${weeklyVO.wFlag.num}' == 2)){
 	                    	 isExist = true;
@@ -470,11 +473,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 0;
+	               	 week = 3;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 0;
-	               	 week = 3;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 0) && ('${weeklyVO.wFlag.num}' == 3)){
 	                    	 isExist = true;
@@ -509,11 +512,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 1;
+	               	 week = 3;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 1;
-	               	 week = 3;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 1) && ('${weeklyVO.wFlag.num}' == 3)){
 	                    	 isExist = true;
@@ -548,11 +551,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 2;
+	               	 week = 3;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 2;
-	               	 week = 3;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 2) && ('${weeklyVO.wFlag.num}' == 3)){
 	                    	 isExist = true;
@@ -601,11 +604,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 0;
+	               	 week = 4;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 0;
-	               	 week = 4;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 0) && ('${weeklyVO.wFlag.num}' == 4)){
 	                    	 isExist = true;
@@ -640,11 +643,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 1;
+	               	 week = 4;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 1;
-	               	 week = 4;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 1) && ('${weeklyVO.wFlag.num}' == 4)){
 	                    	 isExist = true;
@@ -679,11 +682,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 2;
+	               	 week = 4;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 2;
-	               	 week = 4;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 2) && ('${weeklyVO.wFlag.num}' == 4)){
 	                    	 isExist = true;
@@ -732,11 +735,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 0;
+	               	 week = 5;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 0;
-	               	 week = 5;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 0) && ('${weeklyVO.wFlag.num}' == 5)){
 	                    	 isExist = true;
@@ -771,11 +774,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 1;
+	               	 week = 5;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 1;
-	               	 week = 5;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 1) && ('${weeklyVO.wFlag.num}' == 5)){
 	                    	 isExist = true;
@@ -810,11 +813,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 2;
+	               	 week = 5;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 2;
-	               	 week = 5;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 2) && ('${weeklyVO.wFlag.num}' == 5)){
 	                    	 isExist = true;
@@ -863,11 +866,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 0;
+	               	 week = 6;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 0;
-	               	 week = 6;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 0) && ('${weeklyVO.wFlag.num}' == 6)){
 	                    	 isExist = true;
@@ -902,11 +905,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 1;
+	               	 week = 6;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 1;
-	               	 week = 6;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 1) && ('${weeklyVO.wFlag.num}' == 6)){
 	                    	 isExist = true;
@@ -941,11 +944,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 2;
+	               	 week = 6;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 2;
-	               	 week = 6;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 2) && ('${weeklyVO.wFlag.num}' == 6)){
 	                    	 isExist = true;
@@ -994,11 +997,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 0;
+	               	 week = 0;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 0;
-	               	 week = 0;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 0) && ('${weeklyVO.wFlag.num}' == 0)){
 	                    	 isExist = true;
@@ -1033,11 +1036,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 1;
+	               	 week = 0;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 1;
-	               	 week = 0;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 1) && ('${weeklyVO.wFlag.num}' == 0)){
 	                    	 isExist = true;
@@ -1072,11 +1075,11 @@ a#add_pop:hover {
             <td>
 	            <script>
 	                  isExist = false;
+	            	 time = 2;
+	               	 week = 0;
 	            </script>
 	            <c:forEach items="${weeklis}" var="weeklyVO">
 	            	<script type="text/javascript">
-	            	 time = 2;
-	               	 week = 0;
 	                     if(!isExist && ('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 	                           && ('${weeklyVO.dateFlag.num}' == 2) && ('${weeklyVO.wFlag.num}' == 0)){
 	                    	 isExist = true;
@@ -1107,6 +1110,5 @@ a#add_pop:hover {
          </tr>
       </table>
    </div>
->>>>>>> fbc2ee0350d4484c69bc496b9cdca6e633af8512
 </body>
 </html>

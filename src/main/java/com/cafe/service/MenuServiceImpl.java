@@ -5,11 +5,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.cafe.domain.MenuVO;
+import com.cafe.exception.NotExistResultException;
 import com.cafe.exception.PrimaryKeyDuplicatedException;
+import com.cafe.persistence.DetailDAO;
 import com.cafe.persistence.MenuDAO;
 /**
  * Menu Service class
@@ -22,10 +23,12 @@ public class MenuServiceImpl implements MenuService{
 
 	@Inject
 	private MenuDAO menuDao;
+	@Inject
+	private DetailDAO detailDao;
 	
 	@Override
 	public void menuRegister(MenuVO menu) throws Exception {
-		if(menuDao.checkMenu(menu.getCafeName(), menu.getMenuName()) == 0){
+		if(menuDao.checkMenu(menu.getCafeName(), menu.getDetailName(), menu.getMenuName()) == 0){
 			menuDao.menuRegister(menu);
 		}else{
 			throw new PrimaryKeyDuplicatedException();
@@ -38,11 +41,23 @@ public class MenuServiceImpl implements MenuService{
 	}
 	
 	/**
-	 * 
+	 * search menu in cafeteria
+	 * @author YJH
 	 */
 	@Override
 	public List<MenuVO> searchMenu(String cafeName, String keyword) throws Exception {
-		return menuDao.searchMenu(cafeName, keyword);
+		List<MenuVO> searchList = menuDao.searchMenu(cafeName, keyword);
+		List<MenuVO> list = menuDao.menuList(cafeName);
+
+		if(list.size() > 0){//list is exist case
+			if(searchList.size() > 0){
+				return searchList;
+			}else{ //list is exist && search list is not exist
+				throw new NotExistResultException();
+			}
+		}else{ //list is not exist
+			return list;
+		}
 	}
 
 	@Override
@@ -68,9 +83,33 @@ public class MenuServiceImpl implements MenuService{
 		return list;
 	}
 
-	//cafe and detail search
+	/**
+	 * search menu in corner
+	 * @author YJH
+	 */
 	@Override
 	public List<MenuVO> searchMenu(String cafeName, String detailName, String keyword) throws Exception {
-		return menuDao.searchMenu(cafeName, detailName, keyword);
+		List<MenuVO> searchList = menuDao.searchMenu(cafeName, detailName, keyword);
+		List<MenuVO> list = menuDao.menuList(cafeName, detailName);
+
+		if(list.size() > 0){//list is exist case
+			if(searchList.size() > 0){
+				return searchList;
+			}else{ //list is exist && search list is not exist
+				throw new NotExistResultException();
+			}
+		}else{ //list is not exist
+			return list;
+		}
+	}
+
+	/**
+	 * menu price modify
+	 * @author YJH
+	 */
+	@Override
+	public void modify(String cafeName, String detailName, String menuName, int price) throws Exception {
+		menuDao.modify(cafeName, detailName, menuName, price);
+		
 	}
 }

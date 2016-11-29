@@ -18,12 +18,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where cafeName=#{cafeName}
 		order by menuName
 	</select>
+	
+	<!-- corner menu display in cafe -->	
+	<select id="menuDetailList" resultType="com.cafe.domain.MenuVO">
+		select * from menu
+		where detailName=#{detailName} and cafeName=#{cafeName}
+		order by menuName
+	</select>
 
 	<!-- Menu remove in cafe -->
 	<delete id="delete">
 		delete from menu
 		where detailName=#{detailName} and menuName=#{menuName} and cafeName=#{cafeName}
 	</delete>
+	
+	<!-- Menu price update in cafe -->
+	<update id="modify">
+		update menu set price=#{price}
+		where detailName=#{detailName} and menuName=#{menuName} and cafeName=#{cafeName}
+	</update>
 	
 	<!-- menu search to use keyword -->
 	<select id="searchMenu" resultType="com.cafe.domain.MenuVO">
@@ -47,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="check" resultType="int">
 		select count(*)
 		from menu
-		where menuName=#{menuName} and cafeName=#{cafeName}
+		where menuName=#{menuName} and detailName=#{detailName} and cafeName=#{cafeName}
 	</select>
 	
 	<select id="top10Like" resultType="com.cafe.domain.MenuVO">

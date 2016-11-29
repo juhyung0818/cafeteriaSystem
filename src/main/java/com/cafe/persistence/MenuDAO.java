@@ -14,13 +14,15 @@ public interface MenuDAO {
 	public void menuRegister(MenuVO menu) throws Exception;
 	// diplay all menu list
 	public List<MenuVO> menuList(String cafeName) throws Exception;
+	// diplay corner menu list
+	public List<MenuVO> menuList(String cafeName, String detailName) throws Exception;
 	// delete a menu
 	public void deleteMenu(String cafeName, String detailName, String menuName) throws Exception;
 	//menu search
 	public List<MenuVO> searchMenu(String cafeName, String keyword) throws Exception;
 	public List<MenuVO> searchMenu(String cafeName, String detailName, String keyword) throws Exception;
 	//menu check exist of not
-	public int checkMenu(String cafeName, String menuName) throws Exception;
+	public int checkMenu(String cafeName, String detailName, String menuName) throws Exception;
 	/**
 	 * app : show top10 menu list order by like
 	 * @return
@@ -38,5 +40,9 @@ public interface MenuDAO {
 	 */
 	public List<MenuVO> top10Point() throws Exception;
 	
-//	public MenuVO readOne()
+	/**
+	 * menu price modify
+	 * @author YJH
+	 */
+	public void modify(String cafeName, String detailName, String menuName, int price) throws Exception;
 }

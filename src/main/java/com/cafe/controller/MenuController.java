@@ -96,6 +96,7 @@ public class MenuController {
 		return "redirect:/menu/list";
 	}
 
+	//delete menu
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String menuDeletePOST(@RequestParam("cafeName") String cafeName, 
 			@RequestParam("detailName") String detailName,
@@ -103,6 +104,23 @@ public class MenuController {
 			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
 		logger.info("menu delete....");
 		menuService.deleteMenu(cafeName, detailName, menuName);
+		//redirect attributes
+		rttr.addAttribute("cafeName", cafeName);
+		rttr.addAttribute("keyword", "");
+		return "redirect:/menu/list";
+	}
+	
+	//modify menu price
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String menuModifyPOST(@RequestParam("cafeName") String cafeName, 
+			@RequestParam("detailName") String detailName,
+			@RequestParam("menuName") String menuName,
+			@RequestParam("price") int price,
+			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
+		
+		logger.info("menu modify....");
+		menuService.modify(cafeName, detailName, menuName, price);
+		//redirect attributes
 		rttr.addAttribute("cafeName", cafeName);
 		rttr.addAttribute("keyword", key.getKeyword());
 		return "redirect:/menu/list";

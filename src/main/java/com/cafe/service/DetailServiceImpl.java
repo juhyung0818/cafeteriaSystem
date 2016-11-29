@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.cafe.domain.DetailVO;
+import com.cafe.exception.NotExistResultException;
 import com.cafe.exception.PrimaryKeyDuplicatedException;
 import com.cafe.persistence.DetailDAO;
 
@@ -24,7 +25,7 @@ public class DetailServiceImpl implements DetailService{
 		
 	@Override
 	public void registerDetail(String cafeName, String detailName) throws Exception {
-		if(detailDao.detailCheck(detailName) > 0){
+		if(detailDao.detailCheck(cafeName, detailName) > 0){
 			throw new PrimaryKeyDuplicatedException();
 		}
 		detailDao.registerDetail(cafeName, detailName);
@@ -42,8 +43,19 @@ public class DetailServiceImpl implements DetailService{
 
 	@Override
 	public List<DetailVO> detailSearch(String cafeName, String keyword) throws Exception {
-		return detailDao.detailSearch(cafeName, keyword);
-	}
+		
+		List<DetailVO> searchList = detailDao.detailSearch(cafeName, keyword);
+		List<DetailVO> list = detailDao.detailList(cafeName);
 
+		if(list.size() > 0){//list is exist case
+			if(searchList.size() > 0){
+				return searchList;
+			}else{ //list is exist && search list is not exist
+				throw new NotExistResultException();
+			}
+		}else{ //list is not exist
+			return list;
+		}
+	}
 
 }

@@ -152,19 +152,27 @@ table tr:hover td {
 <body>
    <br>
    <br>
-   <form action="/cafe/register" method="post">
-         <label for="cafeName">식당 이름</label>
-         <input type="text" name="cafeName" placeholder="Cafe name"/>
-         <input type='hidden' name='keyword' value="${keyword}">
-         <button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
-         <button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
-      </form>
+   <form action="/menu/register" method="post">
+        <label for="cafeName">메뉴 추가</label>
+        <input type="text" name="menuName" placeholder="Write menu name"/>
+        <select  name = "detailName" size = "1">
+        	<c:forEach items="${details}" var="detailVO">
+        		<option> ${detailVO.detailName}</option>
+        	</c:forEach>
+		</select>
+        <input type="text" name="price" placeholder="Write price"/>
+		<input type="hidden" name="cafeName" value="${cafeName}"/>
+        <input type='hidden' name='keyword' value="${keyword}">
+        <button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
+		<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
+	</form>
    
       
       <p><h1>메뉴 목록</h1>
-      <form action="/cafe/search?cafeName=${cafeName}" method="post">
+      <form action="/menu/search" method="post">
          <label for="keyword">검색</label>
-         <input type="text" name="keyword" placeholder="Write keyword name"/>
+         <input type="hidden" name="cafeName" value="${cafeName}"/>
+         <input type="text" name="keyword" placeholder="Write keyword name" value="${keyword}"/>
          <button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
       </form></p>
       <table>
@@ -179,20 +187,27 @@ table tr:hover td {
          <c:forEach items="${menus}" var="menuVO">
          <tr>
             <td>${menuVO.menuName}(${menuVO.detailName}) </td>
-            <td><input type='text' name='price' value="${menuVO.price}"> </td>
+            <td>
+               <form action="/menu/modify"  method="post">
+	            <input type='text' name='price' value="${menuVO.price}"> </td>
             <td>${menuVO.point} </td>
             <td>${menuVO.likeNum} </td>
 
             <td>
-               <form method="post">
                   <input type='hidden' name='cafeName' value="${menuVO.cafeName}">
+                  <input type='hidden' name='detailName' value="${menuVO.detailName}">
                   <input type='hidden' name='menuName' value="${menuVO.menuName}">
+                  <input type='hidden' name='keyword' value="${keyword}">
                   <button type="submit" class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
                </form>
             </td>
             <td>
-               <form action="/menu/delete?cafeName=${menuVO.cafeName}&menuName=${menuVO.menuName}&keyword=${keyword}" method="post">
-                  <button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
+               <form action="/menu/delete" method="post">
+               		<input type='hidden' name='cafeName' value="${menuVO.cafeName}">
+                  	<input type='hidden' name='detailName' value="${menuVO.detailName}">
+                  	<input type='hidden' name='menuName' value="${menuVO.menuName}">
+                  	<input type='hidden' name='keyword' value="${keyword}">
+                  	<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
                </form>
             </td>
          </tr>
