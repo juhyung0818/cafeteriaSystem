@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.CafeVO;
-import com.cafe.domain.DetailVO;
-import com.cafe.domain.MenuVO;
 import com.cafe.domain.SearchKeywordVO;
 import com.cafe.service.CafeService;
 
@@ -75,7 +73,6 @@ public class CafeController {
 		logger.info("Cafeteria delete....");
 		
 		cafeService.deleteCafe(cafeName);
-		rttr.addAttribute("cafeName", cafeName);
 		rttr.addAttribute("keyword", key.getKeyword());
 		
 		return "redirect:/cafe/list";
@@ -85,7 +82,7 @@ public class CafeController {
 	public String menuSearhPOST(@RequestParam("keyword") String keyword,
 			Model model, RedirectAttributes rttr) throws Exception {
 		
-		logger.info("Cafe search....");
+		logger.info("Cafeteria search....");
 		rttr.addAttribute("keyword", keyword);
 		
 		return "redirect:/cafe/list";

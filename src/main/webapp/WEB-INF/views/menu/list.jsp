@@ -51,7 +51,7 @@
 		<label for="menuName">menu name</label>
 		<input type="hidden" name="cafeName" value="${cafeName}"/>
 		<input type="text" name="menuName" placeholder="Menu name"/>
-		<select name="detailName" size="${detailSize}">
+		<select name="detailName" size="1">
 			<c:forEach items="${details}" var="detailVO">
         		<option>${detailVO.detailName}</option>
         	</c:forEach>
@@ -77,13 +77,13 @@
 				<th> MENU PRICE </th>
 				<th> MENU POINT </th>
 				<th> MENU LIKE </th>
-				<th> MODIFY </th>
+				<th> PRICE MODIFY </th>
 				<th> DELETE </th>
 			</tr>
 			<c:forEach items="${menus}" var="menuVO">
 			<tr>
 				<td>${menuVO.menuName}(${menuVO.detailName}) </td>
-				<td>${menuVO.price} </td>
+				<td><input type='text' name='price' value="${menuVO.price}"> </td>
 				<td>${menuVO.point} </td>
 				<td>${menuVO.likeNum} </td>
 				<td>
