@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cafe.domain.CommentVO;
 import com.cafe.domain.ComplainVO;
 import com.cafe.domain.ResultVO;
+import com.cafe.dto.ComplainDTO;
 import com.cafe.service.CafeService;
 import com.cafe.service.ComplainService;
 
@@ -49,7 +51,7 @@ public class ComplainController {
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public ResultVO regist(@RequestBody ComplainVO complain, Model model) throws Exception{
 		logger.info("complain register ......");
-		complainService.register(complain);
+//		complainService.register(complain);
 		model.addAttribute("list", cafeService.cafeList());
 		return new ResultVO();
 	}
@@ -61,14 +63,14 @@ public class ComplainController {
 	 * @return resultVO object
 	 * @throws Exception
 	 */
-	@ResponseBody
-	@RequestMapping(value="/listApp", method=RequestMethod.POST)
-	public ResultVO<List<ComplainVO>> listAll(@RequestBody ComplainVO complain) throws Exception{
-		List<ComplainVO> list = new ArrayList<ComplainVO>();
-		list = complainService.complainList();
-		logger.info("complain list...");
-		return new ResultVO<>(list);
-	}
+//	@ResponseBody
+//	@RequestMapping(value="/listApp", method=RequestMethod.POST)
+//	public ResultVO<List<ComplainVO>> listAll(@RequestBody ComplainVO complain) throws Exception{
+//		List<ComplainVO> list = new ArrayList<ComplainVO>();
+//		list = complainService.complainList();
+//		logger.info("complain list...");
+//		return new ResultVO<>(list);
+//	}
 	
 	/**
 	 * send complain list to Client
@@ -151,4 +153,57 @@ public class ComplainController {
 		rttr.addAttribute("complainNum", complainNum);
 		return "redirect:/complain/list";
 	}
+	
+	/**
+	 * app : register complain
+	 * @param complain
+	 * @return
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.25.Fri
+	 */
+	@ResponseBody
+	@RequestMapping(value="/registerApp", method=RequestMethod.POST)
+	public ResultVO registerAppPOST(@RequestBody ComplainVO complain) throws Exception{
+		
+		logger.info("complain register app post.......");
+		complainService.registerApp(complain);
+		return new ResultVO();
+	}
+
+	/**
+	 * app : delete complain
+	 * @param comment
+	 * @return
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.25.Fri
+	 */
+	@ResponseBody
+	@RequestMapping(value="/deleteApp", method=RequestMethod.POST)
+	public ResultVO deleteAppPOST(@RequestBody ComplainVO complain) throws Exception{
+		logger.info("complain delete app post.......");
+
+		complainService.deleteApp(complain);
+		return new ResultVO();
+	}
+	
+	/**
+	 * app : show complaint list
+	 * @param complain
+	 * @return
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.25.Fri
+	 */
+	@ResponseBody
+	@RequestMapping(value="/listApp", method=RequestMethod.POST)
+	public ResultVO<List<ComplainDTO>> listApp() throws Exception{
+		List<ComplainDTO> list = new ArrayList<ComplainDTO>();
+		
+		list = complainService.complainListApp();
+		logger.info("complain list...");
+		return new ResultVO<>(list);
+	}
+
 }

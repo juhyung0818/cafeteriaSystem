@@ -32,7 +32,7 @@ public class FixedServiceImpl implements FixedService{
 	}
 
 	@Override
-	public List<MenuVO> fixedList(String cafeName) throws Exception {
+	public List<FixedVO> fixedList(String cafeName) throws Exception {
 		return fixedDao.fixedList(cafeName);
 	}
 

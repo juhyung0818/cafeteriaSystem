@@ -1,5 +1,6 @@
 package com.cafe.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,11 +9,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cafe.domain.MenuVO;
+import com.cafe.domain.ResultVO;
 import com.cafe.domain.WeeklyVO;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
@@ -70,5 +75,24 @@ public class WeeklyController {
 		weeklyService.delete(weekly);
 		rttr.addAttribute("cafeName", cafeName);
 		return "redirect:/weekly/table";
+	}
+	
+	/**
+	 * app : show weekly menu list
+	 * @param score
+	 * @return
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.29.Tue
+	 */
+	@ResponseBody
+	@RequestMapping(value="/listApp", method=RequestMethod.POST)
+	public ResultVO listApp(@RequestBody WeeklyVO week) throws Exception{
+		logger.info("weekly list post.......");
+
+		List<WeeklyVO> list = new ArrayList<WeeklyVO>();
+
+		list=weeklyService.weeklyList(week.getCafeName());
+		return new ResultVO<>(list);
 	}
 }

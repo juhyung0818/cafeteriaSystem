@@ -34,7 +34,7 @@ public class FixedDAOImpl implements FixedDAO{
 	}
 
 	@Override
-	public List<MenuVO> fixedList(String cafeName) throws Exception {
+	public List<FixedVO> fixedList(String cafeName) throws Exception {
 		return session.selectList(namespace+".fixedList", cafeName);
 	}
 

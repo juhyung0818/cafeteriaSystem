@@ -16,4 +16,21 @@ public interface MenuService {
 	public List<MenuVO> searchMenu(String cafeName, String keyword) throws Exception;
 	//delete a menu
 	public void deleteMenu(String cafeName, String menuName) throws Exception;
+	
+	/**
+	 * app : show top10 menu list order by like
+	 * @return
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.29.Tue
+	 */
+	public List<MenuVO> top10Like() throws Exception;
+	/**
+	 * app : show top10 menu list order by point
+	 * @return
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.29.Tue
+	 */
+	public List<MenuVO> top10Point() throws Exception;
 }

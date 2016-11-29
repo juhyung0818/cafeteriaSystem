@@ -17,5 +17,5 @@ public interface FixedService {
 	// fixed menu delete
 	public void remove(FixedVO fixed) throws Exception;
 	// display fixed menu list
-	public List<MenuVO> fixedList(String cafeName) throws Exception;
+	public List<FixedVO> fixedList(String cafeName) throws Exception;
 }
