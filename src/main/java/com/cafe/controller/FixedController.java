@@ -16,8 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.cafe.domain.FixedVO;
 import com.cafe.domain.ResultVO;
 import com.cafe.service.FixedService;
-
+/**
+ * Detail of cafeteria Controller class
+ * @author YJH, Kown
+ * 2016.11.21.Mon
+ */
 @Controller
+@RequestMapping("/fixed/*")
 public class FixedController {
 
 	@Inject
@@ -35,8 +40,8 @@ public class FixedController {
 	 * 2016.11.29.Tue
 	 */
 	@ResponseBody
-	@RequestMapping(value="/list", method=RequestMethod.POST)
-	public ResultVO list(@RequestBody FixedVO fix) throws Exception{
+	@RequestMapping(value="/listApp", method=RequestMethod.POST)
+	public ResultVO listApp(@RequestBody FixedVO fix) throws Exception{
 		logger.info("fixed menu list post.......");
 
 		List<FixedVO> list = new ArrayList<FixedVO>();

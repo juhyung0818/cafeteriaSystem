@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.cafe.domain.WeeklyVO;
-import com.cafe.flag.DateFlag;
+import com.cafe.dto.WeeklyDTO;
 import com.cafe.flag.WeeklyFlag;
 import com.cafe.persistence.WeeklyDAO;
 
@@ -51,6 +51,12 @@ public class WeeklyServiceImpl implements WeeklyService{
 //			weekly.setwFlag(WeeklyFlag.valueOf(weekly.getwFlag()));
 //		}
 		return weeklis;
+	}
+
+	@Override
+	public List<WeeklyDTO> weeklyListApp(String cafeName, WeeklyFlag wFlag) throws Exception {
+		
+		return weeklyDao.weeklyListApp(cafeName, wFlag) ;
 	}
 
 }

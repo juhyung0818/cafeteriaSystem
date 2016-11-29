@@ -27,8 +27,8 @@ import com.cafe.service.MenuService;
 
 /**
  * Menu Controller class
- * 
- * @author YJH 2016.11.09.Wed
+ * @author YJH 
+ * 2016.11.09.Wed
  */
 @Controller
 @RequestMapping("/menu/*")
@@ -154,4 +154,22 @@ public class MenuController {
 		return new ResultVO<>(list);
 	}
 
+	/**
+	 * app : show one menu
+	 * @return
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.29.Tue
+	 */
+//	@ResponseBody
+//	@RequestMapping(value="/readOneApp", method=RequestMethod.POST)
+//	public ResultVO<MenuVO> readOneApp() throws Exception
+//	{
+//		logger.info("menu read one..");
+//		
+//		List<MenuVO> list = new ArrayList<MenuVO>();
+//		list = menuService.top10Point();
+//		MenuVO returnMenu=menuService.
+//		return new ResultVO<>();
+//	}
 }

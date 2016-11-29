@@ -185,19 +185,4 @@ table tr:hover td {
          </tr>
          </c:forEach>
       </table>
-
-
 </body>
-<!-- <script>
-$(document).ready(function() {
-   var formObj = $("form[role='form']");
-
-   console.log(formObj);
-
-   $(".btn-danger").on("click", function() {
-      formObj.attr("action", "/menu/search");
-      formObj.submit();
-   });
-
-});
-</script> -->

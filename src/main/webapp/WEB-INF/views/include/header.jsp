@@ -293,7 +293,7 @@ h1 {
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
 							<li class='sub'><a
-								href='/menu/menulist?cafeName=${cafeVO.cafeName}'>
+								href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'>
 									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>

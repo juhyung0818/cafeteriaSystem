@@ -1,4 +1,7 @@
 package com.cafe.domain;
+
+import java.sql.Timestamp;
+
 /**
  * Value Object for complain
  * @author YJH
@@ -10,11 +13,10 @@ public class ComplainVO {
 	private String title;
 	private String content;
 	private String uid;
+	private Timestamp regDate;
 	private String reply;
-	private String regDate;
-	private String replyDate;
+	private Timestamp replyDate;
 	
-	/* getter, setter, toString methods */
 	public int getComplainNum() {
 		return complainNum;
 	}
@@ -42,29 +44,25 @@ public class ComplainVO {
 	public String getReply() {
 		return reply;
 	}
-	public void setRelpy(String reply) {
-		this.reply = reply;
-	}
-	public String getRegDate() {
-		return regDate;
-	}
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
-	}
-	public String getReplyDate() {
-		return replyDate;
-	}
-	public void setReplyDate(String replyDate) {
-		this.replyDate = replyDate;
-	}
 	public void setReply(String reply) {
 		this.reply = reply;
 	}
-	@Override
-	public String toString() {
-		return "ComplainVO [complainNum=" + complainNum + ", title=" + title + ", content=" + content + ", uid=" + uid
-				+ ", reply=" + reply + ", regDate=" + regDate + ", replyDate=" + replyDate + "]";
+	public Timestamp getRegDate() {
+		return regDate;
 	}
-	
+	public void setRegDate(Timestamp regDate) {
+		this.regDate = regDate;
+	}
+	public Timestamp getReplyDate() {
+		return replyDate;
+	}
+	public void setReplyDate(Timestamp replyDate) {
+		this.replyDate = replyDate;
+	}
+//	@Override
+//	public String toString() {
+//		return "ComplainVO [complainNum=" + complainNum + ", title=" + title + ", content=" + content + ", uid=" + uid
+//				+ ", reply=" + reply + ", regDate=" + regDate + ", replyDate=" + replyDate + "]";
+//	}
 	
 }

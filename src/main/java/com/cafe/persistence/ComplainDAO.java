@@ -51,4 +51,6 @@ public interface ComplainDAO {
 	 * 2016.11.25.Fri
 	 */
 	public int complainCheck(int complainNum, String uid)throws Exception;
+	
+	public ComplainVO readOne(int complainNum)throws Exception;
 }

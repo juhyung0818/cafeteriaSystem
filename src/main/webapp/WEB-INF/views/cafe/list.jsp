@@ -188,9 +188,6 @@ table tr:hover td {
             </td>
          </tr>
          </c:forEach>
-
       </table>
-      
-   
 </section>
 </div>

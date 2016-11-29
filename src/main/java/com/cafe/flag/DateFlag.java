@@ -10,7 +10,7 @@ public enum DateFlag {
 	/* enums */
 	BREAKFAST(0, "breakfast"),
 	LUNCH(1, "lunch"),
-	DINER(2, "diner");
+	DINNER(2, "dinner");
 	
 	private int num;
 	private String time;
@@ -34,7 +34,7 @@ public enum DateFlag {
 		switch(num){
 			case 0: return DateFlag.BREAKFAST;
 			case 1: return DateFlag.LUNCH;
-			case 2: return DateFlag.DINER;
+			case 2: return DateFlag.DINNER;
 			// TODO need exception define
 			default: throw new AssertionError();
 		}

@@ -41,6 +41,7 @@ public class DetailController {
 	 * @param cafeName
 	 * @param model
 	 * @throws Exception
+	 * @author YJH
 	 */
 	@RequestMapping(value="/list", method = RequestMethod.GET)
 	public void readDetailGET(@RequestParam("cafeName") String cafeName,
@@ -53,6 +54,16 @@ public class DetailController {
 
 	}
 	
+	/**
+	 * web :add detail cafeteria(corner)
+	 * @param cafeName
+	 * @param detailName
+	 * @param key
+	 * @param rttr
+	 * @param model
+	 * @throws Exception
+	 * @author YJH
+	 */
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerDetailPOST(@RequestParam("cafeName") String cafeName,
 			@RequestParam("detailName") String detailName,SearchKeywordVO key,
@@ -71,6 +82,16 @@ public class DetailController {
 		return "redirect:/detail/list";
 	}
 	
+	/**
+	 * web :remove detail cafeteria(corner)
+	 * @param cafeName
+	 * @param detailName
+	 * @param key
+	 * @param rttr
+	 * @param model
+	 * @throws Exception
+	 * @author YJH
+	 */
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public String deleteDetailPOST(@RequestParam("cafeName") String cafeName,
 			@RequestParam("detailName") String detailName, SearchKeywordVO key,
@@ -85,6 +106,15 @@ public class DetailController {
 		return "redirect:/detail/list";
 	}
 
+	/**
+	 * web :search detail cafeteria(corner)
+	 * @param cafeName
+	 * @param keyword
+	 * @param model
+	 * @param rttr
+	 * @throws Exception
+	 * @author YJH
+	 */
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public String menuSearhPOST(@RequestParam("cafeName") String cafeName,
 			@RequestParam("keyword") String keyword,

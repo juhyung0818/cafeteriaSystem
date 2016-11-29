@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cafe.domain.ComplainVO;
 import com.cafe.dto.ComplainDTO;
 import com.cafe.persistence.ComplainDAO;
+import com.cafe.persistence.UserDAO;
 
 /**
  * Complain board service class
@@ -21,6 +22,8 @@ public class ComplainServiceImpl implements ComplainService{
 	//create complain dao
 	@Inject
 	private ComplainDAO complainDao;
+	@Inject
+	private UserDAO userDao;
 
 	@Override
 	public List<ComplainVO> complainList() throws Exception {
@@ -54,7 +57,15 @@ public class ComplainServiceImpl implements ComplainService{
 	@Override
 	public List<ComplainDTO> complainListApp() throws Exception {
 		
-		return complainDao.complainListApp();
+		List<ComplainDTO> list= complainDao.complainListApp();
+		for(int i=0; i<list.size(); i++)
+		{
+			if(list.get(i).getReply() != null)
+			{
+				list.get(i).setIsReply(true);
+			}
+		}
+		return list;
 	}
 
 	@Override
@@ -74,6 +85,49 @@ public class ComplainServiceImpl implements ComplainService{
 		}
 		//else
 			//TODO exception
+	}
+
+	@Override
+	public ComplainDTO readOne(int complainNum) throws Exception {
+		
+//		return complainDao.complainRead(complainNum);
+		ComplainVO vo=complainDao.readOne(complainNum);
+		ComplainDTO dto=new ComplainDTO();
+		
+		//vo가 null인경우 예외
+		try {
+			dto.setComplainNum(complainNum);
+			dto.setTitle(vo.getTitle());
+			dto.setContent(vo.getContent());
+			dto.setUid(vo.getUid());
+			dto.setNick(userDao.getUserNick(vo.getUid()));
+			dto.setRegDate(vo.getRegDate().toString());
+			
+			try {
+				if(vo.getReply()!=null || vo.getReply().equals(""))
+				{
+					dto.setIsReply(true);
+					dto.setReply(vo.getReply());
+					dto.setReplyDate(vo.getReplyDate().toString());
+				}
+				else
+				{
+					dto.setIsReply(false);
+					dto.setReply("");
+					dto.setReplyDate("");
+				}
+			} catch (Exception e) {
+				dto.setIsReply(false);
+				dto.setReply("");
+				dto.setReplyDate("");
+
+			}
+		} catch (Exception e) {
+			System.out.println("vo가 null");
+		}
+		
+		return dto;
+
 	}
 
 }

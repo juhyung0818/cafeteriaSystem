@@ -11,6 +11,7 @@ import com.cafe.flag.WeeklyFlag;
  */
 public class WeeklyVO {
 
+	
 	//fields
 	private String cafeName;
 	private String menuName;
