@@ -193,14 +193,16 @@ a#add_pop:hover {
 				<th class="tg-031e">조식</th>
 				<th class="tg-031e">
 					<div class="form-group">
-						<input class="w3-input"  rows="1">
+						<input class="w3-input" rows="1">
 					</div>
 				</th>
 				<th class="tg-031e">
 					<div class="panel">
 						<a href="#menuadd" id="add_pop">추가</a>
-
-					</div> <a href="#x" class="overlay" id="menuadd"></a>
+						<a href="#menuadd">삭제</a>
+						
+					</div> 
+					<a href="#x" class="overlay" id="menuadd"></a>
 					<div class="popup">
 						<h2>메뉴추가하기</h2>
 						<p>추가 할 음식을 검색하세요</p>
@@ -213,20 +215,53 @@ a#add_pop:hover {
 
 						<a class="close"></a>
 					</div>
-
-
-					</div>
 				</th>
 			</tr>
 			<tr>
 				<td class="tg-031e">중식</td>
-				<td class="tg-031e"></td>
-				<td class="tg-031e"></td>
+				<td class="tg-031e"><div class="form-group">
+						<input class="w3-input" rows="1">
+					</div></td>
+				<td class="tg-031e"><div class="panel">
+						<a href="#menuadd" id="add_pop">추가</a>
+
+					</div> <a href="#x" class="overlay" id="menuadd"></a>
+					<div class="popup">
+						<h2>메뉴추가하기</h2>
+						<p>추가 할 음식을 검색하세요</p>
+						<div>
+
+							<input type="text" id="search" value="" /> 
+							<input type="button" value="검색" />
+						</div>
+
+
+						<a class="close"></a>
+					</div></td>
 			</tr>
 			<tr>
 				<td class="tg-yw4l">석식</td>
-				<td class="tg-yw4l"></td>
-				<td class="tg-yw4l"></td>
+				<td class="tg-yw4l"><div class="form-group">
+						<input class="w3-input" rows="1">
+					</div></td>
+				<td class="tg-yw4l">
+					<div class="panel">
+						<a href="#menuadd" id="add_pop">추가</a>
+
+					</div> <a href="#x" class="overlay" id="menuadd"></a>
+					<div class="popup">
+						<h2>메뉴추가하기</h2>
+						<p>추가 할 음식을 검색하세요</p>
+						<div>
+
+							<input type="text" id="search" value="" />
+							 <input type="button" value="검색" />
+						</div>
+
+
+						<a class="close"></a>
+					</div>
+				</td>
 			</tr>
 
 		</table>
@@ -358,14 +393,15 @@ a#add_pop:hover {
 		</table>
 		<div>
 			<p>
-
-				<div align="right"><br>
+			<div align="right">
+				<br>
 				<button id="complete"
 					class="w3-btn w3-white w3-border w3-border-orange w3-round-xlarge">
 					전체삭제</button>
 				<button type="reset"
 					class="w3-btn w3-white w3-border w3-border-orange w3-round-xlarge">
-					등록</button></div>
+					등록</button>
+			</div>
 			</p>
 		</div>
 	</div>
