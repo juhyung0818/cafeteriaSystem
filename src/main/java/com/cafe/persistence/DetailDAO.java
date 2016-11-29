@@ -2,6 +2,7 @@ package com.cafe.persistence;
 
 import java.util.List;
 
+import com.cafe.domain.CafeVO;
 import com.cafe.domain.DetailVO;
 
 /**
@@ -17,4 +18,8 @@ public interface DetailDAO {
 	public List<DetailVO> detailList(String cafeName) throws Exception;
 	//delete detail
 	public void deleteDetail(String cafeName, String detailName) throws Exception;
+	//search detail
+	public List<DetailVO> detailSearch(String cafeName, String keyword) throws Exception;
+	//check detail name
+	public int detailCheck(String detailName) throws Exception;
 }

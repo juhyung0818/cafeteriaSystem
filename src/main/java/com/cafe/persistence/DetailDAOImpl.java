@@ -42,7 +42,20 @@ public class DetailDAOImpl implements DetailDAO{
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("cafeName", cafeName);
 		param.put("detailName", detailName);
-		session.delete(namespace + ".deleteDetail", param);
+		session.delete(namespace + ".delete", param);
+	}
+
+	@Override
+	public List<DetailVO> detailSearch(String cafeName, String keyword) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("keyword", keyword);
+		return session.selectList(namespace + ".search", param);
+	}
+
+	@Override
+	public int detailCheck(String detailName) throws Exception {
+		return session.selectOne(namespace + ".check", detailName);
 	}
 
 }

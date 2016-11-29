@@ -156,31 +156,19 @@ table tr:hover td {
 	<h3>메뉴 추가하기</h3>
 
 	<form action="/menu/register" method="post">
-		<table>
-			<tr>
-				<th class="tg-031e">이름</th>
-				<th class="tg-yw4l"><label for="menuName"></label> <input
-					type="hidden" name="cafeName" value="${cafeName}" /> <input
-					type="text" name="menuName" placeholder="Menu name" /></th>
-				<th class="tg-yw4l">구분</th>
-				<th class="tg-yw4l"><select name="detailName" size="1}">
-						<c:forEach items="${details}" var="detailVO">
-							<option>${detailVO.detailName}</option>
-						</c:forEach>
-				</select></th>
-				<th class="tg-yw4l">가격</th>
-				<th class="tg-yw4l"><input type="number" name="price"
-					placeholder="Menu price" /> <input type='hidden' name='keyword'
-					value="${keyword}"></th>
-				<th class="tg-yw4l"><button type="submit"
-						class="w3-btn w3-white w3-border ">추가</button>
-					<button type="reset" class="w3-btn w3-white w3-border ">취소</button></th>
-			</tr>
-		</table>
+		<label for="menuName">menu name</label>
+		<input type="hidden" name="cafeName" value="${cafeName}"/>
+		<input type="text" name="menuName" placeholder="Menu name"/>
+		<select name="detailName" size="1">
+			<c:forEach items="${details}" var="detailVO">
+        		<option>${detailVO.detailName}</option>
+        	</c:forEach>
+		</select>
+		<input type="number" name="price" placeholder="Menu price"/>
+		<input type='hidden' name='keyword' value="${keyword}">
+		<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
+		<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
 	</form>
-
-
-	
 
 	<form action="/menu/search?cafeName=${cafeName}" method="post">
 		<label for="keyword" id="text1">메뉴 목록</label>
@@ -198,13 +186,13 @@ table tr:hover td {
 				<th> MENU PRICE </th>
 				<th> MENU POINT </th>
 				<th> MENU LIKE </th>
-				<th> MODIFY </th>
+				<th> PRICE MODIFY </th>
 				<th> DELETE </th>
 			</tr>
 			<c:forEach items="${menus}" var="menuVO">
 			<tr>
 				<td>${menuVO.menuName}(${menuVO.detailName}) </td>
-				<td>${menuVO.price} </td>
+				<td><input type='text' name='price' value="${menuVO.price}"> </td>
 				<td>${menuVO.point} </td>
 				<td>${menuVO.likeNum} </td>
 

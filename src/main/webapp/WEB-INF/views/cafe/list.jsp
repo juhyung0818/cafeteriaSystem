@@ -82,27 +82,19 @@
 		<table class="w3-table w3-bordered">
 			<tr>
 				<th>${cafeName}</th>
-				<th>수정</th>
 				<th>삭제</th>
 			</tr>
 			<c:forEach items="${cafes}" var="cafeVO">
 			<tr>
 				<td>
-					<a href="/detail/list?cafeName=${cafeVO.cafeName}">
+					<a href="/detail/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}">
 						${cafeVO.cafeName}
 					</a>
 				</td>
 				<td>
-					<form action="/cafe/modify?cafeName=${cafeVO.cafeName}" method="post">
-						<input type='hidden' name='cafeName' value="${cafeVO.cafeName}">
-						<input type='hidden' name='keyword' value="${keyword}">
-						<button type="submit" class="w3-btn w3-white w3-border ban-warning">MODIFY</button>
-					</form>
-				</td>
-				<td>
 					<form action="/cafe/delete?cafeName=${cafeVO.cafeName}" method="post">
 						<input type='hidden' name='keyword' value="${keyword}">
-						<button type="submit" class="w3-btn w3-white w3-border ban-danger" value="${keyword}">REMOVE</button>
+						<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
 					</form>
 				</td>
 			</tr>

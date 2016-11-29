@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.cafe.domain.CommentVO;
 import com.cafe.domain.ComplainVO;
 import com.cafe.domain.ResultVO;
 import com.cafe.dto.ComplainDTO;
@@ -82,6 +81,7 @@ public class ComplainController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void complainListGET(Model model, RedirectAttributes rttr) throws Exception {
 		logger.info("complain list...");
+		model.addAttribute("list", cafeService.cafeList());
 		List<ComplainVO> list = complainService.complainList();
 		model.addAttribute("complains", list);
 	}

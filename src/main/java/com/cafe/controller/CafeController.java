@@ -48,7 +48,7 @@ public class CafeController {
 	public void cafeListGET(@RequestParam("keyword") String keyword, Model model) throws Exception {
 		
 		logger.info("Cafeteria list....");
-		
+		model.addAttribute("list", cafeService.cafeList());
 		List<CafeVO> cafes = cafeService.cafeSearch(keyword);
 		model.addAttribute("cafes", cafes);
 		model.addAttribute("keyword", keyword);
@@ -78,7 +78,6 @@ public class CafeController {
 		logger.info("Cafeteria delete....");
 		
 		cafeService.deleteCafe(cafeName);
-		rttr.addAttribute("cafeName", cafeName);
 		rttr.addAttribute("keyword", key.getKeyword());
 		
 		return "redirect:/cafe/list";
@@ -88,7 +87,7 @@ public class CafeController {
 	public String menuSearhPOST(@RequestParam("keyword") String keyword,
 			Model model, RedirectAttributes rttr) throws Exception {
 		
-		logger.info("Cafe search....");
+		logger.info("Cafeteria search....");
 		rttr.addAttribute("keyword", keyword);
 		
 		return "redirect:/cafe/list";

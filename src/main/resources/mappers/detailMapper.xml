@@ -25,5 +25,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from detail
 		where cafeName=#{cafeName} and detailName=#{detailName}
 	</delete>
+	
+	<!-- detail search to use keyword -->
+	<select id="search" resultType="com.cafe.domain.DetailVO">
+		<![CDATA[
+			select *
+			from detail
+			where detailName like CONCAT('%', #{keyword}, '%') and cafeName=#{cafeName}
+		]]>
+	</select>
+	
+	<!-- detail name already exist -->
+	<select id="check" resultType="int">
+		select count(*)
+		from detail
+		where cafeName=#{cafeName} and detailName=#{detailName}
+	</select>
 
 </mapper>

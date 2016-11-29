@@ -44,5 +44,8 @@ public class FixedController {
 		list=fixedService.fixedList(fix.getCafeName());
 		return new ResultVO<>(list);
 	}
+	
+//	model.addAttribute("list", cafeService.cafeList());
+
 
 }

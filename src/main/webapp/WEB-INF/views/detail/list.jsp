@@ -62,31 +62,42 @@
 
 <div align="center">
 <section class="content">
-	<h1> CAFE NAME </h1>
+	<h1> DETAIL LIST </h1>
+	
+	<form action="/detail/register" method="post">
+		<label for="detailName">detail name</label>
+		<input type="hidden" name="cafeName" value="${cafeName}">
+		<input type="text" name="detailName" placeholder="Detail name"/>
+		<input type='hidden' name='keyword' value="${keyword}">
+		<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
+		<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
+	</form>
+
+	<form action="/detail/search" method="post">
+		<label for="keyword">Search</label>
+		<input type="text" name="keyword" placeholder="Write keyword" value="${keyword}"/>
+		<input type="hidden" name="cafeName" value="${cafeName}">
+		<button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
+	</form>
+	
 	<table class="w3-table w3-bordered">
-			<tr>
-				<th>CAFE NAME</th>
-				<th>수정</th>
-				<th>삭제</th>
-			</tr>
-			<c:forEach items="${details}" var="detailVO">
-			<tr>
-				<td>
-					${detailVO.detailName}
-				</td>
-				<td>
-					<form action="/cafe/modify?cafeName=${detailVO.cafeName}" method="post">
-						<input type='hidden' name='menuName' value="${detailVO.detailName}">
-						<button type="submit" class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
-					</form> 
-				</td>
-				<td>
-					<form action="/cafe/delete?cafeName=${cafeVO.cafeName}" method="post">
-						<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
-					</form>
-				</td>
-			</tr>
-			</c:forEach>
+		<tr>
+			<th>CAFE NAME</th>
+			<th>삭제</th>
+		</tr>
+		<c:forEach items="${details}" var="detailVO">
+		<tr>
+			<td>
+				${detailVO.detailName}
+			</td>
+			<td>
+				<form action="/detail/delete?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}" method="post">
+					<input type='hidden' name='keyword' value="${keyword}">
+					<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
+				</form>
+			</td>
+		</tr>
+		</c:forEach>
 	</table>
 	
 	
