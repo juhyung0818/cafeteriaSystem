@@ -39,7 +39,7 @@ public class WeeklyController {
 	@Inject
 	private CafeService cafeService;
 
-	@RequestMapping(value="/table", method = RequestMethod.GET)
+	@RequestMapping(value="/weeklyList", method = RequestMethod.GET)
 	public void tableGET(@RequestParam("cafeName") String cafeName, Model model) throws Exception{
 		logger.info("Weekly table...");
 		List<WeeklyVO> weeklis = weeklyService.weeklyList(cafeName);

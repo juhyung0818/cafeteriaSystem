@@ -171,12 +171,11 @@ table tr:hover td {
 	</form>
 
 	<form action="/menu/search?cafeName=${cafeName}" method="post">
-		<label for="keyword" id="text1">메뉴 목록</label>
-		<input type="text" name="keyword" placeholder="Write menu name"/>
+		<label for="keyword" id="text1">SEARCH</label>
+		<input type="text" name="keyword" placeholder="Write menu name" value="${keyword}"/>
 		<button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
 
 	</form>
-
 	
 		<h1> Menu list </h1>
 

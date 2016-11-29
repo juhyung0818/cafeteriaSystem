@@ -190,6 +190,11 @@ a#add_pop:hover {
 		<h5>월</h5>
 		<table class="tg">
 			<tr>
+			<c:forEach items="${details}" var="detailVO">
+				<td>${detailVO.detailName}</td>
+			</c:forEach>
+			</tr>
+			<tr>
 				<th class="tg-031e">조식</th>
 				<th class="tg-031e">
 					<div class="form-group">
