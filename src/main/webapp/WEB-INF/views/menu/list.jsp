@@ -21,37 +21,145 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 	
 <head>
-	<title> 학 식 세 끼 </title>	
-	
-	<style>
-	.dropdown {
-    	position: relative;
-    	display: inline-block;
-	}	
 
-	.dropdown-content {
-    	display: none;
-    	position: absolute;
-    	background-color: #f9f9f9;
-    	min-width: 160px;
-    	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    	padding: 12px 16px;
-    	z-index: 1;
-	}
+<title>학 식 세 끼</title>
 
-	.dropdown:hover .dropdown-content {
-    	display: block;
-	}
-	</style>
-</head>
+<style>
+table a:link {
+	color: #666;
+	font-weight: bold;
+	text-decoration: none;
+}
 
+table a:visited {
+	color: #999999;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+table a:active, table a:hover {
+	color: #bd5a35;
+	text-decoration: underline;
+}
+
+table {
+	width: 1000px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #666;
+	font-size: 14px;
+	text-shadow: 1px 1px 0px #fff;
+	background: #eaebec;
+	border: #ccc 1px solid;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 0 1px 2px #d1d1d1;
+	-webkit-box-shadow: 0 1px 2px #d1d1d1;
+	box-shadow: 0 1px 2px #d1d1d1;
+}
+
+table th {
+	padding: 21px 25px 22px 25px;
+	border-top: 1px solid #fafafa;
+	border-bottom: 1px solid #e0e0e0;
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed),
+		to(#ebebeb));
+	background: -moz-linear-gradient(top, #ededed, #ebebeb);
+}
+
+table th:first-child {
+	text-align: left;
+	padding-left: 20px;
+}
+
+table tr:first-child th:first-child {
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+}
+
+table tr:first-child th:last-child {
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+table tr {
+	text-align: center;
+	padding-left: 20px;
+}
+
+table td:first-child {
+	text-align: left;
+	padding-left: 20px;
+	border-left: 0;
+}
+
+table td {
+	padding: 10px;
+	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+	background: #fafafa;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb),
+		to(#fafafa));
+	background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+}
+
+table td.second {
+	text-align: right;
+	padding: 18px;
+	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+	background: #fafafa;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb),
+		to(#fafafa));
+	background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+}
+
+table tr.even td {
+	background: #f6f6f6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8),
+		to(#f6f6f6));
+	background: -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
+}
+
+table tr:last-child td {
+	border-bottom: 0;
+}
+
+table tr:last-child td:first-child {
+	-moz-border-radius-bottomleft: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+table tr:last-child td:last-child {
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+table tr:hover td {
+	background: #f2f2f2;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2),
+		to(#f0f0f0));
+	background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+}
+#text1 { font-size:19pt; }
+</style>
 <body>
+	<br>
+	<br>
+	<h3>*메뉴 추가하기</h3>
 
 	<form action="/menu/register" method="post">
 		<label for="menuName">menu name</label>
 		<input type="hidden" name="cafeName" value="${cafeName}"/>
 		<input type="text" name="menuName" placeholder="Menu name"/>
-		<select name="detailName" size="${detailSize}">
+		<select name="detailName" size="1">
 			<c:forEach items="${details}" var="detailVO">
         		<option>${detailVO.detailName}</option>
         	</c:forEach>
@@ -61,31 +169,30 @@
 		<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
 		<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
 	</form>
-	
+
 	<form action="/menu/search?cafeName=${cafeName}" method="post">
-		<label for="keyword">Search</label>
+		<label for="keyword" id="text1">*메뉴 목록</label>
 		<input type="text" name="keyword" placeholder="Write menu name"/>
 		<button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
-	</form>
 
-	
-		<h1> Menu list </h1>
+	</form>
 
 		<table>
 			<tr>
-				<th> MENU NAME </th>
-				<th> MENU PRICE </th>
-				<th> MENU POINT </th>
-				<th> MENU LIKE </th>
-				<th> MODIFY </th>
-				<th> DELETE </th>
+				<th> 메뉴 이름 </th>
+				<th> 가격 </th>
+				<th> 평점 </th>
+				<th> 좋아요 수 </th>
+				<th> 가격변경 </th>
+				<th> 삭제 </th>
 			</tr>
 			<c:forEach items="${menus}" var="menuVO">
 			<tr>
 				<td>${menuVO.menuName}(${menuVO.detailName}) </td>
-				<td>${menuVO.price} </td>
+				<td><input type='text' name='price' value="${menuVO.price}"> </td>
 				<td>${menuVO.point} </td>
 				<td>${menuVO.likeNum} </td>
+
 				<td>
 					<form method="post">
 						<input type='hidden' name='cafeName' value="${menuVO.cafeName}">
@@ -101,6 +208,7 @@
 			</tr>
 			</c:forEach>
 		</table>
+
 
 </body>
 <!-- <script>

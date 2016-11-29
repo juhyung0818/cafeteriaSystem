@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- Menu remove in cafe -->
 	<delete id="delete">
 		delete from menu
-		where menuName=#{menuName} and cafeName=#{cafeName}
+		where detailName=#{detailName} and menuName=#{menuName} and cafeName=#{cafeName}
 	</delete>
 	
 	<!-- menu search to use keyword -->

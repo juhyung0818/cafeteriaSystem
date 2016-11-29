@@ -289,7 +289,7 @@ h1 {
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
 							<li class='sub'><a
-								href='/weekly/table?cafeName=${cafeVO.cafeName}'>
+								href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'>
 									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
@@ -305,9 +305,11 @@ h1 {
 									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
+
 				</table>
 			</li>
 			<li class='last'><a href='/cafe/list?keyword=${keyword}'>식당관리</a></li>
+
 			<li class='last'><a href='/complain/list'>소리함</a></li>
 		</ul>
 	</div>

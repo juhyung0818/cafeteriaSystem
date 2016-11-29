@@ -11,7 +11,8 @@ package com.cafe.controller;
 //	//create services
 //	@Inject
 //	
-//	
+//			model.addAttribute("list", cafeService.cafeList());
+
 //
 //	/**
 //	 * app : show cafeteria list

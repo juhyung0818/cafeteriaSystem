@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.DetailVO;
+import com.cafe.domain.SearchKeywordVO;
+import com.cafe.service.CafeService;
 import com.cafe.service.DetailService;
 
 /**
@@ -30,6 +32,9 @@ public class DetailController {
 	//create datail service object
 	@Inject
 	private DetailService detailService;
+	//create cafe service object
+	@Inject
+	private CafeService cafeService;
 	
 	/**
 	 * display detail list of cafeteria
@@ -38,20 +43,58 @@ public class DetailController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/list", method = RequestMethod.GET)
-	public void readDetailGET(@RequestParam("cafeName") String cafeName, Model model) throws Exception{
+	public void readDetailGET(@RequestParam("cafeName") String cafeName,
+			@RequestParam("keyword") String keyword, Model model) throws Exception{
+		model.addAttribute("list", cafeService.cafeList());
+		List<DetailVO> list = detailService.detailSearch(cafeName, keyword);
 		model.addAttribute("cafeName", cafeName);
-		List<DetailVO> list = detailService.detailList(cafeName);
 		model.addAttribute("details", list);
+		model.addAttribute("keyword", keyword);
+
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String registerDetailPOST(@RequestParam("cafeName") String cafeName,
+			@RequestParam("detailName") String detailName,SearchKeywordVO key,
+			RedirectAttributes rttr, Model model) throws Exception {
+		
+		logger.info("Detail register....");
+		
+		DetailVO detail = new DetailVO();
+		detail.setCafeName(cafeName);
+		detail.setDetailName(detailName);
+		detailService.registerDetail(cafeName, detailName);
+		
+		rttr.addAttribute("cafeName", cafeName);
+		rttr.addAttribute("keyword", key.getKeyword());
+		
+		return "redirect:/detail/list";
 	}
 	
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public String deleteDetailPOST(@RequestParam("cafeName") String cafeName,
-			@RequestParam("detailName") String detailName, RedirectAttributes rttr, Model model) throws Exception{
+			@RequestParam("detailName") String detailName, SearchKeywordVO key,
+			RedirectAttributes rttr, Model model) throws Exception{
+		
+		logger.info("Detail delete....");
 		
 		detailService.deleteDetail(cafeName, detailName);
-		rttr.addFlashAttribute(cafeName);
+		rttr.addAttribute("cafeName", cafeName);
+		rttr.addAttribute("keyword", key.getKeyword());
+
 		return "redirect:/detail/list";
 	}
-	
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String menuSearhPOST(@RequestParam("cafeName") String cafeName,
+			@RequestParam("keyword") String keyword,
+			Model model, RedirectAttributes rttr) throws Exception {
+		
+		logger.info("Detail search....");
+		rttr.addAttribute("cafeName", cafeName);
+		rttr.addAttribute("keyword", keyword);
+		
+		return "redirect:/detail/list";
+	}
 	
 }
