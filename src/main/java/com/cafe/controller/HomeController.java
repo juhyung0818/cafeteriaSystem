@@ -43,7 +43,7 @@ public class HomeController {
 	public String cafeListGET(Model model) throws Exception {
 		logger.info("Cafeteria list ....");
 		model.addAttribute("list", cafeService.cafeList());
-		return "/include/p_header";
+		return "/home";
 	}
 	
 }
