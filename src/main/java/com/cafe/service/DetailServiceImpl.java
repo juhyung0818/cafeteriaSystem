@@ -31,4 +31,9 @@ public class DetailServiceImpl implements DetailService{
 		return detailDao.detailList(cafeName);
 	}
 
+	@Override
+	public void deleteDetail(String cafeName, String detailName) throws Exception {
+		detailDao.deleteDetail(cafeName, detailName);
+	}
+
 }

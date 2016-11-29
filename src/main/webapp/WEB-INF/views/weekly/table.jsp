@@ -2,6 +2,7 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="../include/header.jsp"%>
 <head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -57,7 +58,7 @@
 		var time = new Array();
 		var day = new Array();
 	</script>
-	<c:forEach items='${list}' var='menuVO' varStatus='i'>
+	<c:forEach items='${weeklis}' var='menuVO' varStatus='i'>
 		<script>
 		time[${i.index}] = Times.${menuVO.dateFlag};
 		day[${i.index}] = Days.${menuVO.wFlag};
@@ -66,7 +67,7 @@
 	</c:forEach>
 
 <body>
-	
+	<p> </p> 
 	<h1> Menu list </h1>
 
 	<table class="w3-table w3-bordered">

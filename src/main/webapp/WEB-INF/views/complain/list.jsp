@@ -72,7 +72,7 @@
 							<th>REPLY</th>
 						</tr>
 
-						<c:forEach items="${list}" var="complainVO">
+						<c:forEach items="${complains`}" var="complainVO">
 
 							<tr>
 								<td>
