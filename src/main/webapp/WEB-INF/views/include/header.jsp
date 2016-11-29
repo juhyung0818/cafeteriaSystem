@@ -307,18 +307,7 @@ h1 {
 					</ul>
 				</table>
 			</li>
-
-			<li class='active sub'><a>식당관리</a>
-				<table class="w3-table w3-bordered">
-					<ul>
-						<c:forEach items="${list}" var="cafeVO">
-							<li class='sub'><a
-								href='/menu/detail?cafeName=${cafeVO.cafeName}'>
-									${cafeVO.cafeName}</a></li>
-						</c:forEach>
-					</ul>
-				</table>
-			</li>
+			<li class='last'><a href='/cafe/list?keyword=${keyword}'>식당관리</a></li>
 			<li class='last'><a href='/complain/list'>소리함</a></li>
 		</ul>
 	</div>

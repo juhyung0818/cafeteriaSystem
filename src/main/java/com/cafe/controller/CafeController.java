@@ -1,6 +1,5 @@
 package com.cafe.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,11 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.CafeVO;
 import com.cafe.domain.DetailVO;
+import com.cafe.domain.MenuVO;
+import com.cafe.domain.SearchKeywordVO;
 import com.cafe.service.CafeService;
-import com.cafe.service.DetailService;
 
 /**
  * Cafeteria Controller class
@@ -33,8 +35,6 @@ public class CafeController {
 	//create services
 	@Inject
 	private CafeService cafeService;
-	@Inject
-	private DetailService detailService;
 	
 	/**
 	 * display cafe list
@@ -42,23 +42,53 @@ public class CafeController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void cafeListGET(Model model) throws Exception {
+	public void cafeListGET(@RequestParam("keyword") String keyword, Model model) throws Exception {
+		
 		logger.info("Cafeteria list....");
 		
-		List<CafeVO> cafes= cafeService.cafeList();
+		List<CafeVO> cafes = cafeService.cafeSearch(keyword);
 		model.addAttribute("cafes", cafes);
-		
-		//cafeteria and detail matching
-		List<DetailVO> details = new ArrayList<>();
-		for(CafeVO cafe : cafes){
-			List<DetailVO> temp = new ArrayList<>();
-			temp = detailService.detailList(cafe.getCafeName());
-			for(DetailVO detail : temp){
-				details.add(detail);
-			}
-		}
-		model.addAttribute("details", details);
-		model.addAttribute("list", cafeService.cafeList());
+		model.addAttribute("keyword", keyword);
 
 	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String menuRegisterPOST(@RequestParam("cafeName") String cafeName, 
+			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
+		
+		logger.info("Cafeteria register....");
+		
+		CafeVO cafe = new CafeVO();
+		cafe.setCafeName(cafeName);
+		cafe.setInfo("");
+		cafeService.cafeRegister(cafe);
+		rttr.addAttribute("cafeName", cafeName);
+		rttr.addAttribute("keyword", key.getKeyword());
+		
+		return "redirect:/cafe/list";
+	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String menuDeletePOST(@RequestParam("cafeName") String cafeName, 
+			Model model, SearchKeywordVO key, RedirectAttributes rttr) throws Exception {
+		
+		logger.info("Cafeteria delete....");
+		
+		cafeService.deleteCafe(cafeName);
+		rttr.addAttribute("cafeName", cafeName);
+		rttr.addAttribute("keyword", key.getKeyword());
+		
+		return "redirect:/cafe/list";
+	}
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String menuSearhPOST(@RequestParam("keyword") String keyword,
+			Model model, RedirectAttributes rttr) throws Exception {
+		
+		logger.info("Cafe search....");
+		rttr.addAttribute("keyword", keyword);
+		
+		return "redirect:/cafe/list";
+	}
+
 }

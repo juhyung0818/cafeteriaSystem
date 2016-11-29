@@ -2,6 +2,8 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="../include/header.jsp"%>
+	
 <head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -62,7 +64,22 @@
 <div align="center">
 <section class="content">
 	<h1> CAFE NAME </h1>
-	<table class="w3-table w3-bordered">
+	
+		<form action="/cafe/register" method="post">
+			<label for="cafeName">cafe name</label>
+			<input type="text" name="cafeName" placeholder="Cafe name"/>
+			<input type='hidden' name='keyword' value="${keyword}">
+			<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
+			<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
+		</form>
+	
+		<form action="/cafe/search?cafeName=${cafeName}" method="post">
+			<label for="keyword">Search</label>
+			<input type="text" name="keyword" placeholder="Write menu name"/>
+			<button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
+		</form>
+		
+		<table class="w3-table w3-bordered">
 			<tr>
 				<th>${cafeName}</th>
 				<th>수정</th>
@@ -88,8 +105,9 @@
 				</td>
 			</tr>
 			</c:forEach>
-	</table>
-	
+
+		</table>
+		
 	
 </section>
 </div>
