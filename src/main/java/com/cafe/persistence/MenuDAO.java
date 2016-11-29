@@ -15,9 +15,10 @@ public interface MenuDAO {
 	// diplay all menu list
 	public List<MenuVO> menuList(String cafeName) throws Exception;
 	// delete a menu
-	public void deleteMenu(String cafeName, String menuName) throws Exception;
+	public void deleteMenu(String cafeName, String detailName, String menuName) throws Exception;
 	//menu search
 	public List<MenuVO> searchMenu(String cafeName, String keyword) throws Exception;
+	public List<MenuVO> searchMenu(String cafeName, String detailName, String keyword) throws Exception;
 	//menu check exist of not
 	public int checkMenu(String cafeName, String menuName) throws Exception;
 	/**

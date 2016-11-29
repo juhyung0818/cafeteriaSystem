@@ -14,8 +14,9 @@ public interface MenuService {
 	public List<MenuVO> menuList(String cafeName) throws Exception;
 	//menu search
 	public List<MenuVO> searchMenu(String cafeName, String keyword) throws Exception;
+	public List<MenuVO> searchMenu(String cafeName, String detailName, String keyword) throws Exception;
 	//delete a menu
-	public void deleteMenu(String cafeName, String menuName) throws Exception;
+	public void deleteMenu(String cafeName, String detailName, String menuName) throws Exception;
 	
 	/**
 	 * app : show top10 menu list order by like

@@ -153,22 +153,7 @@ table tr:hover td {
 <body>
 	<br>
 	<br>
-	<h3>메뉴 추가하기</h3>
-
-	<form action="/menu/register" method="post">
-		<label for="menuName">menu name</label>
-		<input type="hidden" name="cafeName" value="${cafeName}"/>
-		<input type="text" name="menuName" placeholder="Menu name"/>
-		<select name="detailName" size="1">
-			<c:forEach items="${details}" var="detailVO">
-        		<option>${detailVO.detailName}</option>
-        	</c:forEach>
-		</select>
-		<input type="number" name="price" placeholder="Menu price"/>
-		<input type='hidden' name='keyword' value="${keyword}">
-		<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
-		<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
-	</form>
+	<h3>주간 메뉴</h3>
 
 	<form action="/menu/search?cafeName=${cafeName}" method="post">
 		<label for="keyword" id="text1">SEARCH</label>
@@ -184,8 +169,7 @@ table tr:hover td {
 				<th> MENU PRICE </th>
 				<th> MENU POINT </th>
 				<th> MENU LIKE </th>
-				<th> PRICE MODIFY </th>
-				<th> DELETE </th>
+				<th> PRICE SELECT </th>
 			</tr>
 			<c:forEach items="${menus}" var="menuVO">
 			<tr>
@@ -195,34 +179,20 @@ table tr:hover td {
 				<td>${menuVO.likeNum} </td>
 
 				<td>
-					<form method="post">
+					<form action="/weekly/register" method="post"> 
 						<input type='hidden' name='cafeName' value="${menuVO.cafeName}">
+						<input type='hidden' name='detailName' value="${menuVO.detailName}">
 						<input type='hidden' name='menuName' value="${menuVO.menuName}">
-						<button type="submit" class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
-					</form>
-				</td>
-				<td>
-					<form action="/menu/delete?cafeName=${cafeName}&detailName=${menuVO.detailName}&menuName=${menuVO.menuName}" method="post">
 						<input type='hidden' name='keyword' value="${keyword}">
-						<button type="submit" class="w3-btn w3-white w3-border btn-danger">REMOVE</button>
+						<input type='hidden' name='wFlag' value="${wFlag}">
+						<input type='hidden' name='dateFlag' value="${dateFlag}">
+						<button type="submit" class="w3-btn w3-white w3-border btn-warning">SELECT</button>
 					</form>
 				</td>
+
 			</tr>
 			</c:forEach>
 		</table>
 
 
 </body>
-<!-- <script>
-$(document).ready(function() {
-	var formObj = $("form[role='form']");
-
-	console.log(formObj);
-
-	$(".btn-danger").on("click", function() {
-		formObj.attr("action", "/menu/search");
-		formObj.submit();
-	});
-
-});
-</script> -->
