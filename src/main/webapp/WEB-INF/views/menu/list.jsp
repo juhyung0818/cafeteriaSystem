@@ -153,7 +153,7 @@ table tr:hover td {
 <body>
 	<br>
 	<br>
-	<h3>메뉴 추가하기</h3>
+	<h3>*메뉴 추가하기</h3>
 
 	<form action="/menu/register" method="post">
 		<label for="menuName">menu name</label>
@@ -171,23 +171,20 @@ table tr:hover td {
 	</form>
 
 	<form action="/menu/search?cafeName=${cafeName}" method="post">
-		<label for="keyword" id="text1">메뉴 목록</label>
+		<label for="keyword" id="text1">*메뉴 목록</label>
 		<input type="text" name="keyword" placeholder="Write menu name"/>
 		<button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
 
 	</form>
 
-	
-		<h1> Menu list </h1>
-
 		<table>
 			<tr>
-				<th> MENU NAME </th>
-				<th> MENU PRICE </th>
-				<th> MENU POINT </th>
-				<th> MENU LIKE </th>
-				<th> PRICE MODIFY </th>
-				<th> DELETE </th>
+				<th> 메뉴 이름 </th>
+				<th> 가격 </th>
+				<th> 평점 </th>
+				<th> 좋아요 수 </th>
+				<th> 가격변경 </th>
+				<th> 삭제 </th>
 			</tr>
 			<c:forEach items="${menus}" var="menuVO">
 			<tr>

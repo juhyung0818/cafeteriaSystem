@@ -31,11 +31,7 @@ table a:link {
 	text-decoration: none;
 }
 
-table a:visited {
-	color: #999999;
-	font-weight: bold;
-	text-decoration: none;
-}
+
 
 table a:active, table a:hover {
 	color: #bd5a35;
@@ -107,24 +103,7 @@ table td {
 	background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
 }
 
-table td.second {
-	text-align: right;
-	padding: 18px;
-	border-top: 1px solid #ffffff;
-	border-bottom: 1px solid #e0e0e0;
-	border-left: 1px solid #e0e0e0;
-	background: #fafafa;
-	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb),
-		to(#fafafa));
-	background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
-}
 
-table tr.even td {
-	background: #f6f6f6;
-	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8),
-		to(#f6f6f6));
-	background: -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
-}
 
 table tr:last-child td {
 	border-bottom: 0;
@@ -152,7 +131,9 @@ table tr:hover td {
 
 <div align="center">
 <section class="content">
-	<h3> 식당 추가 및 검색 </h3>
+<br>
+
+	<h3> *식당 추가 및 검색 </h3>
 	
 		<form action="/cafe/register" method="post">
 			<label for="cafeName">식당 이름</label>
@@ -167,7 +148,8 @@ table tr:hover td {
 			<input type="text" name="keyword" placeholder="Write keyword name"/>
 			<button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
 		</form>
-	
+	<br>
+	<br>
 		<table>
 			<tr>
 				<th>구분</th>
