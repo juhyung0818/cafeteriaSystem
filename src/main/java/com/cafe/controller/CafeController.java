@@ -98,7 +98,7 @@ public class CafeController {
 		logger.info("Cafeteria delete....");
 		
 		cafeService.deleteCafe(cafeName);
-		rttr.addAttribute("keyword", key.getKeyword());
+		rttr.addAttribute("keyword", "");
 		
 		return "redirect:/cafe/list";
 	}

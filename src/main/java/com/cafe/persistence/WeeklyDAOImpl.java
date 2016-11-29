@@ -62,5 +62,14 @@ public class WeeklyDAOImpl implements WeeklyDAO{
 		List<WeeklyDTO> list=session.selectList(namespace+".weeklyListApp", param);
 		return list;
 	}
+
+	/**
+	 * check exist or not
+	 * @author YJH
+	 */
+	@Override
+	public int check(WeeklyVO weekly) throws Exception {
+		return session.selectOne(namespace + ".check", weekly);
+	}
 	
 }

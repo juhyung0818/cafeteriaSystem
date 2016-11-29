@@ -54,8 +54,11 @@ public class DetailDAOImpl implements DetailDAO{
 	}
 
 	@Override
-	public int detailCheck(String detailName) throws Exception {
-		return session.selectOne(namespace + ".check", detailName);
+	public int detailCheck(String cafeName, String detailName) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		return session.selectOne(namespace + ".check", param);
 	}
 
 }

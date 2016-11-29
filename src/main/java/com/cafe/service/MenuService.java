@@ -34,4 +34,9 @@ public interface MenuService {
 	 * 2016.11.29.Tue
 	 */
 	public List<MenuVO> top10Point() throws Exception;
+	/**
+	 * menu price modify
+	 * @author YJH
+	 */
+	public void modify(String cafeName, String detailName, String menuName, int price) throws Exception;
 }

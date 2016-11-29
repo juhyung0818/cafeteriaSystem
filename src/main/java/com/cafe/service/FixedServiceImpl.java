@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.cafe.domain.FixedVO;
 import com.cafe.domain.MenuVO;
+import com.cafe.exception.NotExistResultException;
+import com.cafe.exception.PrimaryKeyDuplicatedException;
 import com.cafe.persistence.FixedDAO;
 
 /**
@@ -28,6 +30,9 @@ public class FixedServiceImpl implements FixedService{
 	 */
 	@Override
 	public void register(FixedVO fixed) throws Exception {
+		if(fixedDao.check(fixed) > 0){
+			throw new PrimaryKeyDuplicatedException();
+		}
 		fixedDao.register(fixed);
 	}
 
@@ -55,7 +60,19 @@ public class FixedServiceImpl implements FixedService{
 	 */
 	@Override
 	public List<FixedVO> fixedSearch(String cafeName, String keyword) throws Exception {
-		return fixedDao.fixedSearch(cafeName, keyword);
+		
+		List<FixedVO> list = fixedDao.fixedList(cafeName);
+		List<FixedVO> searchList = fixedDao.fixedSearch(cafeName, keyword);
+		
+		if(list.size() > 0){//list is exist case
+			if(searchList.size() > 0){
+				return searchList;
+			}else{ //list is exist && search list is not exist
+				throw new NotExistResultException();
+			}
+		}else{ //list is not exist
+			return list;
+		}
 	}
 
 }
