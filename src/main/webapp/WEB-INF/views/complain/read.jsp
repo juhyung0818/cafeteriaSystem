@@ -195,10 +195,10 @@ table tr:hover td {
       <form action="/complain/delete?complainNum=${complainVO.complainNum}"
          method="post">
          <button type="submit" class="w3-btn w3-white w3-border">글 삭제</button>
+      </form>
       <a href="/complain/list">
          <button type="submit" class="w3-btn w3-white w3-border">뒤로가기</button>
       </a>
-      </form>
    </div>
 </div>
 

@@ -153,7 +153,21 @@ table tr:hover td {
 <body>
    <br>
    <br>
-      <h1>메뉴 목록</h1>
+   <form action="/cafe/register" method="post">
+         <label for="cafeName">식당 이름</label>
+         <input type="text" name="cafeName" placeholder="Cafe name"/>
+         <input type='hidden' name='keyword' value="${keyword}">
+         <button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
+         <button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
+      </form>
+   
+      
+      <p><h1>메뉴 목록</h1>
+      <form action="/cafe/search?cafeName=${cafeName}" method="post">
+         <label for="keyword">검색</label>
+         <input type="text" name="keyword" placeholder="Write keyword name"/>
+         <button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
+      </form></p>
       <table>
          <tr>
             <th> 메뉴 이름 </th>
