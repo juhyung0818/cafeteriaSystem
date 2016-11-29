@@ -305,10 +305,10 @@ h1 {
 									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
-				</table></li>
 
-			<li class='last'><a href='/cafe/list'>식당관리</a></li>
-
+				</table>
+			</li>
+			<li class='last'><a href='/cafe/list?keyword=${keyword}'>식당관리</a></li>
 
 			<li class='last'><a href='/complain/list'>소리함</a></li>
 		</ul>

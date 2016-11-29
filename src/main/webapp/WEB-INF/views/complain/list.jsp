@@ -2,7 +2,7 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../include/p_header.jsp"%>
+<%@include file="../include/header.jsp"%>
 <html>
 <head>
 <script type="text/javascript"

@@ -2,11 +2,12 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../include/p_header.jsp"%>
+<%@include file="../include/header.jsp"%>
+	
 <head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-
+	
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
@@ -16,10 +17,11 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js">
 	
 </script>
-<html>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	
 <head>
+
 <title>학 식 세 끼</title>
 
 <style>
@@ -152,6 +154,7 @@ table tr:hover td {
 	<br>
 	<br>
 	<h3>메뉴 추가하기</h3>
+
 	<form action="/menu/register" method="post">
 		<table>
 			<tr>
@@ -183,52 +186,56 @@ table tr:hover td {
 		<label for="keyword" id="text1">메뉴 목록</label>
 		<input type="text" name="keyword" placeholder="Write menu name"/>
 		<button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
-	</form>  
-	<table>
-		<!-- cell spacing='0' is important, must stay -->
 
-		<!-- Table Header -->
-		<tr>
-			<th>MENU NAME</th>
-			<th>MENU PRICE</th>
-			<th>MENU POINT</th>
-			<th>MENU LIKE</th>
-			<th>MODIFY</th>
-			<th>DELETE</th>
-		</tr>
-		<!-- Table Header -->
+	</form>
 
-		<!-- Table Body -->
+	
+		<h1> Menu list </h1>
 
-		<c:forEach items="${menus}" var="menuVO">
+		<table>
 			<tr>
-				<td>${menuVO.menuName}(${menuVO.detailName})</td>
-				<td>${menuVO.price}</td>
-				<td>${menuVO.point}</td>
-				<td>${menuVO.likeNum}</td>
+				<th> MENU NAME </th>
+				<th> MENU PRICE </th>
+				<th> MENU POINT </th>
+				<th> MENU LIKE </th>
+				<th> MODIFY </th>
+				<th> DELETE </th>
+			</tr>
+			<c:forEach items="${menus}" var="menuVO">
+			<tr>
+				<td>${menuVO.menuName}(${menuVO.detailName}) </td>
+				<td>${menuVO.price} </td>
+				<td>${menuVO.point} </td>
+				<td>${menuVO.likeNum} </td>
+
 				<td>
 					<form method="post">
 						<input type='hidden' name='cafeName' value="${menuVO.cafeName}">
 						<input type='hidden' name='menuName' value="${menuVO.menuName}">
-						<button type="submit"
-							class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
+						<button type="submit" class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
 					</form>
 				</td>
 				<td>
-					<form
-						action="/menu/delete?cafeName=${menuVO.cafeName}&menuName=${menuVO.menuName}&keyword=${keyword}"
-						method="post">
-						<button type="submit" class="w3-btn w3-white w3-border btn-danger"
-							value="${keyword}">REMOVE</button>
+					<form action="/menu/delete?cafeName=${menuVO.cafeName}&menuName=${menuVO.menuName}&keyword=${keyword}" method="post">
+						<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
 					</form>
 				</td>
 			</tr>
-		</c:forEach>
+			</c:forEach>
+		</table>
 
-		<!-- Table Body -->
 
-	</table>
 </body>
+<!-- <script>
+$(document).ready(function() {
+	var formObj = $("form[role='form']");
 
-</html>
+	console.log(formObj);
 
+	$(".btn-danger").on("click", function() {
+		formObj.attr("action", "/menu/search");
+		formObj.submit();
+	});
+
+});
+</script> -->

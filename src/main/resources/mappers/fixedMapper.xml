@@ -19,12 +19,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<!-- fixed menu display -->
+<!-- 
 	<select id="fixedList" resultType="com.cafe.domain.MenuVO">
 		select m.menuName, m.point, m.likeNum, m.path
 		from fixed as f join menu as m
 		on f.menuName = m.menuName
 		where f.cafeName=#{cafeName}
 	</select>
-
-
+ -->
+	<!-- display weekly menu list -->
+	<select id="fixedList" resultType="com.cafe.domain.FixedVO">
+		select *
+		from fixed
+		where cafeName=#{cafeName}
+	</select>
 </mapper>

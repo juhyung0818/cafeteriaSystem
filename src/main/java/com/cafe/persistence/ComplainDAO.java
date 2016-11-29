@@ -3,6 +3,7 @@ package com.cafe.persistence;
 import java.util.List;
 
 import com.cafe.domain.ComplainVO;
+import com.cafe.dto.ComplainDTO;
 /**
  * Complain board dao interface
  * @author YJH
@@ -11,8 +12,7 @@ import com.cafe.domain.ComplainVO;
  */
 public interface ComplainDAO {
 
-	//customer register complain
-	public void register(ComplainVO complain) throws Exception;
+	
 	//delete complain
 	public void delete(int complainNum) throws Exception;
 	//display complain board list
@@ -23,4 +23,32 @@ public interface ComplainDAO {
 	public void registerReply(int complainNum, String reply) throws Exception;
 	//delete reply
 	public void deleteReply(int complainNum) throws Exception;
+	
+	/**
+	 * app
+	 * @return
+	 * @throws Exception
+	 * @author kwom
+	 * 2016.11.25.Fri
+	 */
+	public List<ComplainDTO> complainListApp() throws Exception;
+	/**
+	 * app
+	 * @param complain
+	 * @throws Exception
+	 * @author kwom
+	 * 2016.11.25.Fri
+	 */
+	public void registerApp(ComplainVO complain) throws Exception;
+	
+	/**
+	 * app : uid check
+	 * @param complainNum
+	 * @param uid
+	 * @return
+	 * @throws Exception
+	 * @author kwom
+	 * 2016.11.25.Fri
+	 */
+	public int complainCheck(int complainNum, String uid)throws Exception;
 }

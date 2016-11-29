@@ -11,7 +11,13 @@ import com.cafe.domain.CafeVO;
  */
 public interface CafeService {
 	
+	//check to exist and register cafe
 	public void cafeRegister(CafeVO cafe) throws Exception;
+	//display cafe
 	public List<CafeVO> cafeList() throws Exception;
+	//remove cafe
+	public void deleteCafe(String cafeName) throws Exception;
+	//search cafe
+	public List<CafeVO> cafeSearch(String keyword) throws Exception;
 	
 }

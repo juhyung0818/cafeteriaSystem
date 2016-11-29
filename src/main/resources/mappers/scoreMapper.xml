@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe.mapper.ScoreMapper">
+
+	<insert id="register">
+		insert into score (cafeName, detailName, menuName, uid, score)
+		values (#{cafeName}, #{detailName}, #{menuName}, #{uid}, #{score})
+	</insert>
+	
+	<delete id="delete">
+		delete from score where cafeName=#{cafeName} and detailName=#{detailName} and
+		menuName=#{menuName} and uid=#{uid}	
+	</delete>
+	
+	<update id="update">
+		update score set score=#{score}
+		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName} and uid=#{uid}	
+	</update>
+	
+	<select id="isScored" resultType="int">
+		select count(*) from score
+		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName} and uid=#{uid}
+	</select>
+</mapper>
