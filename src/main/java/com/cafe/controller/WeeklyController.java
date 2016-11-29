@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cafe.domain.MenuVO;
 import com.cafe.domain.ResultVO;
 import com.cafe.domain.WeeklyVO;
+import com.cafe.dto.WeeklyDTO;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
 import com.cafe.service.CafeService;
@@ -87,12 +88,13 @@ public class WeeklyController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/listApp", method=RequestMethod.POST)
-	public ResultVO listApp(@RequestBody WeeklyVO week) throws Exception{
+	public ResultVO<List<WeeklyDTO>> listApp(@RequestBody WeeklyVO week) throws Exception{
 		logger.info("weekly list post.......");
 
-		List<WeeklyVO> list = new ArrayList<WeeklyVO>();
+		List<WeeklyDTO> list = new ArrayList<WeeklyDTO>();
 
-		list=weeklyService.weeklyList(week.getCafeName());
+		list=weeklyService.weeklyListApp(week.getCafeName(), week.getwFlag());
+		
 		return new ResultVO<>(list);
 	}
 }

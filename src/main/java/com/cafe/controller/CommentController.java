@@ -83,5 +83,15 @@ public class CommentController {
 		list=commentService.commentList(comment.getCafeName(), comment.getMenuName(), comment.getDetailName());
 		return new ResultVO<>(list);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/readApp", method=RequestMethod.POST)
+	public ResultVO readApp(@RequestBody CommentVO comment) throws Exception{
+		logger.info("comment read post.......");
+
+		CommentVO returnComment=commentService.read(comment.getCommentNum());
+
+		return new ResultVO<>(returnComment);
+	}
 
 }

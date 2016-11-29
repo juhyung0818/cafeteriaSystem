@@ -2,9 +2,8 @@ package com.cafe.service;
 
 import java.util.List;
 
-import com.cafe.domain.MenuVO;
 import com.cafe.domain.WeeklyVO;
-import com.cafe.flag.DateFlag;
+import com.cafe.dto.WeeklyDTO;
 import com.cafe.flag.WeeklyFlag;
 
 public interface WeeklyService {
@@ -17,4 +16,6 @@ public interface WeeklyService {
 	public void delete(WeeklyVO weekly) throws Exception;
 	// weekly list
 	public List<WeeklyVO> weeklyList(String cafeName) throws Exception;
+	
+	public List<WeeklyDTO> weeklyListApp(String cafeName, WeeklyFlag wFlag) throws Exception;
 }

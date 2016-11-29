@@ -64,11 +64,16 @@ public class ComplainDAOImpl implements ComplainDAO{
 			
 			try {
 				if(temp.equals("") || temp.equals(null))
+				{
 					complainDTO.setIsReply(false);
+					complainDTO.setReplyDate("-");
+				}
+					
 				else
 					complainDTO.setIsReply(true);
 			} catch (Exception e) {
 				complainDTO.setIsReply(false);
+				complainDTO.setReplyDate("-");
 			}
 			
 		}
@@ -96,5 +101,12 @@ public class ComplainDAOImpl implements ComplainDAO{
 		param.put("uid", uid);
 		
 		return session.selectOne(namespace+".check", param);
+	}
+
+	@Override
+	public ComplainVO readOne(int complainNum) throws Exception {
+		
+		ComplainVO vo=session.selectOne(namespace+".readOne", complainNum);
+		return vo;
 	}
 }

@@ -20,5 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="list" resultType="com.cafe.domain.CommentVO">
 		select * from comment where cafeName=#{cafeName} and menuName=#{menuName} and detailName=#{detailName} 
 	</select>
+	
+	<select id="readOne">
+		select * from comment
+		where commentNum=#{commentNum}
+	</select>
 
 </mapper>

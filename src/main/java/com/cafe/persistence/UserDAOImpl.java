@@ -1,0 +1,34 @@
+package com.cafe.persistence;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
+
+import com.cafe.domain.UserVO;
+
+@Repository
+public class UserDAOImpl implements UserDAO{
+
+	@Inject 
+	private SqlSession session;
+	private String namespace = "com.cafe.mapper.UserMapper";
+	
+	@Override
+	public void register(UserVO user) throws Exception {
+		
+		session.insert(namespace+".register", user);
+	}
+
+	@Override
+	public int check(UserVO user) throws Exception {
+		
+		return session.selectOne(namespace+".check", user);
+	}
+
+	@Override
+	public String getUserNick(String uid) throws Exception {
+		
+		return session.selectOne(namespace+".getUserNick", uid);
+	}
+}

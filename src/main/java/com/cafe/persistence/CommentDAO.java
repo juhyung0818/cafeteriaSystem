@@ -14,4 +14,6 @@ public interface CommentDAO {
 	public void commentRegister(CommentVO comment) throws Exception;
 	public List<CommentVO> commentList(String cafeName, String menuName, String detailName) throws Exception;
 	public void commentDelete(int commentNum)throws Exception;
+	
+	public CommentVO read(int commnetNum)throws Exception;
 }

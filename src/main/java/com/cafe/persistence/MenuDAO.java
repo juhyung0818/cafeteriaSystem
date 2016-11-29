@@ -36,4 +36,6 @@ public interface MenuDAO {
 	 * 2016.11.29.Tue
 	 */
 	public List<MenuVO> top10Point() throws Exception;
+	
+//	public MenuVO readOne()
 }

@@ -49,4 +49,10 @@ public class CommentServiceImpl implements CommentService{
 		commentDao.commentDelete(commentNum);
 	}
 
+	@Override
+	public CommentVO read(int commnetNum) throws Exception {
+		
+		return commentDao.read(commnetNum);
+	}
+
 }

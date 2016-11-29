@@ -199,11 +199,21 @@ public class ComplainController {
 	@ResponseBody
 	@RequestMapping(value="/listApp", method=RequestMethod.POST)
 	public ResultVO<List<ComplainDTO>> listApp() throws Exception{
+		
 		List<ComplainDTO> list = new ArrayList<ComplainDTO>();
 		
 		list = complainService.complainListApp();
 		logger.info("complain list...");
 		return new ResultVO<>(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/readOneApp", method=RequestMethod.POST)
+	public ResultVO<ComplainDTO> readOneApp(@RequestBody ComplainVO complain) throws Exception{
+		
+		logger.info("complain read one...");
+		ComplainDTO returnComplain=complainService.readOne(complain.getComplainNum());
+		return new ResultVO<>(returnComplain);
 	}
 
 }

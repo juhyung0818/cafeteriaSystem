@@ -1,5 +1,6 @@
 package com.cafe.persistence;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.cafe.domain.MenuVO;
 import com.cafe.domain.WeeklyVO;
-import com.cafe.flag.DateFlag;
+import com.cafe.dto.WeeklyDTO;
 import com.cafe.flag.WeeklyFlag;
 
 /**
@@ -46,7 +47,28 @@ public class WeeklyDAOImpl implements WeeklyDAO{
 
 	@Override
 	public List<WeeklyVO> weeklyList(String cafeName) throws Exception {
+
 		return session.selectList(namespace + ".weeklyList", cafeName);
+	}
+
+	@Override
+	public List<WeeklyDTO> weeklyListApp(String cafeName, WeeklyFlag wflag) throws Exception {
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		
+		param.put("cafeName", cafeName);
+		param.put("wFlag", wflag.toString());
+		
+		List<MenuVO> vo= session.selectList(namespace+".weeklyListApp", param);
+		
+		List<WeeklyDTO> dto =new ArrayList<>();
+		
+		for(int i=0; i<vo.size(); i++)
+		{
+			dto.get(i).setWeekly(vo.get(i));
+			dto.get(i).setwFlag(wflag);
+		}
+		return dto;
 	}
 	
 }

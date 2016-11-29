@@ -57,4 +57,9 @@ public class CommentDAOImpl implements CommentDAO{
 		session.insert(namespace+".delete", commentNum);
 	}
 
+	@Override
+	public CommentVO read(int commnetNum) throws Exception {
+		return session.selectOne(namespace+"readApp", commnetNum);
+	}
+
 }

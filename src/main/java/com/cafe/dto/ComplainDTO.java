@@ -8,10 +8,13 @@ public class ComplainDTO {
 	
 	private int complainNum;
 	private String title;
+	private String content;
 	private String uid;
+	private String nick;
 	private String regDate;
 	private boolean isReply;
-	
+	private String reply; 
+	private String replyDate;
 	public int getComplainNum() {
 		return complainNum;
 	}
@@ -24,11 +27,23 @@ public class ComplainDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public String getUid() {
 		return uid;
 	}
 	public void setUid(String uid) {
 		this.uid = uid;
+	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 	public String getRegDate() {
 		return regDate;
@@ -42,11 +57,25 @@ public class ComplainDTO {
 	public void setIsReply(boolean isReply) {
 		this.isReply = isReply;
 	}
+	public String getReply() {
+		return reply;
+	}
+	public void setReply(String reply) {
+		this.reply = reply;
+	}
+	public String getReplyDate() {
+		return replyDate;
+	}
+	public void setReplyDate(String replyDate) {
+		this.replyDate = replyDate;
+	}
 	@Override
 	public String toString() {
-		return "ComplainDTO [complainNum=" + complainNum + ", title=" + title + ", uid=" + uid + ", regDate=" + regDate
-				+ ", isReply=" + isReply + "]";
+		return "ComplainDTO [complainNum=" + complainNum + ", title=" + title + ", content=" + content + ", uid=" + uid
+				+ ", nick=" + nick + ", regDate=" + regDate + ", isReply=" + isReply + ", reply=" + reply
+				+ ", replyDate=" + replyDate + "]";
 	}
 	
+
 	
 }

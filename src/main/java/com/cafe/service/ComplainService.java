@@ -47,4 +47,6 @@ public interface ComplainService {
 	 * 2016.11.25.Fri
 	 */
 	public void deleteApp(ComplainVO complain) throws Exception;
+	
+	public ComplainDTO readOne(int complainNum)throws Exception;
 }

@@ -3,6 +3,8 @@ package com.cafe.persistence;
 import java.util.List;
 
 import com.cafe.domain.WeeklyVO;
+import com.cafe.dto.WeeklyDTO;
+import com.cafe.flag.WeeklyFlag;
 
 /**
  * Weekly menu dao interface
@@ -19,4 +21,6 @@ public interface WeeklyDAO {
 	public void delete(WeeklyVO weekly) throws Exception;
 	// weekly list
 	public List<WeeklyVO> weeklyList(String cafeName) throws Exception;
+	
+	public List<WeeklyDTO> weeklyListApp(String cafeName, WeeklyFlag wflag) throws Exception;
 }
