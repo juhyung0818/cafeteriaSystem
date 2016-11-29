@@ -109,29 +109,4 @@ public class CafeController {
 		logger.info("cafeteria list.....");
 		return new ResultVO<>(list);
 	}
-	
-	/**
-	 * app : cafeteria register
-	 * @param model
-	 * @throws Exception
-	 * @author kwon
-	 * 2016.11.24.Thu
-	 */
-	
-	/**
-	 * 
-	 * @param cafe 
-	 * @throws Exception
-	 * @author kwon
-	 * 2016.11.24.Thu
-	 */
-	@ResponseBody
-	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public void registerPOST(@RequestBody CafeVO cafe) throws Exception
-	{	
-		cafeService.cafeRegister(cafe);
-		logger.info("cafeteria register.....");
-		
-	}
-
 }

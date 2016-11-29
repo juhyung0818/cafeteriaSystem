@@ -51,7 +51,7 @@ public class ComplainController {
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public ResultVO regist(@RequestBody ComplainVO complain, Model model) throws Exception{
 		logger.info("complain register ......");
-		//complainService.register(complain);
+//		complainService.register(complain);
 		model.addAttribute("list", cafeService.cafeList());
 		return new ResultVO();
 	}
@@ -63,14 +63,14 @@ public class ComplainController {
 	 * @return resultVO object
 	 * @throws Exception
 	 */
-	@ResponseBody
-	@RequestMapping(value="/listApp", method=RequestMethod.POST)
-	public ResultVO<List<ComplainVO>> listAll(@RequestBody ComplainVO complain) throws Exception{
-		List<ComplainVO> list = new ArrayList<ComplainVO>();
-		list = complainService.complainList();
-		logger.info("complain list...");
-		return new ResultVO<>(list);
-	}
+//	@ResponseBody
+//	@RequestMapping(value="/listApp", method=RequestMethod.POST)
+//	public ResultVO<List<ComplainVO>> listAll(@RequestBody ComplainVO complain) throws Exception{
+//		List<ComplainVO> list = new ArrayList<ComplainVO>();
+//		list = complainService.complainList();
+//		logger.info("complain list...");
+//		return new ResultVO<>(list);
+//	}
 	
 	/**
 	 * send complain list to Client
@@ -205,4 +205,5 @@ public class ComplainController {
 		logger.info("complain list...");
 		return new ResultVO<>(list);
 	}
+
 }
