@@ -8,13 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- Menu insert in cafe -->
 	<insert id="register">
 		insert into menu
-<<<<<<< HEAD
-		(cafeName, menuName, point, likeNum, path)
-		values (#{cafeName}, #{menuName}, 0, 0, "default")
-=======
 		(cafeName, detailName, menuName, price, path)
 		values (#{cafeName}, #{detailName}, #{menuName}, #{price}, "default")
->>>>>>> origin/detail
 	</insert> 	
 
 	<!-- All menu display in cafe -->	
@@ -32,9 +27,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- menu search to use keyword -->
 	<select id="searchMenu" resultType="com.cafe.domain.MenuVO">
+	<![CDATA[
 		select *
 		from menu
 		where menuName like CONCAT('%', #{keyword}, '%') and cafeName=#{cafeName}
+	]]>
 	</select>
 	
 	<select id="check" resultType="int">

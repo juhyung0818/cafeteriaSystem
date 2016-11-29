@@ -43,5 +43,4 @@ public class CafeController {
 		List<CafeVO> cafes= cafeService.cafeList();
 		model.addAttribute("cafes", cafes);
 	}
-	
 }
