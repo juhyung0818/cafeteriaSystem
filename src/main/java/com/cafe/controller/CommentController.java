@@ -62,7 +62,7 @@ public class CommentController {
 	public ResultVO deleteApp(@RequestBody CommentVO comment) throws Exception{
 		logger.info("comment delete post.......");
 
-		commentService.commentDelete(comment.getCommentNum());
+		commentService.commentDelete(comment.getCommentNum(), comment.getUid());
 		return new ResultVO();
 	}
 	/**

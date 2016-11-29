@@ -9,6 +9,5 @@ import com.cafe.domain.ScoreVO;
 public interface ScoreService {
 
 	public void scoreRegister(ScoreVO score) throws Exception;
-	public void scoreDelete(ScoreVO score) throws Exception;
 	
 }

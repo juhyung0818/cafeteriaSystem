@@ -41,5 +41,5 @@ public interface MenuDAO {
 	public void count(String cafeName, String detailName, String menuName)throws Exception;
 	public void discount(String cafeName, String detailName, String menuName)throws Exception;
 	public int checkLikeNum(String cafeName, String detailName, String menuName)throws Exception;
-	
+	public void setPoint(String cafeName, String detailName, String menuName, float point)throws Exception;
 }

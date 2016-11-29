@@ -47,20 +47,20 @@ public class ScoreController {
 		return new ResultVO<>();
 	}
 	
-	/**
-	 * app : delete score
-	 * @param score
-	 * @return
-	 * @throws Exception
-	 * @author kwon
-	 * 2016.11.25.Fri
-	 */
-	@ResponseBody
-	@RequestMapping(value="/delete", method=RequestMethod.POST)
-	public ResultVO scoreDeletePOST(@RequestBody ScoreVO score) throws Exception{
-		logger.info("score delete post.......");
-
-		scoreService.scoreDelete(score);
-		return new ResultVO<>();
-	}
+//	/**
+//	 * app : delete score
+//	 * @param score
+//	 * @return
+//	 * @throws Exception
+//	 * @author kwon
+//	 * 2016.11.25.Fri
+//	 */
+//	@ResponseBody
+//	@RequestMapping(value="/delete", method=RequestMethod.POST)
+//	public ResultVO scoreDeletePOST(@RequestBody ScoreVO score) throws Exception{
+//		logger.info("score delete post.......");
+//
+//		scoreService.scoreDelete(score);
+//		return new ResultVO<>();
+//	}
 }

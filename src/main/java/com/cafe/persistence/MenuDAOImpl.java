@@ -104,8 +104,7 @@ public class MenuDAOImpl implements MenuDAO{
 		param.put("detailName", detailName);
 		param.put("menuName", menuName);
 		
-		int temp=session.selectOne(namespace+".checkLikeNum", param);
-		return temp;
+		return session.selectOne(namespace+".checkLikeNum", param);
 	}
 
 
@@ -119,6 +118,19 @@ public class MenuDAOImpl implements MenuDAO{
 		param.put("detailName", detailName);
 		param.put("keyword", keyword);
 		return session.selectList(namespace + ".searchDetailMenu", param);
+	}
+
+	@Override
+	public void setPoint(String cafeName, String detailName, String menuName, float point) throws Exception {
+
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		param.put("point", point);
+		
+		session.update(namespace+".setPoint", param);
+		
 	}
 
 }

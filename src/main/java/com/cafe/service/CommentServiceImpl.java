@@ -45,8 +45,8 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
-	public void commentDelete(int commentNum) throws Exception {
-		commentDao.commentDelete(commentNum);
+	public void commentDelete(int commentNum, String uid) throws Exception {
+		commentDao.commentDelete(commentNum, uid);
 	}
 
 	@Override
