@@ -16,4 +16,6 @@ public interface DetailService {
 	public List<DetailVO> detailList(String cafeName) throws Exception;
 	//delete detail
 	public void deleteDetail(String cafeName, String detailName) throws Exception;
+	//search detail
+	public List<DetailVO> detailSearch(String cafeName, String keyword) throws Exception;
 }
