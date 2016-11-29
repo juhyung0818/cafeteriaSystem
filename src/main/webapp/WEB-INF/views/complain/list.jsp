@@ -143,33 +143,34 @@ table tr:hover td {
 		to(#f0f0f0));
 	background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
-#text1 { font-size:19pt; }
+
+#text1 {
+	font-size: 19pt;
+}
 </style>
 
+<body>
+<br>
+<br>
+	<table>
+		<tr>
+			<th>제목</th>
+			<th>내용</th>
+			<th>작성자</th>
+			<th>답변여부</th>
+		</tr>
 
-<div class="box-header with-border">
-					<h3 class="box-title">COMPLAIN LIST</h3>
-				</div>
-				<div class="box-body">
-					<table class="table table-bordered">
-						<tr>
-							<th>TITLE</th>
-							<th>CONTENT</th>
-							<th>WRITER</th>
-							<th>REPLY</th>
-						</tr>
+		<c:forEach items="${complains}" var="complainVO">
 
-						<c:forEach items="${complains}" var="complainVO">
-
-							<tr>
-								<td>
-									<a href='/complain/read?complainNum=${complainVO.complainNum}'>
-										${complainVO.title} </a></td>
-								<td> "${complainVO.content}"</td>
-								<td>${complainVO.uid}</td>
-								<td>
-									<!-- reply check null or not null -->
-									<script type = "text/javascript">
+			<tr>
+				<td><a
+					href='/complain/read?complainNum=${complainVO.complainNum}'>
+						${complainVO.title} </a></td>
+				<td>"${complainVO.content}"</td>
+				<td>${complainVO.uid}</td>
+				<td>
+					<!-- reply check null or not null --> <script
+						type="text/javascript">
 										if("${complainVO.reply}"){
 											document.write("O");
 										} else{
@@ -185,5 +186,5 @@ table tr:hover td {
 
 	</table>
 
-</body>
+	</body>
 </html>
