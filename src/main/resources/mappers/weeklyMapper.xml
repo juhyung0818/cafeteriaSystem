@@ -16,8 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- Add weekly menu -->
 	<insert id="register">
 		insert into weekly
-		(cafeName, menuName, wFlag, dateFlag)
-		values (#{cafeName}, #{menuName}, #{wFlag}, #{dateFlag})
+		(cafeName, detailName, menuName, wFlag, dateFlag)
+		values (#{cafeName}, #{detailName}, #{menuName}, #{wFlag}, #{dateFlag})
 	</insert> 	
 	
 	<!-- display weekly menu list -->
@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- delete a weekly menu -->
 	<delete id="delete">
 		delete from weekly
-		where cafeName=#{cafeName} and menuName=#{menuName} 
+		where cafeName=#{cafeName} and menuName=#{menuName} and detailName = #{detailName}
 				and wFlag=#{wFlag} and dateFlag=#{dateFlag}
 	</delete>
 

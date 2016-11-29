@@ -35,8 +35,9 @@ public class WeeklyTest {
 	public void testRegister() throws Exception{
 		WeeklyVO weekly = new WeeklyVO();
 		weekly.setCafeName("기숙사식당");
+		weekly.setDetailName("A코너");
 		weekly.setMenuName("조식뷔페");
-		weekly.setwFlag(WeeklyFlag.WEDNESDAY);
+		weekly.setwFlag(WeeklyFlag.MONDAY);
 		weekly.setDateFlag(DateFlag.BREAKFAST);
 		weeklyDao.register(weekly);
 	}

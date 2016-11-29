@@ -46,8 +46,8 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
-	public void deleteMenu(String cafeName, String menuName) throws Exception {
-		menuDao.deleteMenu(cafeName, menuName);
+	public void deleteMenu(String cafeName, String detailName, String menuName) throws Exception {
+		menuDao.deleteMenu(cafeName, detailName, menuName);
 	}
 	@Override
 	public List<MenuVO> top10Like() throws Exception{
@@ -66,5 +66,11 @@ public class MenuServiceImpl implements MenuService{
 		//show top 10
 		list=list.subList(0, 9);
 		return list;
+	}
+
+	//cafe and detail search
+	@Override
+	public List<MenuVO> searchMenu(String cafeName, String detailName, String keyword) throws Exception {
+		return menuDao.searchMenu(cafeName, detailName, keyword);
 	}
 }

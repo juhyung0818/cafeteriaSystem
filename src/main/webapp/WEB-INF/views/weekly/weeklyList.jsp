@@ -89,340 +89,596 @@ a#add_pop:hover {
 	visibility: visible;
 	opacity: 1;
 }
-
-.popup {
-	background-color: #fff;
-	border: 3px solid #fff;
-	display: inline-block;
-	left: 50%;
-	opacity: 0;
-	padding: 15px;
-	position: fixed;
-	text-align: justify;
-	top: 40%;
-	visibility: hidden;
-	z-index: 10;
-	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	-ms-border-radius: 10px;
-	-o-border-radius: 10px;
-	border-radius: 10px;
-	-webkit-box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
-	-moz-box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
-	-ms-box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
-	-o-box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
-	box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
-	-webkit-transition: opacity .5s, top .5s;
-	-moz-transition: opacity .5s, top .5s;
-	-ms-transition: opacity .5s, top .5s;
-	-o-transition: opacity .5s, top .5s;
-	transition: opacity .5s, top .5s;
-}
-
-.overlay:target+.popup {
-	top: 50%;
-	opacity: 1;
-	visibility: visible;
-}
-
-.close {
-	background-color: rgba(0, 0, 0, 0.8);
-	height: 30px;
-	line-height: 30px;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	text-decoration: none;
-	top: -15px;
-	width: 30px;
-	-webkit-border-radius: 15px;
-	-moz-border-radius: 15px;
-	-ms-border-radius: 15px;
-	-o-border-radius: 15px;
-	border-radius: 15px;
-}
-
-.close:before {
-	color: rgba(255, 255, 255, 0.9);
-	content: "X";
-	font-size: 24px;
-	text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
-}
-
-.close:hover {
-	background-color: rgba(64, 128, 128, 0.8);
-}
-
-.popup p, .popup div {
-	margin-bottom: 10px;
-}
-
-.popup label {
-	display: inline-block;
-	text-align: left;
-	width: 120px;
-}
-
-.popup input[type="text"], .popup input[type="password"] {
-	border: 1px solid;
-	border-color: #999 #ccc #ccc;
-	margin: 0;
-	padding: 2px;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	-ms-border-radius: 2px;
-	-o-border-radius: 2px;
-	border-radius: 2px;
-}
-
-.popup input[type="text"]:hover, .popup input[type="password"]:hover {
-	border-color: #555 #888 #888;
-}
+		/* The Modal (background) */
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			padding-top: 20%; /* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0, 0, 0); /* Fallback color */
+			background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+		}
+		
+		/* Modal Content */
+		.modal-content {
+			position: relative;
+			background-color: #fefefe;
+			margin: auto;
+			padding: 0;
+			border: 1px solid #888;
+			width: 80%;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+				rgba(0, 0, 0, 0.19);
+			-webkit-animation-name: animatetop;
+			-webkit-animation-duration: 0.4s;
+			animation-name: animatetop;
+			animation-duration: 0.4s
+		}
+		
+		/* Add Animation */
+		@
+		-webkit-keyframes animatetop {
+			from {
+				top: -300px;
+				opacity: 0
+			}
+		
+			to {
+				top: 0;
+				opacity: 1
+			}
+		}
+		@
+		keyframes animatetop {
+			from {
+				top: -300px;
+				opacity: 0
+			}
+			to {
+				top: 0;
+				opacity: 1
+			}
+		}
+		
+		/* The Close Button */
+		.close {
+			color: white;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+		
+		.close:hover, .close:focus {
+			color: #EF6C00;
+			text-decoration: none;
+			cursor: pointer;
+		}
+		
+		.modal-header {
+			padding: 2px 16px;
+			background-color: #EF6C00;
+			color: white;
+		}
+		
+		.modal-body {
+			padding: 2px 16px;
+		}
+		
+		.modal-footer {
+			padding: 2px 16px;
+			background-color: #EF6C00;
+			color: white;
+		}
 </style>
+
 <body>
+
+	<!-- 월요일 -->
 	<div align="center">
 		<h5>월</h5>
 		<table class="tg">
-			<c:forEach items="${menus}" var="menuVO">
 			<tr>
-				<td>${menuVO.menuName}(${menuVO.detailName}) </td>
-				<td><input type='text' name='price' value="${menuVO.price}"> </td>
-				<td>${menuVO.point} </td>
-				<td>${menuVO.likeNum} </td>
-
+			<td> 시간\코너 </td>
+			<c:forEach items="${details}" var="detailVO">
 				<td>
-					<form method="post">
-						<input type='hidden' name='cafeName' value="${menuVO.cafeName}">
-						<input type='hidden' name='menuName' value="${menuVO.menuName}">
-						<button type="submit" class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
-					</form>
+					${detailVO.detailName}
 				</td>
-				<td>
-					<form action="/menu/delete?cafeName=${menuVO.cafeName}&menuName=${menuVO.menuName}&keyword=${keyword}" method="post">
-						<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
-					</form>
-				</td>
-			</tr>
 			</c:forEach>
+			</tr>
 			<tr>
 				<th class="tg-031e">조식</th>
-				<th class="tg-031e">
-					<div class="form-group">
-						<input class="w3-input" rows="1">
-					</div>
-				</th>
-				<th class="tg-031e">
-					<div class="panel">
-						<a href="#menuadd" id="add_pop">추가</a>
-						<a href="#menuadd">삭제</a>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
 						
-					</div> 
-					<a href="#x" class="overlay" id="menuadd"></a>
-					<div class="popup">
-						<h2>메뉴추가하기</h2>
-						<p>추가 할 음식을 검색하세요</p>
-						<div>
-
-							<input type="text" id="search" value="" />
-							<input type="button" value="검색" />
-						</div>
-
-
-						<a class="close"></a>
-					</div>
-				</th>
-			</tr>
-			<tr>
-				<td class="tg-031e">중식</td>
-				<td class="tg-031e"><div class="form-group">
-						<input class="w3-input" rows="1">
-					</div></td>
-				<td class="tg-031e"><div class="panel">
-						<a href="#menuadd" id="add_pop">추가</a>
-
-					</div> <a href="#x" class="overlay" id="menuadd"></a>
-					<div class="popup">
-						<h2>메뉴추가하기</h2>
-						<p>추가 할 음식을 검색하세요</p>
-						<div>
-
-							<input type="text" id="search" value="" /> 
-							<input type="button" value="검색" />
-						</div>
-
-
-						<a class="close"></a>
-					</div></td>
-			</tr>
-			<tr>
-				<td class="tg-yw4l">석식</td>
-				<td class="tg-yw4l"><div class="form-group">
-						<input class="w3-input" rows="1">
-					</div></td>
-				<td class="tg-yw4l">
-					<div class="panel">
-						<a href="#menuadd" id="add_pop">추가</a>
-
-					</div> <a href="#x" class="overlay" id="menuadd"></a>
-					<div class="popup">
-						<h2>메뉴추가하기</h2>
-						<p>추가 할 음식을 검색하세요</p>
-						<div>
-
-							<input type="text" id="search" value="" />
-							 <input type="button" value="검색" />
-						</div>
-
-
-						<a class="close"></a>
-					</div>
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 0) 
+									&& ('${weeklyVO.wFlag.num}' == 1)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
+					</c:forEach>
 				</td>
+				</c:forEach>
 			</tr>
-
+			<tr>
+				<th class="tg-031e">중식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 1) 
+									&& ('${weeklyVO.wFlag.num}' == 1)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
+					</c:forEach>
+				</td>
+				</c:forEach>
+			</tr>
+			<tr>
+				<th class="tg-031e">석식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 2) 
+									&& ('${weeklyVO.wFlag.num}' == 1)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
+					</c:forEach>
+				</td>
+				</c:forEach>
+			</tr>
 		</table>
 	</div>
+	
+	<!-- 화요일 -->
 	<div align="center">
 		<h5>화</h5>
 		<table class="tg">
 			<tr>
+			<td> 시간\코너 </td>
+			<c:forEach items="${details}" var="detailVO">
+				<td>
+					${detailVO.detailName}
+				</td>
+			</c:forEach>
+			</tr>
+			<tr>
 				<th class="tg-031e">조식</th>
-				<th class="tg-031e"></th>
-				<th class="tg-031e"></th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 0) 
+									&& ('${weeklyVO.wFlag.num}' == 2)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-031e">중식</td>
-				<td class="tg-031e"></td>
-				<td class="tg-031e"></td>
+				<th class="tg-031e">중식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 1) 
+									&& ('${weeklyVO.wFlag.num}' == 2)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-yw4l">석식</td>
-				<td class="tg-yw4l"></td>
-				<td class="tg-yw4l"></td>
+				<th class="tg-031e">석식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 2) 
+									&& ('${weeklyVO.wFlag.num}' == 2)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
-
 		</table>
 	</div>
+	<!-- 수요일 -->
 	<div align="center">
-		<h5>수</h5>
+		<h5>월</h5>
 		<table class="tg">
 			<tr>
+			<td> 시간\코너 </td>
+			<c:forEach items="${details}" var="detailVO">
+				<td>
+					${detailVO.detailName}
+				</td>
+			</c:forEach>
+			</tr>
+			<tr>
 				<th class="tg-031e">조식</th>
-				<th class="tg-031e"></th>
-				<th class="tg-031e"></th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 0) 
+									&& ('${weeklyVO.wFlag.num}' == 3)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-031e">중식</td>
-				<td class="tg-031e"></td>
-				<td class="tg-031e"></td>
+				<th class="tg-031e">중식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 1) 
+									&& ('${weeklyVO.wFlag.num}' == 3)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-yw4l">석식</td>
-				<td class="tg-yw4l"></td>
-				<td class="tg-yw4l"></td>
+				<th class="tg-031e">석식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 2) 
+									&& ('${weeklyVO.wFlag.num}' == 3)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
-
 		</table>
 	</div>
+	<!-- 목요일 -->
 	<div align="center">
-		<h5>목</h5>
+		<h5>월</h5>
 		<table class="tg">
 			<tr>
+			<td> 시간\코너 </td>
+			<c:forEach items="${details}" var="detailVO">
+				<td>
+					${detailVO.detailName}
+				</td>
+			</c:forEach>
+			</tr>
+			<tr>
 				<th class="tg-031e">조식</th>
-				<th class="tg-031e"></th>
-				<th class="tg-031e"></th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 0) 
+									&& ('${weeklyVO.wFlag.num}' == 4)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-031e">중식</td>
-				<td class="tg-031e"></td>
-				<td class="tg-031e"></td>
+				<th class="tg-031e">중식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 1) 
+									&& ('${weeklyVO.wFlag.num}' == 4)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-yw4l">석식</td>
-				<td class="tg-yw4l"></td>
-				<td class="tg-yw4l"></td>
+				<th class="tg-031e">석식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 2) 
+									&& ('${weeklyVO.wFlag.num}' == 4)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
-
 		</table>
 	</div>
+	<!-- 금요일 -->
 	<div align="center">
 		<h5>금</h5>
 		<table class="tg">
 			<tr>
+			<td> 시간\코너 </td>
+			<c:forEach items="${details}" var="detailVO">
+				<td>
+					${detailVO.detailName}
+				</td>
+			</c:forEach>
+			</tr>
+			<tr>
 				<th class="tg-031e">조식</th>
-				<th class="tg-031e"></th>
-				<th class="tg-031e"></th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 0) 
+									&& ('${weeklyVO.wFlag.num}' == 5)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-031e">중식</td>
-				<td class="tg-031e"></td>
-				<td class="tg-031e"></td>
+				<th class="tg-031e">중식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 1) 
+									&& ('${weeklyVO.wFlag.num}' == 5)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-yw4l">석식</td>
-				<td class="tg-yw4l"></td>
-				<td class="tg-yw4l"></td>
+				<th class="tg-031e">석식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 2) 
+									&& ('${weeklyVO.wFlag.num}' == 5)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
-
 		</table>
 	</div>
+	<!-- 토요일 -->
 	<div align="center">
 		<h5>토</h5>
 		<table class="tg">
 			<tr>
+			<td> 시간\코너 </td>
+			<c:forEach items="${details}" var="detailVO">
+				<td>
+					${detailVO.detailName}
+				</td>
+			</c:forEach>
+			</tr>
+			<tr>
 				<th class="tg-031e">조식</th>
-				<th class="tg-031e"></th>
-				<th class="tg-031e"></th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 0) 
+									&& ('${weeklyVO.wFlag.num}' == 6)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-031e">중식</td>
-				<td class="tg-031e"></td>
-				<td class="tg-031e"></td>
+				<th class="tg-031e">중식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 1) 
+									&& ('${weeklyVO.wFlag.num}' == 6)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-yw4l">석식</td>
-				<td class="tg-yw4l"></td>
-				<td class="tg-yw4l"></td>
+				<th class="tg-031e">석식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 2) 
+									&& ('${weeklyVO.wFlag.num}' == 6)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
-
 		</table>
 	</div>
+	<!-- 일요일 -->
 	<div align="center">
 		<h5>일</h5>
 		<table class="tg">
 			<tr>
+			<td> 시간\코너 </td>
+			<c:forEach items="${details}" var="detailVO">
+				<td>
+					${detailVO.detailName}
+				</td>
+			</c:forEach>
+			</tr>
+			<tr>
 				<th class="tg-031e">조식</th>
-				<th class="tg-031e"></th>
-				<th class="tg-031e"></th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 0) 
+									&& ('${weeklyVO.wFlag.num}' == 7)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-031e">중식</td>
-				<td class="tg-031e"></td>
-				<td class="tg-031e"></td>
+				<th class="tg-031e">중식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 1) 
+									&& ('${weeklyVO.wFlag.num}' == 7)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 			<tr>
-				<td class="tg-yw4l">석식</td>
-				<td class="tg-yw4l"></td>
-				<td class="tg-yw4l"></td>
+				<th class="tg-031e">석식</th>
+				<c:forEach items="${details}" var="detailVO">
+				<td>
+					<c:forEach items="${weeklis}" var="weeklyVO">
+						
+						<script type="text/javascript">
+							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
+									&& ('${weeklyVO.dateFlag.num}' == 2) 
+									&& ('${weeklyVO.wFlag.num}' == 7)){
+								document.write('${weeklyVO.menuName}');
+							}
+						</script>
+					<a href="#menuadd" id="add_pop">추가</a>
+					<a href="#x" class="overlay" id="menuadd"></a>
+					</c:forEach>
+				</td>
+				</c:forEach>
 			</tr>
 		</table>
-		<div>
-			<p>
-			<div align="right">
-				<br>
-				<button id="complete"
-					class="w3-btn w3-white w3-border w3-border-orange w3-round-xlarge">
-					전체삭제</button>
-				<button type="reset"
-					class="w3-btn w3-white w3-border w3-border-orange w3-round-xlarge">
-					등록</button>
-			</div>
-			</p>
-		</div>
 	</div>
+	
 </body>
 </html>
