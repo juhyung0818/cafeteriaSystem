@@ -122,4 +122,40 @@ public class MenuController {
 		return "redirect:/menu/list";
 	}
 	
+	/**
+	 * app : show top10 menu list order by like
+	 * @return
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.29.Tue
+	 */
+	@ResponseBody
+	@RequestMapping(value="/top10LikeApp", method=RequestMethod.POST)
+	public ResultVO<List<MenuVO>> top10LikeApp() throws Exception
+	{
+		logger.info("top 10 like..");
+		
+		List<MenuVO> list = new ArrayList<MenuVO>();
+		list = menuService.top10Like();
+		
+		return new ResultVO<>(list);
+	}
+	/**
+	 * app : show top10 menu list order by point
+	 * @return
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.29.Tue
+	 */
+	@ResponseBody
+	@RequestMapping(value="/top10PointApp", method=RequestMethod.POST)
+	public ResultVO<List<MenuVO>> top10PointApp() throws Exception
+	{
+		logger.info("top 10 like..");
+		
+		List<MenuVO> list = new ArrayList<MenuVO>();
+		list = menuService.top10Point();
+		
+		return new ResultVO<>(list);
+	}
 }

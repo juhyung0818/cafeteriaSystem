@@ -60,4 +60,16 @@ public class MenuDAOImpl implements MenuDAO{
 		session.update(namespace + ".delete", param);
 	}
 
+	@Override
+	public List<MenuVO> top10Like() throws Exception {
+		
+		return session.selectList(namespace+".top10Like");
+	}
+
+	@Override
+	public List<MenuVO> top10Point() throws Exception {
+		
+		return session.selectList(namespace+".top10Point");
+	}
+
 }

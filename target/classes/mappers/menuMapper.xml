@@ -38,4 +38,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where menuName=#{menuName} and cafeName=#{cafeName}
 	</select>
 	
+	<select id="top10Like" resultType="com.cafe.domain.MenuVO">
+		select * from menu
+		order by likeNum
+	</select>
+	
+	<select id="top10Like" resultType="com.cafe.domain.MenuVO">
+		select * from menu
+		order by point
+	</select>
 </mapper>

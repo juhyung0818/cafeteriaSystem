@@ -1,5 +1,6 @@
 package com.cafe.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -48,5 +49,22 @@ public class MenuServiceImpl implements MenuService{
 	public void deleteMenu(String cafeName, String menuName) throws Exception {
 		menuDao.deleteMenu(cafeName, menuName);
 	}
-	
+	@Override
+	public List<MenuVO> top10Like() throws Exception{
+		List<MenuVO> list = new ArrayList<>();
+		list= menuDao.top10Like();
+		//show top 10
+		list=list.subList(0, 9);
+		return list;
+	}
+
+	@Override
+	public List<MenuVO> top10Point() throws Exception {
+		
+		List<MenuVO> list = new ArrayList<>();
+		list= menuDao.top10Point();
+		//show top 10
+		list=list.subList(0, 9);
+		return list;
+	}
 }

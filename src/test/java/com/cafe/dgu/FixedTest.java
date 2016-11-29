@@ -25,37 +25,37 @@ import com.cafe.persistence.FixedDAO;
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
 public class FixedTest {
 
-	//FixedDAO생성
-	@Inject
-	private FixedDAO fixedDao;
-	//log
-	private static final Logger logger = LoggerFactory.getLogger(FixedController.class);
-	
-	//register fixed menu
-	@Test
-	public void testRegister() throws Exception{
-		FixedVO fixed = new FixedVO();
-		fixed.setCafeName("기숙사식당");
-		fixed.setMenuName("짬뽕");
-		fixedDao.register(fixed);
-	}
-	
-	//delete fixed menu
-	@Test
-	public void testDelete() throws Exception{
-		FixedVO fixed = new FixedVO();
-		fixed.setCafeName("기숙사식당");
-		fixed.setMenuName("짬뽕");
-		fixedDao.remove(fixed);
-	}
-	
-	//display fixed menu list
-	@Test
-	public void testFixedList() throws Exception{
-		String cafeName = "기숙사식당";
-		List<MenuVO> list = fixedDao.fixedList(cafeName);
-		for(int i=0; i<list.size(); i++){
-			logger.info(fixedDao.fixedList(cafeName).get(i).toString());
-		}
-	}
+//	//FixedDAO
+//	@Inject
+//	private FixedDAO fixedDao;
+//	//log
+//	private static final Logger logger = LoggerFactory.getLogger(FixedController.class);
+//	
+//	//register fixed menu
+//	@Test
+//	public void testRegister() throws Exception{
+//		FixedVO fixed = new FixedVO();
+//		fixed.setCafeName("");
+//		fixed.setMenuName("");
+//		fixedDao.register(fixed);
+//	}
+//	
+//	//delete fixed menu
+//	@Test
+//	public void testDelete() throws Exception{
+//		FixedVO fixed = new FixedVO();
+//		fixed.setCafeName("");
+//		fixed.setMenuName("");
+//		fixedDao.remove(fixed);
+//	}
+//	
+//	//display fixed menu list
+//	@Test
+//	public void testFixedList() throws Exception{
+//		String cafeName = "";
+//		List<FixedVO> list = fixedDao.fixedList(cafeName);
+//		for(int i=0; i<list.size(); i++){
+//			logger.info(fixedDao.fixedList(cafeName).get(i).toString());
+//		}
+//	}
 }
