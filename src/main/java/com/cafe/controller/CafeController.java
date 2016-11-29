@@ -36,6 +36,11 @@ public class CafeController {
 	@Inject
 	private DetailService detailService;
 	
+	/**
+	 * display cafe list
+	 * @param model
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void cafeListGET(Model model) throws Exception {
 		logger.info("Cafeteria list....");

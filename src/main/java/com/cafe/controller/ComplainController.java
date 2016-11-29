@@ -56,7 +56,7 @@ public class ComplainController {
 	
 	/**
 	 * send complain list to Client
-	 * this url use only App Application
+	 * this url use only mobile Application
 	 * @param complain
 	 * @return resultVO object
 	 * @throws Exception

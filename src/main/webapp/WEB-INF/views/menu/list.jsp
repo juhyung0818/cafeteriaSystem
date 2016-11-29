@@ -2,7 +2,7 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../include/p_header.jsp"%>
+<%@include file="../include/header.jsp"%>
 <head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -155,7 +155,7 @@ table tr:hover td {
 		<label for="menuName">menu name</label>
 		<input type="hidden" name="cafeName" value="${cafeName}"/>
 		<input type="text" name="menuName" placeholder="Menu name"/>
-		<select name="detailName" size="${detailSize}">
+		<select name="detailName" size="1">
 			<c:forEach items="${details}" var="detailVO">
         		<option>${detailVO.detailName}</option>
         	</c:forEach>

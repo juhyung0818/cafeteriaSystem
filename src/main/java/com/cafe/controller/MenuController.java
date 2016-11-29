@@ -96,21 +96,5 @@ public class MenuController {
 		rttr.addAttribute("keyword", keyword);
 		return "redirect:/menu/list";
 	}
-	
-	@RequestMapping(value = "/menu", method = RequestMethod.GET)
-	public void mainGET(Model model) throws Exception {
-		logger.info("Cafeteria register....");
-	}	
-	
-	@RequestMapping(value = "/addmenu", method = RequestMethod.GET)
-	public void addmenuGet(Model model) throws Exception {
-		logger.info("addmenu....");
-	}
-	
-	@RequestMapping(value = "/menulist", method = RequestMethod.GET)
-	public void menulistGet(Model model) throws Exception {
-		logger.info("menulist....");
-	}
-	
 
 }
