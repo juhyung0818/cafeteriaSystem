@@ -1,7 +1,5 @@
 package com.cafe.service;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +7,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.cafe.domain.CafeVO;
 import com.cafe.domain.CommentVO;
+import com.cafe.exception.NotAuthorityException;
 import com.cafe.persistence.CommentDAO;
 /**
  * 
@@ -46,7 +44,11 @@ public class CommentServiceImpl implements CommentService{
 
 	@Override
 	public void commentDelete(int commentNum, String uid) throws Exception {
-		commentDao.commentDelete(commentNum, uid);
+		
+		if(commentDao.checkAuth(commentNum, uid)>0)
+			commentDao.commentDelete(commentNum, uid);
+		else
+			throw new NotAuthorityException();
 	}
 
 	@Override

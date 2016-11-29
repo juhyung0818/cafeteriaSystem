@@ -65,4 +65,13 @@ public class CommentDAOImpl implements CommentDAO{
 		return session.selectOne(namespace+"readApp", commnetNum);
 	}
 
+	@Override
+	public int checkAuth(int commentNum, String uid) throws Exception {
+
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("commentNum", commentNum);
+		param.put("uid", uid);
+		return session.selectOne(namespace+".checkAuth", param);
+	}
+
 }

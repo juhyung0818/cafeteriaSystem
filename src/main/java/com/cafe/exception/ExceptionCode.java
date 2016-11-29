@@ -12,7 +12,9 @@ public enum ExceptionCode {
 	PRIMARY_KEY_DUPLICATE(100, "primary key duplicated"),
 	INVALID_TYPE(300, "invalid type"),
 	NOT_EXIST(400, "not exist"),
-	ACCESS_DENIED(500, "you don't have permission.");
+	ACCESS_DENIED(500, "you don't have permission."),
+	NOT_AUTHORITY(1000, "you don't have authority.")
+	;
 	
 	//fields
 	private int code;
