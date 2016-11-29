@@ -625,7 +625,7 @@ a#add_pop:hover {
 	</div>
 <!-- 일요일 -->
 	<div align="center">
-		<h5>월</h5>
+		<h5>일</h5>
 		<table class="tg">
 			<tr>
 			<td> 시간\코너 </td>
