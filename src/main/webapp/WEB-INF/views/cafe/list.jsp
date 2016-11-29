@@ -87,7 +87,7 @@
 			<c:forEach items="${cafes}" var="cafeVO">
 			<tr>
 				<td>
-					<a href="/detail/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}">
+					<a href="/detail/list?cafeName=${cafeVO.cafeName}&keyword=">
 						${cafeVO.cafeName}
 					</a>
 				</td>

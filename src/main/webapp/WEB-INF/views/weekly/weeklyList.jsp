@@ -3,7 +3,6 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Raleway">
@@ -189,6 +188,27 @@ a#add_pop:hover {
 	<div align="center">
 		<h5>월</h5>
 		<table class="tg">
+			<c:forEach items="${menus}" var="menuVO">
+			<tr>
+				<td>${menuVO.menuName}(${menuVO.detailName}) </td>
+				<td><input type='text' name='price' value="${menuVO.price}"> </td>
+				<td>${menuVO.point} </td>
+				<td>${menuVO.likeNum} </td>
+
+				<td>
+					<form method="post">
+						<input type='hidden' name='cafeName' value="${menuVO.cafeName}">
+						<input type='hidden' name='menuName' value="${menuVO.menuName}">
+						<button type="submit" class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
+					</form>
+				</td>
+				<td>
+					<form action="/menu/delete?cafeName=${menuVO.cafeName}&menuName=${menuVO.menuName}&keyword=${keyword}" method="post">
+						<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
+					</form>
+				</td>
+			</tr>
+			</c:forEach>
 			<tr>
 				<th class="tg-031e">조식</th>
 				<th class="tg-031e">
@@ -389,7 +409,6 @@ a#add_pop:hover {
 				<td class="tg-yw4l"></td>
 				<td class="tg-yw4l"></td>
 			</tr>
-
 		</table>
 		<div>
 			<p>

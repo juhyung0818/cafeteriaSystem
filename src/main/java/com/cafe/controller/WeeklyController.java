@@ -22,6 +22,7 @@ import com.cafe.domain.WeeklyVO;
 import com.cafe.flag.DateFlag;
 import com.cafe.flag.WeeklyFlag;
 import com.cafe.service.CafeService;
+import com.cafe.service.DetailService;
 import com.cafe.service.WeeklyService;
 
 /**
@@ -38,18 +39,22 @@ public class WeeklyController {
 	private WeeklyService weeklyService;
 	@Inject
 	private CafeService cafeService;
+	@Inject
+	private DetailService detailService;
 
-	@RequestMapping(value="/table", method = RequestMethod.GET)
+	@RequestMapping(value="/weeklyList", method = RequestMethod.GET)
 	public void tableGET(@RequestParam("cafeName") String cafeName, Model model) throws Exception{
 		logger.info("Weekly table...");
 		List<WeeklyVO> weeklis = weeklyService.weeklyList(cafeName);
 		model.addAttribute("weeklis", weeklis);
 		model.addAttribute("cafeName", cafeName);
-		model.addAttribute("list", cafeService.cafeList());
+		
+		
+		model.addAttribute("list", cafeService.cafeList()); // list for menu bar 
 	}
 	
 	@RequestMapping(value="/register", method = RequestMethod.POST)
-	public void registerPOST(@RequestParam("cafeName") String cafeName, 
+	public String registerPOST(@RequestParam("cafeName") String cafeName, 
 			@RequestParam("menuName") String menuName,
 			@RequestParam("wFlag") int wFlag,
 			@RequestParam("dateFlag") int dateFlag,
@@ -58,6 +63,7 @@ public class WeeklyController {
 		
 		List<WeeklyVO> list = weeklyService.weeklyList(cafeName);
 		model.addAttribute("list", list);
+		return "redirect:/weekly/weeklyList";
 	}	
 	
 	@RequestMapping(value="/delete", method = RequestMethod.POST)
@@ -74,7 +80,7 @@ public class WeeklyController {
 		weekly.setDateFlag(dateFlag);
 		weeklyService.delete(weekly);
 		rttr.addAttribute("cafeName", cafeName);
-		return "redirect:/weekly/table";
+		return "redirect:/weekly/weeklyList";
 	}
 	
 	/**

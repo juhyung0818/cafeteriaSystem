@@ -277,7 +277,7 @@ h1 {
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
 							<li class='sub'><a
-								href='/weekly/table?cafeName=${cafeVO.cafeName}'>
+								href='/weekly/weeklyList?cafeName=${cafeVO.cafeName}'>
 									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
@@ -301,14 +301,14 @@ h1 {
 					<ul>
 						<c:forEach items="${list}" var="cafeVO">
 							<li class='sub'><a
-								href='/menu/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}'>
+								href='/menu/list?cafeName=${cafeVO.cafeName}&keyword='>
 									${cafeVO.cafeName}</a></li>
 						</c:forEach>
 					</ul>
 
 				</table>
 			</li>
-			<li class='last'><a href='/cafe/list?keyword=${keyword}'>식당관리</a></li>
+			<li class='last'><a href='/cafe/list?keyword='>식당관리</a></li>
 
 			<li class='last'><a href='/complain/list'>소리함</a></li>
 		</ul>
