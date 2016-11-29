@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.cafe.domain.MenuVO;
 import com.cafe.domain.ResultVO;
 import com.cafe.domain.WeeklyVO;
 import com.cafe.flag.DateFlag;
