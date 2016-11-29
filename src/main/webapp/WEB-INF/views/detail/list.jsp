@@ -153,7 +153,7 @@ table tr:hover td {
 	<h1> DETAIL LIST </h1>
 	
 	<form action="/detail/register" method="post">
-		<label for="detailName">코너 변경</label>
+		<label for="detailName">코너 추가</label>
 		<input type="hidden" name="cafeName" value="${cafeName}">
 		<input type="text" name="detailName" placeholder="Detail name"/>
 		<input type='hidden' name='keyword' value="${keyword}">
