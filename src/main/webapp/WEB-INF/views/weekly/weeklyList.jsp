@@ -175,7 +175,11 @@ a#add_pop:hover {
 			color: white;
 		}
 </style>
-
+<script>
+	var isExist = false;
+	var menu;
+	var empty = "등록된 메뉴가 없습니다.";
+</script>
 <body>
 
 	<!-- 월요일 -->
@@ -195,17 +199,17 @@ a#add_pop:hover {
 				<c:forEach items="${details}" var="detailVO">
 				<td>
 					<c:forEach items="${weeklis}" var="weeklyVO">
-						
 						<script type="text/javascript">
+							isExist = false;
 							if(('${weeklyVO.detailName}' == '${detailVO.detailName}') 
 									&& ('${weeklyVO.dateFlag.num}' == 0) 
 									&& ('${weeklyVO.wFlag.num}' == 1)){
-								document.write('${weeklyVO.menuName}');
+								isExist = true;
+								menu = '${weeklyVO.menuName}';
 							}
 						</script>
 						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
 						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
-							
 					</c:forEach>
 				</td>
 				</c:forEach>

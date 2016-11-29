@@ -20,8 +20,6 @@
 <script
    src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
    
-<head>
-
 <title>학 식 세 끼</title>
 
 <style>
@@ -150,40 +148,46 @@ table tr:hover td {
 }
 #text1 { font-size:19pt; }
 </style>
+</head>
+
 <body>
+
    <br>
    <br>
       <h1>고정 메뉴 목록</h1>
-      <form action="/fixed/register" method="post">
-         <label for="menuName">고정 메뉴 추가</label>
-         <input type='hidden' name='cafeName' value="${cafeName}">
-         <input type='hidden' name='detailName' value="${detailName}">
-         <input type="text" name="menuName" placeholder="Write menu name"/>
-         <input type='hidden' name='keyword' value="${keyword}">
-         <button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
-         <button type="reset" class="w3-btn가 w3-white w3-border "> 취소 </button>
-      </form>
+      <table>
+      	<tr>
+	      	<td>
+		      <form action="/fixed/search" method="post">
+		         <label for="keyword">검색</label>
+		         <input type="text" name="keyword" placeholder="Write keyword name" value='${keyword}'/>
+		         <input type="hidden" name="cafeName" value="${cafeName}">
+		         <button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
+		      </form>
+	      </td>
+	      <td>
+	      	<a href="/fixed/register?cafeName=${cafeName}&keyword=">
+	      		<button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
+	      	</a>
+	      </td>
+      	</tr>
+      </table>
    
-      <form action="/fixed/search" method="post">
-         <label for="keyword">검색</label>
-         <input type='hidden' name='cafeName' value="${cafeName}">
-         <input type='hidden' name='detailName' value="${detailName}">
-         <input type='text' name='keyword' placeholder="Write menu name"/>
-         <button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
-      </form>
       <table>
          <tr>
             <th> 메뉴 이름 </th>
-            <th> 가격 </th>
             <th> 삭제 </th>
          </tr>
          <c:forEach items="${fixeds}" var="fixedVO">
          <tr>
             <td>${fixedVO.menuName}(${fixedVO.detailName}) </td>
-            <td><input type='text' name='price' value="${fixedVO.price}"> </td>
             <td>
-               <form action="/menu/delete?cafeName=${VO.cafeName}&menuName=${menuVO.menuName}&keyword=${keyword}" method="post">
-                  <button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
+               <form action="/fixed/delete" method="post">
+	               <input type="hidden" name="cafeName" value="${fixedVO.cafeName}">
+	               <input type="hidden" name="detailName" value="${fixedVO.detailName}">
+	               <input type="hidden" name="menuName" value="${fixedVO.menuName}">
+	               <input type="hidden" name="keyword" value="${keyword}">
+	               <button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
                </form>
             </td>
          </tr>

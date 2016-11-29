@@ -20,8 +20,6 @@
 <script
    src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
    
-<head>
-
 <title>학 식 세 끼</title>
 
 <style>
@@ -150,6 +148,7 @@ table tr:hover td {
 }
 #text1 { font-size:19pt; }
 </style>
+</head>
 <body>
    <br>
    <br>

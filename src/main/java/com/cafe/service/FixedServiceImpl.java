@@ -36,8 +36,8 @@ public class FixedServiceImpl implements FixedService{
 	 * @author YJH
 	 */
 	@Override
-	public void remove(FixedVO fixed) throws Exception {
-		fixedDao.remove(fixed);
+	public void delete(FixedVO fixed) throws Exception {
+		fixedDao.delete(fixed);
 	}
 
 	/**

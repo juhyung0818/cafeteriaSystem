@@ -14,7 +14,7 @@ public interface FixedDAO {
 	// fixed menu register
 	public void register(FixedVO fixed) throws Exception;
 	// fixed menu delete
-	public void remove(FixedVO fixed) throws Exception;
+	public void delete(FixedVO fixed) throws Exception;
 	// display fixed menu list
 	public List<FixedVO> fixedList(String cafeName) throws Exception;
 	//dispaly fixed menu search list

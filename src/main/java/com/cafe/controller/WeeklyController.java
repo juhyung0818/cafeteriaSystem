@@ -139,7 +139,7 @@ public class WeeklyController {
 		rttr.addAttribute("cafeName", cafeName);
 		rttr.addAttribute("detailName", detailName);
 		rttr.addAttribute("keyword", keyword);
-		return "redirect:/weekly/weeklyList";
+		return "redirect:/weekly/searchList";
 	}
 	
 	
