@@ -13,6 +13,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="dateFlag" property="dateFlag" javaType="com.cafe.flag.DateFlag"/>
 	</resultMap>
 	
+	<resultMap type="com.cafe.dto.WeeklyDTO" id="WeeklyDTO">
+		<result column="wFlag" property="wFlag" javaType="com.cafe.flag.WeeklyFlag"/>
+		<result column="dateFlag" property="dateFlag" javaType="com.cafe.flag.DateFlag"/>
+	</resultMap>
+	
 	<!-- Add weekly menu -->
 	<insert id="register">
 		insert into weekly
@@ -40,10 +45,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and wFlag=#{wFlag} and dateFlag=#{dateFlag}
 	</delete>
 
-	<select id="weeklyListApp" resultType="com.cafe.domain.MenuVO">
-		select m.cafeName, m.menuName, m.detailName, m.price, m.point, m.likeNum, m.path
+	<select id="weeklyListApp" resultMap="WeeklyDTO" >
+		select m.cafeName, m.menuName, m.detailName, m.price, m.point, m.likeNum, m.path, w.dateFlag, w.wFlag
 		from menu as m, weekly as w
 		where m.cafeName=w.cafeName and m.menuName=w.menuName
 		and w.cafeName=#{cafeName} and w.wFlag=#{wFlag} 
+		order by dateFlag
 	</select>
 </mapper>

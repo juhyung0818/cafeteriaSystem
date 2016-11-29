@@ -97,4 +97,16 @@ public class WeeklyController {
 		
 		return new ResultVO<>(list);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/list1", method=RequestMethod.POST)
+	public ResultVO<List<WeeklyDTO>> listApp1(@RequestBody WeeklyVO week) throws Exception{
+		logger.info("weekly1 list post.......");
+
+		List<WeeklyDTO> list = new ArrayList<WeeklyDTO>();
+
+		list=weeklyService.weeklyListApp(week.getCafeName(), week.getwFlag());
+		
+		return new ResultVO<>(list);
+	}
 }

@@ -72,4 +72,40 @@ public class MenuDAOImpl implements MenuDAO{
 		return session.selectList(namespace+".top10Point");
 	}
 
+	@Override
+	public void count(String cafeName, String detailName, String menuName) throws Exception {
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		
+		session.update(namespace+".count", param);
+	}
+
+	
+	@Override
+	public void discount(String cafeName, String detailName, String menuName) throws Exception {
+
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		
+		session.update(namespace+".discount", param);
+	}
+
+	@Override
+	public int checkLikeNum(String cafeName, String detailName, String menuName) throws Exception {
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		
+		int temp=session.selectOne(namespace+".checkLikeNum", param);
+		return temp;
+	}
+
+
 }

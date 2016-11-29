@@ -50,4 +50,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from menu
 		order by point
 	</select>
+	
+	<update id="count">
+		update menu set likeNum=likeNum+1
+		where cafeName=#{cafeName} and detailName=#{datailName} and menuName=#{menuName}
+	</update>
+	
+	<update id="discount">
+		update menu set likeNum=likeNum-1
+		where cafeName=#{cafeName} and detailName=#{datailName} and menuName=#{menuName}
+	</update>
+	
+	<select id="checkLikeNum" resultType="int">
+		select likeNum from menu
+		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName}
+		
+	</select>
 </mapper>
