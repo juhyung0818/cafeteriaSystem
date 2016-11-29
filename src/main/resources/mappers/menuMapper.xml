@@ -27,13 +27,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- menu search to use keyword -->
 	<select id="searchMenu" resultType="com.cafe.domain.MenuVO">
-	<![CDATA[
-		select *
-		from menu
-		where menuName like CONCAT('%', #{keyword}, '%') and cafeName=#{cafeName}
-	]]>
+		<![CDATA[
+			select *
+			from menu
+			where menuName like CONCAT('%', #{keyword}, '%') and cafeName=#{cafeName}
+		]]>
 	</select>
 	
+	<!-- menu already exist -->
 	<select id="check" resultType="int">
 		select count(*)
 		from menu

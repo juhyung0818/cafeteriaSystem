@@ -17,5 +17,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select cafeName, info
 		from cafeteria
 	</select>
+	
+	<!-- Cafe remove -->
+	<delete id="delete">
+		delete from cafeteria
+		where cafeName=#{cafeName}
+	</delete>
+	
+	<!-- cafe search to use keyword -->
+	<select id="searchCafe" resultType="com.cafe.domain.CafeVO">
+		<![CDATA[
+			select *
+			from cafeteria
+			where cafeName like CONCAT('%', #{keyword}, '%')
+		]]>
+	</select>
+	
+	<!-- cafe name already exist -->
+	<select id="check" resultType="int">
+		select count(*)
+		from cafeteria
+		where cafeName=#{cafeName}
+	</select>
 
 </mapper>
