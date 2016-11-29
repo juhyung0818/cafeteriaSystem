@@ -8,29 +8,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- fixed menu register -->
 	<insert id="register">
 		insert into fixed
-		(cafeName, menuName)
-		values (#{cafeName}, #{menuName})
+		(cafeName, detailName, menuName)
+		values (#{cafeName}, #{detailName}, #{menuName})
 	</insert>
 	
 	<!-- fixed menu delete -->
 	<delete id="delete">
 		delete from fixed
-		where cafeName=#{cafeName} and menuName=#{menuName}
+		where menuName=#{menuName} and detailName=#{detailName} and cafeName=#{cafeName}
 	</delete>
 	
-	<!-- fixed menu display -->
-<!-- 
-	<select id="fixedList" resultType="com.cafe.domain.MenuVO">
-		select m.menuName, m.point, m.likeNum, m.path
-		from fixed as f join menu as m
-		on f.menuName = m.menuName
-		where f.cafeName=#{cafeName}
-	</select>
- -->
-	<!-- display weekly menu list -->
+	<!-- display fixed menu list -->
 	<select id="fixedList" resultType="com.cafe.domain.FixedVO">
 		select *
 		from fixed
 		where cafeName=#{cafeName}
 	</select>
+
+	<!-- fixed menu search to use keyword -->
+	<select id="searchFixed" resultType="com.cafe.domain.FixedVO">
+		<![CDATA[
+			select *
+			from fixed
+			where menuName like CONCAT('%', #{keyword}, '%') and cafeName=#{cafeName}
+		]]>
+	</select>
+	
 </mapper>

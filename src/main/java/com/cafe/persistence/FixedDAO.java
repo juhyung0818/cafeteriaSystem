@@ -3,7 +3,6 @@ package com.cafe.persistence;
 import java.util.List;
 
 import com.cafe.domain.FixedVO;
-import com.cafe.domain.MenuVO;
 
 /**
  * Fixed menu dao interface
@@ -18,4 +17,6 @@ public interface FixedDAO {
 	public void remove(FixedVO fixed) throws Exception;
 	// display fixed menu list
 	public List<FixedVO> fixedList(String cafeName) throws Exception;
+	//dispaly fixed menu search list
+	public List<FixedVO> fixedSearch(String cafeName, String keyword) throws Exception;
 }
