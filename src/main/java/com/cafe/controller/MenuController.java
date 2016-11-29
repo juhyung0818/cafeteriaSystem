@@ -116,7 +116,6 @@ public class MenuController {
 	public String menuSearhPOST(@RequestParam("cafeName") String cafeName, @RequestParam("keyword") String keyword,
 			Model model, RedirectAttributes rttr) throws Exception {
 		logger.info("menu search....");
-//		menuService.searchMenu(cafeName, key);
 		rttr.addAttribute("cafeName", cafeName);
 		rttr.addAttribute("keyword", keyword);
 		return "redirect:/menu/list";
@@ -158,4 +157,5 @@ public class MenuController {
 		
 		return new ResultVO<>(list);
 	}
+
 }

@@ -10,6 +10,14 @@ import com.cafe.domain.CafeVO;
  */
 public interface CafeDAO {
 
+	//add cafe
 	public void cafeRegister(CafeVO cafe) throws Exception;
+	//display cafe list
 	public List<CafeVO> cafeList() throws Exception;
+	//remove cafe
+	public void deleteCafe(String cafeName) throws Exception;
+	//search cafe
+	public List<CafeVO> cafeSearch(String keyword) throws Exception;
+	//check cafe name
+	public int cafeCheck(String cafeName) throws Exception;
 }
