@@ -278,8 +278,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -297,8 +298,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -316,8 +318,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -326,7 +329,7 @@ a#add_pop:hover {
 	</div>
 	<!-- 수요일 -->
 	<div align="center">
-		<h5>월</h5>
+		<h5>수</h5>
 		<table class="tg">
 			<tr>
 			<td> 시간\코너 </td>
@@ -349,8 +352,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -368,8 +372,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -387,8 +392,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -397,7 +403,7 @@ a#add_pop:hover {
 	</div>
 	<!-- 목요일 -->
 	<div align="center">
-		<h5>월</h5>
+		<h5>목</h5>
 		<table class="tg">
 			<tr>
 			<td> 시간\코너 </td>
@@ -420,8 +426,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -439,8 +446,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -458,8 +466,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -491,8 +500,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -510,8 +520,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -529,8 +540,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -562,8 +574,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -581,8 +594,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -600,17 +614,18 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
 			</tr>
 		</table>
 	</div>
-	<!-- 일요일 -->
+<!-- 일요일 -->
 	<div align="center">
-		<h5>일</h5>
+		<h5>월</h5>
 		<table class="tg">
 			<tr>
 			<td> 시간\코너 </td>
@@ -633,8 +648,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -652,8 +668,9 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
@@ -671,14 +688,14 @@ a#add_pop:hover {
 								document.write('${weeklyVO.menuName}');
 							}
 						</script>
-					<a href="#menuadd" id="add_pop">추가</a>
-					<a href="#x" class="overlay" id="menuadd"></a>
+						<a href="/weekly/list?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}&keyword=
+						&wFlag=${weeklyVO.wFlag.num}&dateFlag=${weeklyVO.dateFlag.num}"> 검색 </a>
+							
 					</c:forEach>
 				</td>
 				</c:forEach>
 			</tr>
 		</table>
 	</div>
-	
 </body>
 </html>
