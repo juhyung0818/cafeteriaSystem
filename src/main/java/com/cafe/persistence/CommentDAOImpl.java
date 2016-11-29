@@ -52,14 +52,26 @@ public class CommentDAOImpl implements CommentDAO{
 	 * 2016.11.24.thu
 	 */
 	@Override
-	public void commentDelete(int commentNum) throws Exception 
+	public void commentDelete(int commentNum, String uid) throws Exception 
 	{
-		session.insert(namespace+".delete", commentNum);
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("commentNum", commentNum);
+		param.put("uid", uid);
+		session.insert(namespace+".delete", param);
 	}
 
 	@Override
 	public CommentVO read(int commnetNum) throws Exception {
 		return session.selectOne(namespace+"readApp", commnetNum);
+	}
+
+	@Override
+	public int checkAuth(int commentNum, String uid) throws Exception {
+
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("commentNum", commentNum);
+		param.put("uid", uid);
+		return session.selectOne(namespace+".checkAuth", param);
 	}
 
 }

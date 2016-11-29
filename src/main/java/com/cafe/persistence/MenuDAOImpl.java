@@ -73,6 +73,41 @@ public class MenuDAOImpl implements MenuDAO{
 		return session.selectList(namespace+".top10Point");
 	}
 
+	@Override
+	public void count(String cafeName, String detailName, String menuName) throws Exception {
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		
+		session.update(namespace+".count", param);
+	}
+
+	
+	@Override
+	public void discount(String cafeName, String detailName, String menuName) throws Exception {
+
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		
+		session.update(namespace+".discount", param);
+	}
+
+	@Override
+	public int checkLikeNum(String cafeName, String detailName, String menuName) throws Exception {
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		
+		return session.selectOne(namespace+".checkLikeNum", param);
+	}
+
+
 	/**
 	 * cafeteria + detail search
 	 */
@@ -83,6 +118,19 @@ public class MenuDAOImpl implements MenuDAO{
 		param.put("detailName", detailName);
 		param.put("keyword", keyword);
 		return session.selectList(namespace + ".searchDetailMenu", param);
+	}
+
+	@Override
+	public void setPoint(String cafeName, String detailName, String menuName, float point) throws Exception {
+
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		param.put("point", point);
+		
+		session.update(namespace+".setPoint", param);
+		
 	}
 
 }

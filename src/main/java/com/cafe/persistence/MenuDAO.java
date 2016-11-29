@@ -38,5 +38,8 @@ public interface MenuDAO {
 	 */
 	public List<MenuVO> top10Point() throws Exception;
 	
-//	public MenuVO readOne()
+	public void count(String cafeName, String detailName, String menuName)throws Exception;
+	public void discount(String cafeName, String detailName, String menuName)throws Exception;
+	public int checkLikeNum(String cafeName, String detailName, String menuName)throws Exception;
+	public void setPoint(String cafeName, String detailName, String menuName, float point)throws Exception;
 }

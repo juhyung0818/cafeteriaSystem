@@ -34,15 +34,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
-	<!-- menu search to use keyword -->
-	<select id="searchDetailMenu" resultType="com.cafe.domain.MenuVO">
-		<![CDATA[
-			select *
-			from menu
-			where menuName like CONCAT('%', #{keyword}, '%') and detailName=#{detailName} and cafeName=#{cafeName}
-		]]>
-	</select>
-	
 	<!-- menu already exist -->
 	<select id="check" resultType="int">
 		select count(*)
@@ -59,4 +50,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from menu
 		order by point
 	</select>
+	
+	<update id="count">
+		update menu set likeNum=likeNum+1
+		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName}
+	</update>
+	
+	<update id="discount">
+		update menu set likeNum=likeNum-1
+		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName}
+	</update>
+	
+	<select id="checkLikeNum" resultType="int">
+		select likeNum from menu
+		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName}
+		
+	</select>
+	<update id="setPoint">
+		update menu set point=#{point}
+		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName} 
+	</update>
 </mapper>

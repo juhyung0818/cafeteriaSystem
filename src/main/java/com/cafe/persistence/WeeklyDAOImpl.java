@@ -57,18 +57,10 @@ public class WeeklyDAOImpl implements WeeklyDAO{
 		Map<String, Object> param = new HashMap<String, Object>();
 		
 		param.put("cafeName", cafeName);
-		param.put("wFlag", wflag.toString());
-		
-		List<MenuVO> vo= session.selectList(namespace+".weeklyListApp", param);
-		
-		List<WeeklyDTO> dto =new ArrayList<>();
-		
-		for(int i=0; i<vo.size(); i++)
-		{
-			dto.get(i).setWeekly(vo.get(i));
-			dto.get(i).setwFlag(wflag);
-		}
-		return dto;
+		param.put("wFlag", wflag);
+
+		List<WeeklyDTO> list=session.selectList(namespace+".weeklyListApp", param);
+		return list;
 	}
 	
 }

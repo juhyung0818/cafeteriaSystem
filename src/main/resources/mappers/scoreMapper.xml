@@ -24,4 +24,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from score
 		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName} and uid=#{uid}
 	</select>
+	
+	<select id="getAVG" resultType="float">
+		select avg(score) from score
+		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName}	
+	</select>
+	
 </mapper>

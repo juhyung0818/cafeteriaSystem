@@ -37,19 +37,6 @@ public class ScoreDAOImpl implements ScoreDAO{
 	}
 
 	@Override
-	public void scoreDelete(ScoreVO score) throws Exception {
-		
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("cafeName", score.getCafeName());
-		param.put("detailName", score.getDetailName());
-		param.put("menuName", score.getMenuName());
-		param.put("uid", score.getUid());
-		param.put("score", score.getScore());
-		
-		session.delete(namespace+".delete", param);
-	}
-
-	@Override
 	public void scoreUpdate(ScoreVO score) throws Exception {
 
 		Map<String, Object> param = new HashMap<String, Object>();
@@ -73,5 +60,12 @@ public class ScoreDAOImpl implements ScoreDAO{
 		
 		return session.selectOne(namespace+".isScored", param);		
 	}
+
+	@Override
+	public float getAVG(ScoreVO score) throws Exception {
+		
+		return session.selectOne(namespace+".getAVG", score);
+	}
+	
 
 }

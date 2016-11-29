@@ -4,12 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cafe.domain.ResultVO;
 import com.cafe.exception.InvalidTypeException;
 import com.cafe.exception.NotAuthoriedException;
+import com.cafe.exception.NotAuthorityException;
 import com.cafe.exception.NotExistException;
 import com.cafe.exception.PrimaryKeyDuplicatedException;
 
@@ -31,7 +32,7 @@ public class CommonExceptionAdvice {
 
 		return "error_common";
 	}
-
+	
 //	@ExceptionHandler(Exception.class)
 //	private ModelAndView errorModelAndView(Exception e) {
 //
@@ -90,5 +91,15 @@ public class CommonExceptionAdvice {
 
 		return modelAndView;
 	}
+	
+	@ResponseBody
+	@ExceptionHandler(NotAuthorityException.class)
+	public ResultVO notAuthorityException(NotAuthorityException e) {
 
+		logger.error(e.getMessage());
+		ResultVO result = new ResultVO<>();
+		result.setCode(e.getExceptionCode().getCode());
+		result.setMessage(e.getExceptionCode().getMessage());
+		return result;
+	}
 }

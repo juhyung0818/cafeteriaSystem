@@ -11,7 +11,7 @@ import com.cafe.domain.CommentVO;
 public interface CommentService {
 	public void commentRegister(CommentVO comment) throws Exception;
 	public List<CommentVO> commentList(String cafeName, String menuName, String detailName) throws Exception;
-	public void commentDelete(int commentNum)throws Exception;
+	public void commentDelete(int commentNum, String uid)throws Exception;
 	
 	public CommentVO read(int commnetNum)throws Exception;
 }
