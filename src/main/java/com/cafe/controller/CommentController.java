@@ -42,8 +42,8 @@ public class CommentController {
 	 * 2016.11.24.thu
 	 */
 	@ResponseBody
-	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public ResultVO regist(@RequestBody CommentVO comment) throws Exception{
+	@RequestMapping(value="/registerApp", method=RequestMethod.POST)
+	public ResultVO registApp(@RequestBody CommentVO comment) throws Exception{
 		logger.info("comment register post.......");
 
 		commentService.commentRegister(comment);
@@ -58,8 +58,8 @@ public class CommentController {
 	 * 2016.11.24.thu
 	 */
 	@ResponseBody
-	@RequestMapping(value="/delete", method=RequestMethod.POST)
-	public ResultVO delete(@RequestBody CommentVO comment) throws Exception{
+	@RequestMapping(value="/deleteApp", method=RequestMethod.POST)
+	public ResultVO deleteApp(@RequestBody CommentVO comment) throws Exception{
 		logger.info("comment delete post.......");
 
 		commentService.commentDelete(comment.getCommentNum());
@@ -74,8 +74,8 @@ public class CommentController {
 	 * 2016.11.24.thu
 	 */
 	@ResponseBody
-	@RequestMapping(value="/list", method=RequestMethod.POST)
-	public ResultVO list(@RequestBody CommentVO comment) throws Exception{
+	@RequestMapping(value="/listApp", method=RequestMethod.POST)
+	public ResultVO listApp(@RequestBody CommentVO comment) throws Exception{
 		logger.info("comment list post.......");
 
 		List<CommentVO> list = new ArrayList<CommentVO>();

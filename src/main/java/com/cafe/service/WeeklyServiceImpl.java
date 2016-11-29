@@ -56,7 +56,8 @@ public class WeeklyServiceImpl implements WeeklyService{
 	@Override
 	public List<WeeklyDTO> weeklyListApp(String cafeName, WeeklyFlag wFlag) throws Exception {
 		
-		return weeklyDao.weeklyListApp(cafeName, wFlag) ;
+		List<WeeklyDTO> list=weeklyDao.weeklyListApp(cafeName, wFlag) ;; 
+		return list;
 	}
 
 }
