@@ -187,7 +187,7 @@ table tr:hover td {
 	               <input type="hidden" name="detailName" value="${fixedVO.detailName}">
 	               <input type="hidden" name="menuName" value="${fixedVO.menuName}">
 	               <input type="hidden" name="keyword" value="${keyword}">
-	               <button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
+	               <button type="submit" class="w3-btn w3-white w3-border btn-danger">REMOVE</button>
                </form>
             </td>
          </tr>

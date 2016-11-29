@@ -70,19 +70,28 @@ public class WeeklyController {
 	}
 	
 	@RequestMapping(value="/delete", method = RequestMethod.POST)
-	public String deletePOST(@RequestParam("cafeName") String cafeName, 
+	public String deletePOST(@RequestParam("cafeName") String cafeName,
+			@RequestParam("detailName") String detailName,
 			@RequestParam("menuName") String menuName,
-			@RequestParam("wFlag") WeeklyFlag wFlag,
-			@RequestParam("dateFlag") DateFlag dateFlag,
+			@RequestParam("wFlag") int wFlag,
+			@RequestParam("dateFlag") int dateFlag,
+			@RequestParam("keyword") String keyword,
 			Model model, RedirectAttributes rttr) throws Exception{
+		
 		logger.info("Weekly delete...");
+		
 		WeeklyVO weekly = new WeeklyVO();
 		weekly.setCafeName(cafeName);
+		weekly.setDetailName(detailName);
 		weekly.setMenuName(menuName);
-		weekly.setwFlag(wFlag);
-		weekly.setDateFlag(dateFlag);
+		weekly.setwFlag(WeeklyFlag.valueOf(wFlag));
+		weekly.setDateFlag(DateFlag.valueOF(dateFlag));
 		weeklyService.delete(weekly);
+		
+		//rediret attribute
 		rttr.addAttribute("cafeName", cafeName);
+		rttr.addAttribute("detailName", detailName);
+		rttr.addAttribute("keyword", "");
 		return "redirect:/weekly/weeklyList";
 	}
 	
