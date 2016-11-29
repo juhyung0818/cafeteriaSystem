@@ -5,15 +5,20 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cafe.domain.CafeVO;
 import com.cafe.domain.DetailVO;
+import com.cafe.domain.MenuVO;
+import com.cafe.domain.ResultVO;
 import com.cafe.service.CafeService;
 import com.cafe.service.DetailService;
 
@@ -55,5 +60,45 @@ public class CafeController {
 		model.addAttribute("details", details);
 		model.addAttribute("list", cafeService.cafeList());
 
+	}
+	/**
+	 * app : show cafeteria list
+	 * @param model
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.24.Thu
+	 */
+	@ResponseBody
+	@RequestMapping(value="/list", method=RequestMethod.POST)
+	public ResultVO<List<CafeVO>> listAll(@RequestBody MenuVO menu) throws Exception
+	{	
+		List<CafeVO> list = new ArrayList<CafeVO>();
+		list = cafeService.cafeList();
+		logger.info("cafeteria list.....");
+		return new ResultVO<>(list);
+	}
+	
+	/**
+	 * app : cafeteria register
+	 * @param model
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.24.Thu
+	 */
+	
+	/**
+	 * 
+	 * @param cafe 
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.24.Thu
+	 */
+	@ResponseBody
+	@RequestMapping(value="/register", method=RequestMethod.POST)
+	public void registerPOST(@RequestBody CafeVO cafe) throws Exception
+	{	
+		cafeService.cafeRegister(cafe);
+		logger.info("cafeteria register.....");
+		
 	}
 }

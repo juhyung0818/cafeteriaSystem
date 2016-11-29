@@ -3,14 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cafe.mapper.ComplainMapper">
-
-	<!-- Add cafe -->
-	<insert id="register">
-		insert into complain
-		(title, content, uid)
-		values (#{title}, #{content}, #{uid})
-	</insert> 	
+<mapper namespace="com.cafe.mapper.ComplainMapper">	
 	
 	<!-- display cafe list -->
 	<select id="complainList" resultType="com.cafe.domain.ComplainVO">
@@ -43,4 +36,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where complainNum=#{complainNum}
 	</update>
 
+	<select id="listApp" resultType="com.cafe.dto.ComplainDTO">
+		select complainNum, title, uid, regDate from complain
+	</select>
+	
+	<insert id="registerApp">
+		insert into complain (title, content, uid) values (#{title}, #{content}, #{uid})
+	</insert>
+	
+	<select id="check">
+		select count(*) from complain where uid=#{uid} and complainNum=#{complainNum}	
+	</select>
+	
+	<select id="isReply" resultType="String">
+		select reply from complain where complainNum=#{complainNum} 
+	</select>
 </mapper>

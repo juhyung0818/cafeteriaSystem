@@ -1,5 +1,6 @@
 package com.cafe.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,13 +9,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cafe.domain.CafeVO;
 import com.cafe.domain.DetailVO;
 import com.cafe.domain.MenuVO;
+import com.cafe.domain.ResultVO;
 import com.cafe.domain.SearchKeywordVO;
 import com.cafe.service.CafeService;
 import com.cafe.service.DetailService;
@@ -50,6 +55,26 @@ public class MenuController {
 		model.addAttribute("cafeName", cafeName);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("list", cafeService.cafeList());
+	}
+	
+	/**
+	 * app : show menu list
+	 * @param cafe
+	 * @return
+	 * @throws Exception
+	 * @author kwon
+	 * 2016.11.24.Thu
+	 */
+	@ResponseBody
+	@RequestMapping(value="/list", method=RequestMethod.POST)
+	public ResultVO<List<MenuVO>> listAll(@RequestBody CafeVO cafe) throws Exception
+	{
+		logger.info("menu list.....");
+		
+		List<MenuVO> list = new ArrayList<MenuVO>();
+		list = menuService.menuList(cafe.getCafeName());
+		
+		return new ResultVO<>(list);
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -97,20 +122,4 @@ public class MenuController {
 		return "redirect:/menu/list";
 	}
 	
-	@RequestMapping(value = "/menu", method = RequestMethod.GET)
-	public void mainGET(Model model) throws Exception {
-		logger.info("Cafeteria register....");
-	}	
-	
-	@RequestMapping(value = "/addmenu", method = RequestMethod.GET)
-	public void addmenuGet(Model model) throws Exception {
-		logger.info("addmenu....");
-	}
-	
-	@RequestMapping(value = "/menulist", method = RequestMethod.GET)
-	public void menulistGet(Model model) throws Exception {
-		logger.info("menulist....");
-	}
-	
-
 }

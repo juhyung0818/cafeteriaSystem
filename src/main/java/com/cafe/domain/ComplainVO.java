@@ -11,6 +11,8 @@ public class ComplainVO {
 	private String content;
 	private String uid;
 	private String reply;
+	private String regDate;
+	private String replyDate;
 	
 	/* getter, setter, toString methods */
 	public int getComplainNum() {
@@ -43,10 +45,26 @@ public class ComplainVO {
 	public void setRelpy(String reply) {
 		this.reply = reply;
 	}
-	
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+	public String getReplyDate() {
+		return replyDate;
+	}
+	public void setReplyDate(String replyDate) {
+		this.replyDate = replyDate;
+	}
+	public void setReply(String reply) {
+		this.reply = reply;
+	}
 	@Override
 	public String toString() {
 		return "ComplainVO [complainNum=" + complainNum + ", title=" + title + ", content=" + content + ", uid=" + uid
-				+ ", reply=" + reply + "]";
+				+ ", reply=" + reply + ", regDate=" + regDate + ", replyDate=" + replyDate + "]";
 	}
+	
+	
 }

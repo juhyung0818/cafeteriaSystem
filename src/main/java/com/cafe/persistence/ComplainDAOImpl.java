@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.cafe.domain.ComplainVO;
+import com.cafe.dto.ComplainDTO;
 /**
  * Complain board dao class
  * @author YJH
@@ -22,11 +23,6 @@ public class ComplainDAOImpl implements ComplainDAO{
 	private SqlSession session;
 	private String namespace = "com.cafe.mapper.ComplainMapper";
 	
-	@Override
-	public void register(ComplainVO complain) throws Exception {
-		session.insert(namespace + ".register", complain);
-	}
-
 	@Override
 	public List<ComplainVO> complainList() throws Exception {
 		return session.selectList(namespace + ".complainList");
@@ -58,4 +54,47 @@ public class ComplainDAOImpl implements ComplainDAO{
 		session.delete(namespace + ".delete", complainNum);
 	}
 
+	@Override
+	public List<ComplainDTO> complainListApp() throws Exception {
+	
+		List<ComplainDTO> returnList=session.selectList(namespace+".listApp");
+		
+		for (ComplainDTO complainDTO : returnList) {
+			String temp=session.selectOne(namespace+".isReply", complainDTO.getComplainNum());
+			
+			try {
+				if(temp.equals("") || temp.equals(null))
+					complainDTO.setIsReply(false);
+				else
+					complainDTO.setIsReply(true);
+			} catch (Exception e) {
+				complainDTO.setIsReply(false);
+			}
+			
+		}
+			
+		return returnList;
+	}
+
+	@Override
+	public void registerApp(ComplainVO complain) throws Exception {
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		
+		param.put("title", complain.getTitle());
+		param.put("content", complain.getContent());
+		param.put("uid", complain.getUid());
+		
+		session.insert(namespace+".registerApp", param);
+	}
+
+	@Override
+	public int complainCheck(int complainNum, String uid) throws Exception {
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("complainNum", complainNum);
+		param.put("uid", uid);
+		
+		return session.selectOne(namespace+".check", param);
+	}
 }

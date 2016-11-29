@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.cafe.domain.ComplainVO;
+import com.cafe.dto.ComplainDTO;
 import com.cafe.persistence.ComplainDAO;
 
 /**
@@ -20,11 +21,6 @@ public class ComplainServiceImpl implements ComplainService{
 	//create complain dao
 	@Inject
 	private ComplainDAO complainDao;
-	
-	@Override
-	public void register(ComplainVO complain) throws Exception {
-		complainDao.register(complain);
-	}
 
 	@Override
 	public List<ComplainVO> complainList() throws Exception {
@@ -53,6 +49,31 @@ public class ComplainServiceImpl implements ComplainService{
 	@Override
 	public void delete(int complainNum) throws Exception {
 		complainDao.delete(complainNum);
+	}
+
+	@Override
+	public List<ComplainDTO> complainListApp() throws Exception {
+		
+		return complainDao.complainListApp();
+	}
+
+	@Override
+	public void registerApp(ComplainVO complain) throws Exception {
+		
+		complainDao.registerApp(complain);
+	}
+
+	@Override
+	public void deleteApp(ComplainVO complain) throws Exception {
+		
+		int check=complainDao.complainCheck(complain.getComplainNum(), complain.getUid());
+		
+		if(check!=0)
+		{
+			complainDao.delete(complain.getComplainNum());
+		}
+		//else
+			//TODO exception
 	}
 
 }

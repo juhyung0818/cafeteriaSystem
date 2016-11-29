@@ -24,7 +24,7 @@ import com.cafe.persistence.ComplainDAO;
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
 public class ComplainTest {
 
-	//CafeDAO생성
+	//CafeDAO
 	@Inject
 	private ComplainDAO complainDao;
 	//log
@@ -38,7 +38,7 @@ public class ComplainTest {
 		complain.setContent("content");
 		complain.setUid("user");
 		
-		complainDao.register(complain);
+	//	complainDao.register(complain);
 	}
 	
 	//display complain list test

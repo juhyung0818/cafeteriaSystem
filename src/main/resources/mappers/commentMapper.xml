@@ -7,10 +7,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- register comment -->
 	<insert id="register">
-		insert into comment (cafeName, menuName, contents, uid) 
-		values (#{cafeName},#{menuName},#{contents},#{uid})
+		insert into comment (cafeName, menuName, detailName, contents, uid) 
+		values (#{cafeName},#{menuName},#{detailName}, #{contents},#{uid})
 	</insert> 	
 	
+	<!-- delete comment -->
+	<delete id="delete">
+		delete from comment where commentNum=#{commentNum}
+	</delete>
 	
+	<!-- show comment list -->
+	<select id="list" resultType="com.cafe.domain.CommentVO">
+		select * from comment where cafeName=#{cafeName} and menuName=#{menuName} and detailName=#{detailName} 
+	</select>
 
 </mapper>
