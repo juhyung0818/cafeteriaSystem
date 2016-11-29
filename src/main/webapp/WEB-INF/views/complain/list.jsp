@@ -147,16 +147,17 @@ table tr:hover td {
 </style>
 
 
-<div class="box-header with-border">
-	<h3 class="box-title">COMPLAIN LIST</h3>
-</div>
+<br>
+<br>
 <div class="box-body">
 	<table class="table table-bordered">
 		<tr>
-			<th>TITLE</th>
-			<th>CONTENT</th>
-			<th>WRITER</th>
-			<th>REPLY</th>
+			<th>제목</th>
+			<th>내용</th>
+			<th>작성자</th>
+			<th>작성시간</th>
+			<th>답변여부</th>
+			
 		</tr>
 
 		<c:forEach items="${complains}" var="complainVO">
@@ -166,6 +167,8 @@ table tr:hover td {
 					${complainVO.title} </a></td>
 			<td> "${complainVO.content}"</td>
 			<td>${complainVO.uid}</td>
+			<td>"${complainVO.regDate}"
+			
 			<td>
 				<!-- reply check null or not null -->
 				<script type = "text/javascript">
