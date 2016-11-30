@@ -7,13 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
 import com.cafe.domain.ResultVO;
-import com.cafe.exception.InvalidTypeException;
-import com.cafe.exception.NotAuthoriedException;
 import com.cafe.exception.NotAuthorityException;
-=======
->>>>>>> origin/exception
 import com.cafe.exception.NotExistException;
 import com.cafe.exception.NotExistResultException;
 import com.cafe.exception.NotExistURLException;
@@ -30,34 +25,22 @@ public class CommonExceptionAdvice {
 
 	private static final Logger logger = LoggerFactory.getLogger(CommonExceptionAdvice.class);
 
-	// @ExceptionHandler(Exception.class)
-	public String common(Exception e) {
+	@ExceptionHandler(Exception.class)
+	private ModelAndView errorModelAndView(Exception e) {
 
-		//error log
-		logger.info(e.toString());
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/error_common");
+		modelAndView.addObject("exception", e);
 
-		return "/exception/error_common";
+		return modelAndView;
 	}
-<<<<<<< HEAD
-	
-//	@ExceptionHandler(Exception.class)
-//	private ModelAndView errorModelAndView(Exception e) {
-//
-//		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.setViewName("/error_common");
-//		modelAndView.addObject("exception", e);
-//
-//		return modelAndView;
-//	}
 
-=======
 
 	/**
 	 * alreay exist object 
 	 * @param e
 	 * @author YJH
 	 */
->>>>>>> origin/exception
 	@ResponseBody
 	@ExceptionHandler(PrimaryKeyDuplicatedException.class)
 	public ModelAndView highfiveException(PrimaryKeyDuplicatedException e) {

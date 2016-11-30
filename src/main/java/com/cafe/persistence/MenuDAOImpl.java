@@ -121,28 +121,27 @@ public class MenuDAOImpl implements MenuDAO{
 		return session.selectList(namespace + ".searchDetailMenu", param);
 	}
 
-<<<<<<< HEAD
 	@Override
 	public void setPoint(String cafeName, String detailName, String menuName, float point) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		param.put("point", point);
 
-=======
+		session.update(namespace + ".setPoint", param);
+	}
+
 	/**
 	 * menu price modify
 	 * @author YJH
 	 */
 	@Override
 	public void modify(String cafeName, String detailName, String menuName, int price) throws Exception {
->>>>>>> origin/exception
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("cafeName", cafeName);
 		param.put("detailName", detailName);
 		param.put("menuName", menuName);
-<<<<<<< HEAD
-		param.put("point", point);
-		
-		session.update(namespace+".setPoint", param);
-		
-=======
 		param.put("price", price);
 		session.update(namespace + ".modify", param);
 	}
@@ -153,7 +152,6 @@ public class MenuDAOImpl implements MenuDAO{
 		param.put("cafeName", cafeName);
 		param.put("detailName", detailName);
 		return session.selectList(namespace +".menuDetailList", param);
->>>>>>> origin/exception
 	}
 
 }
