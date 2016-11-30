@@ -74,4 +74,9 @@ public class CommentDAOImpl implements CommentDAO{
 		return session.selectOne(namespace+".checkAuth", param);
 	}
 
+	@Override
+	public void commentDelete(int commentNum) throws Exception {
+		session.delete(namespace + ".deleteAdmin", commentNum);
+	}
+
 }

@@ -154,4 +154,13 @@ public class MenuDAOImpl implements MenuDAO{
 		return session.selectList(namespace +".menuDetailList", param);
 	}
 
+	@Override
+	public MenuVO getMenu(String cafeName, String detailName, String menuName) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		return session.selectOne(namespace + ".getMenu", param);
+	}
+
 }

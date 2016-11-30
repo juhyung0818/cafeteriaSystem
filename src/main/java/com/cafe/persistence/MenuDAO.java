@@ -49,4 +49,10 @@ public interface MenuDAO {
 	 * @author YJH
 	 */
 	public void modify(String cafeName, String detailName, String menuName, int price) throws Exception;
+	
+	/**
+	 * get a menu data all
+	 * @author YJH
+	 */
+	public MenuVO getMenu(String cafeName, String detailName, String menuName) throws Exception;
 }

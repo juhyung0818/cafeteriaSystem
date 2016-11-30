@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.CafeVO;
+import com.cafe.domain.CommentVO;
 import com.cafe.domain.DetailVO;
 import com.cafe.domain.MenuVO;
 import com.cafe.domain.ResultVO;
 import com.cafe.domain.SearchKeywordVO;
 import com.cafe.service.CafeService;
+import com.cafe.service.CommentService;
 import com.cafe.service.DetailService;
 import com.cafe.service.MenuService;
 
@@ -42,6 +44,8 @@ public class MenuController {
 	private DetailService detailService;
 	@Inject
 	private CafeService cafeService;
+	@Inject
+	private CommentService commentService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void menuListGET(@RequestParam("cafeName") String cafeName,
@@ -190,4 +194,26 @@ public class MenuController {
 //		MenuVO returnMenu=menuService.
 //		return new ResultVO<>();
 //	}
+	
+	/**
+	 * web : admin read comment of menu
+	 * @param comment
+	 * @throws Exception
+	 * @author YJH
+	 */
+	@RequestMapping(value="/read", method=RequestMethod.GET)
+	public void readWeb(@RequestParam("cafeName") String cafeName,
+			@RequestParam("detailName") String detailName,
+			@RequestParam("menuName") String menuName,
+			Model model)throws Exception{
+		logger.info("menu read get.......");
+		
+		//comments of a menu
+		List<CommentVO> comments = commentService.commentList(cafeName, menuName, detailName);
+		model.addAttribute("comments", comments);
+		// select menu to show comment
+		MenuVO menu = menuService.getMenu(cafeName, detailName, menuName);
+		model.addAttribute("menu", menu);
+		
+	}	
 }

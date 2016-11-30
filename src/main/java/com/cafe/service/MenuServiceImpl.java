@@ -112,4 +112,10 @@ public class MenuServiceImpl implements MenuService{
 		menuDao.modify(cafeName, detailName, menuName, price);
 		
 	}
+
+	@Override
+	public MenuVO getMenu(String cafeName, String detailName, String menuName) throws Exception {
+		return menuDao.getMenu(cafeName, detailName, menuName)
+				;
+	}
 }

@@ -59,6 +59,7 @@ public class MenuTest {
 	}
 	
 	/**
+	 * test search menu
 	 * @throws Exception
 	 */
 	@Test
@@ -68,5 +69,15 @@ public class MenuTest {
 		for(int i=0; i<list.size(); i++){
 			logger.info(list.get(i).toString());
 		}
+	}
+	
+	/**
+	 * get a menu data
+	 * @throws Exception
+	 */
+	@Test
+	public void testGetMenu() throws Exception{
+		MenuVO menu = menuDao.getMenu("기숙사식당", "뷔페", "조식뷔페");
+		logger.info(menu.toString());
 	}
 }

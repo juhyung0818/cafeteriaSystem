@@ -14,4 +14,6 @@ public interface CommentService {
 	public void commentDelete(int commentNum, String uid)throws Exception;
 	
 	public CommentVO read(int commnetNum)throws Exception;
+	//admin delete comment
+	public void commentDelete(int commentNum)throws Exception;
 }

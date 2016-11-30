@@ -1,13 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
-   
 <head>
 <script type="text/javascript"
    src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-   
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
@@ -19,10 +16,11 @@
 </script>
 <script
    src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-   
-<title>학 식 세 끼</title>
+</head>
+<html>
+<style type="text/css">
 
-<style>
+
 table a:link {
    color: #666;
    font-weight: bold;
@@ -41,7 +39,7 @@ table a:active, table a:hover {
 }
 
 table {
-   width: 1000px;
+   width: 600px;
    font-family: Arial, Helvetica, sans-serif;
    color: #666;
    font-size: 14px;
@@ -146,74 +144,38 @@ table tr:hover td {
       to(#f0f0f0));
    background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
-#text1 { font-size:19pt; }
 </style>
-</head>
 <body>
-   <br>
-   <br>
-   <form action="/menu/register" method="post">
-        <label for="cafeName">메뉴 추가</label>
-        <input type="text" name="menuName" placeholder="Write menu name"/>
-        <select  name = "detailName" size = "1">
-        	<c:forEach items="${details}" var="detailVO">
-        		<option> ${detailVO.detailName}</option>
-        	</c:forEach>
-		</select>
-        <input type="text" name="price" placeholder="Write price"/>
-		<input type="hidden" name="cafeName" value="${cafeName}"/>
-        <input type='hidden' name='keyword' value="${keyword}">
-        <button type="submit" class="w3-btn w3-white w3-border "> 추가 </button>
-		<button type="reset" class="w3-btn w3-white w3-border "> 취소 </button>
-	</form>
-   
-      
-      <p><h1>메뉴 목록</h1>
-      <form action="/menu/search" method="post">
-         <label for="keyword">검색</label>
-         <input type="hidden" name="cafeName" value="${cafeName}"/>
-         <input type="text" name="keyword" placeholder="Write keyword name" value="${keyword}"/>
-         <button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
-      </form></p>
-      <table>
-         <tr>
-            <th> 메뉴 이름 </th>
-            <th> 가격 </th>
-            <th> 평점 </th>
-            <th> 좋아요 수 </th>
-            <th> 가격변경 </th>
-            <th> 삭제 </th>
-         </tr>
-         <c:forEach items="${menus}" var="menuVO">
-         <tr>
-            <td>
-            	<a href="/menu/read?cafeName=${menuVO.cafeName}&detailName=${menuVO.detailName}&menuName=${menuVO.menuName}"> 
-            		${menuVO.menuName}(${menuVO.detailName}) </a>
-            </td>
-            <td>
-               <form action="/menu/modify"  method="post">
-	            <input type='text' name='price' value="${menuVO.price}"> </td>
-            <td>${menuVO.point} </td>
-            <td>${menuVO.likeNum} </td>
+<br>
+<br>
+  <div align="center">
+   <table>
+  <tr>
+    <th class="tg-031e">제목</th>
+    <th class="tg-031e" colspan="2"><input type="text"  name='title'
+            " value="${noticeVO.title}" size=50 readonly="readonly"></th>
+            <td>${noticeVO.regDate}</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">내용</td>
+    <td class="tg-031e" colspan="2"><textarea class="form-control" name="content" cols=60 rows="3"
+            readonly="readonly">${noticeVO.content}</textarea></td>
+  </tr>
 
-            <td>
-                  <input type='hidden' name='cafeName' value="${menuVO.cafeName}">
-                  <input type='hidden' name='detailName' value="${menuVO.detailName}">
-                  <input type='hidden' name='menuName' value="${menuVO.menuName}">
-                  <input type='hidden' name='keyword' value="${keyword}">
-                  <button type="submit" class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
-               </form>
-            </td>
-            <td>
-               <form action="/menu/delete" method="post">
-               		<input type='hidden' name='cafeName' value="${menuVO.cafeName}">
-                  	<input type='hidden' name='detailName' value="${menuVO.detailName}">
-                  	<input type='hidden' name='menuName' value="${menuVO.menuName}">
-                  	<input type='hidden' name='keyword' value="${keyword}">
-                  	<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
-               </form>
-            </td>
-         </tr>
-         </c:forEach>
-      </table>
+   
+</table>
+<br>
+<br>
+   <div>
+      <form action="/notice/delete?complainNum=${noticeVO.noticeNum}"
+         method="post">
+         <button type="submit" class="w3-btn w3-white w3-border">글 삭제</button>
+      </form>
+      <a href="/notice/list">
+         <button type="submit" class="w3-btn w3-white w3-border">뒤로가기</button>
+      </a>
+   </div>
+</div>
+
 </body>
+</html>

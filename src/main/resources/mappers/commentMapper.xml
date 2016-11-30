@@ -7,18 +7,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- register comment -->
 	<insert id="register">
-		insert into comment (cafeName, menuName, detailName, contents, uid) 
-		values (#{cafeName},#{menuName},#{detailName}, #{contents},#{uid})
+		insert into comment (cafeName, detailName, menuName, contents, uid) 
+		values (#{cafeName},#{detailName}, #{menuName}, #{contents},#{uid})
 	</insert> 	
 	
-	<!-- delete comment -->
+	<!-- user delete comment -->
 	<delete id="delete">
-		delete from comment where commentNum=#{commentNum} and uid=#{uid}
+		delete from comment 
+		where commentNum=#{commentNum} and uid=#{uid}
 	</delete>
 	
-	<!-- show comment list -->
+	<!-- comment list all about a menu -->
 	<select id="list" resultType="com.cafe.domain.CommentVO">
-		select * from comment where cafeName=#{cafeName} and menuName=#{menuName} and detailName=#{detailName} 
+		select * from comment 
+		where cafeName=#{cafeName} and menuName=#{menuName} and detailName=#{detailName}
+		order by regDate desc 
 	</select>
 	
 	<select id="readOne">
@@ -29,4 +32,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="checkAuth" resultType="int">
 		select count(*) from comment where commentNum=#{commentNum} and uid=#{uid}
 	</select>
+	
+	<!-- admin delete comment -->
+	<delete id="deleteAdmin">
+		delete from comment 
+		where commentNum=#{commentNum}
+	</delete>
 </mapper>

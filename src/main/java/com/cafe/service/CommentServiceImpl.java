@@ -57,4 +57,13 @@ public class CommentServiceImpl implements CommentService{
 		return commentDao.read(commnetNum);
 	}
 
+	/**
+	 * @author YJH
+	 */
+	@Override
+	public void commentDelete(int commentNum) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

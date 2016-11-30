@@ -18,4 +18,6 @@ public interface CommentDAO {
 	public CommentVO read(int commnetNum)throws Exception;
 	
 	public int checkAuth(int commentNum, String uid) throws Exception;
+	//admin delete comment
+	public void commentDelete(int commentNum)throws Exception;
 }

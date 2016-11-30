@@ -314,6 +314,7 @@ h1 {
 			</li>
 			<li class='last'><a href='/cafe/list?keyword=${keyword}'>식당관리</a></li>
 			<li class='last'><a href='/complain/list'>소리함</a></li>
+			<li class='last'><a href='/notice/list'>공지사항</a></li>
 		</ul>
 	</div>
 

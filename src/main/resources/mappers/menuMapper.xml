@@ -83,4 +83,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update menu set point=#{point}
 		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName} 
 	</update>
+	
+	<!-- get a menu data -->
+	<select id="getMenu" resultType="com.cafe.domain.MenuVO">
+		select * from menu
+		where menuName=#{menuName} and detailName=#{detailName} and cafeName=#{cafeName}
+	</select>
 </mapper>
