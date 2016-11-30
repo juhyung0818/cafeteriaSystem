@@ -16,4 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserNick" resultType="String">
 		select nick from user where uid=#{uid}
 	</select>
+	
+	<select id="login" resultType="com.cafe.domain.AdminVO">
+		select uid, upw from admin where uid=#{uid} and upw=#{upw}
+	</select>
 </mapper>

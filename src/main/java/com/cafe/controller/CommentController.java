@@ -75,7 +75,7 @@ public class CommentController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/listApp", method=RequestMethod.POST)
-	public ResultVO listApp(@RequestBody CommentVO comment) throws Exception{
+	public ResultVO<List<CommentVO>> listApp(@RequestBody CommentVO comment) throws Exception{
 		logger.info("comment list post.......");
 
 		List<CommentVO> list = new ArrayList<CommentVO>();

@@ -4,7 +4,9 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.cafe.domain.AdminVO;
 import com.cafe.domain.UserVO;
+import com.cafe.dto.LoginDTO;
 import com.cafe.persistence.UserDAO;
 
 @Service
@@ -25,6 +27,12 @@ public class UserServiceImpl implements UserService{
 		if(userDao.check(user)<1)
 			userDao.register(user);
 			
+	}
+
+	@Override
+	public AdminVO login(LoginDTO dto) throws Exception {
+
+		return userDao.login(dto);
 	}
 
 }

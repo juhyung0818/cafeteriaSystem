@@ -52,12 +52,12 @@ public class FixedController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/listApp", method=RequestMethod.POST)
-	public ResultVO listApp(@RequestBody FixedVO fix) throws Exception{
+	public ResultVO<List<MenuVO>> listApp(@RequestBody FixedVO fix) throws Exception{
 		logger.info("fixed menu list post.......");
 
-		List<FixedVO> list = new ArrayList<FixedVO>();
+		List<MenuVO> list = new ArrayList<MenuVO>();
 
-		list=fixedService.fixedList(fix.getCafeName());
+		list=fixedService.fixedListApp(fix.getCafeName());
 		return new ResultVO<>(list);
 	}
 	

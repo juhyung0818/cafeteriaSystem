@@ -5,7 +5,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.cafe.domain.AdminVO;
 import com.cafe.domain.UserVO;
+import com.cafe.dto.LoginDTO;
 
 @Repository
 public class UserDAOImpl implements UserDAO{
@@ -30,5 +32,11 @@ public class UserDAOImpl implements UserDAO{
 	public String getUserNick(String uid) throws Exception {
 		
 		return session.selectOne(namespace+".getUserNick", uid);
+	}
+
+	@Override
+	public AdminVO login(LoginDTO dto) throws Exception {
+
+		return session.selectOne(namespace+".login", dto);
 	}
 }

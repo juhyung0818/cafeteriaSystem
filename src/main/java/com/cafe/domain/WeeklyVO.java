@@ -18,6 +18,7 @@ public class WeeklyVO {
 	private String detailName;
 	private	WeeklyFlag wFlag;
 	private DateFlag dateFlag;
+	private String uid;
 	
 	/* getter, setter methods */
 	public String getCafeName() {
@@ -50,10 +51,17 @@ public class WeeklyVO {
 	public void setDateFlag(DateFlag dateFlag) {
 		this.dateFlag = dateFlag;
 	}
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
 	@Override
 	public String toString() {
 		return "WeeklyVO [cafeName=" + cafeName + ", menuName=" + menuName + ", detailName=" + detailName + ", wFlag="
-				+ wFlag + ", dateFlag=" + dateFlag + "]";
+				+ wFlag + ", dateFlag=" + dateFlag + ", uid=" + uid + "]";
 	}
 	
+
 }

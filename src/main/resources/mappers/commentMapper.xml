@@ -19,9 +19,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- comment list all about a menu -->
 	<select id="list" resultType="com.cafe.domain.CommentVO">
-		select * from comment 
-		where cafeName=#{cafeName} and menuName=#{menuName} and detailName=#{detailName}
-		order by regDate desc 
+		select c.commentNum, c.cafeName, c.detailName, c.menuName, c.contents, c.regDate, u.uid, u.nick
+		from comment as c, user as u 
+		where c.uid=u.uid 
+		and cafeName=#{cafeName} and menuName=#{menuName} and detailName=#{detailName}
+		order by c.regDate desc
 	</select>
 	
 	<select id="readOne">

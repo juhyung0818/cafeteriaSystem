@@ -3,6 +3,7 @@ package com.cafe.service;
 import java.util.List;
 
 import com.cafe.domain.FixedVO;
+import com.cafe.domain.MenuVO;
 
 /**
  * Fixed menu service interface
@@ -19,4 +20,6 @@ public interface FixedService {
 	public List<FixedVO> fixedList(String cafeName) throws Exception;
 	//dispaly fixed menu search list
 	public List<FixedVO> fixedSearch(String cafeName, String keyword) throws Exception;
+	
+	public List<MenuVO> fixedListApp(String cafeName) throws Exception;
 }

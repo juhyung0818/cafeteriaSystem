@@ -21,6 +21,30 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<beans:bean id="loginInterceptor" class="com.cafe.interceptor.LoginInterceptor">
+	</beans:bean>
+	
+	<beans:bean id="authInterceptor" class="com.cafe.interceptor.AuthInterceptor">
+	</beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/loginPost"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/cafe/*"/>
+			<mapping path="/complain/*"/>
+			<mapping path="/detail/*"/>
+			<mapping path="/fixed/*"/>
+			<mapping path="/menu/*"/>
+			<mapping path="/notice/*"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	
 	<context:component-scan base-package="com.cafe.controller" />
 	
 	

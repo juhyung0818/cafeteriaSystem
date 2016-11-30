@@ -40,6 +40,7 @@ public class WeeklyController {
 	//use log4j
 	private static final Logger logger = LoggerFactory.getLogger(WeeklyController.class);
 	//inject needed service 
+	
 	@Inject
 	private WeeklyService weeklyService;
 	@Inject
@@ -48,7 +49,6 @@ public class WeeklyController {
 	private MenuService menuService;
 	@Inject
 	private DetailService detailService;
-
 
 	@RequestMapping(value="/weeklyList", method = RequestMethod.GET)
 	public void weeklyListGET(@RequestParam("cafeName") String cafeName,
@@ -114,22 +114,12 @@ public class WeeklyController {
 
 		List<WeeklyDTO> list = new ArrayList<WeeklyDTO>();
 
-		list=weeklyService.weeklyListApp(week.getCafeName(), week.getwFlag());
+		list=weeklyService.weeklyListApp(week.getCafeName(), week.getwFlag(), week.getUid());
 		
 		return new ResultVO<>(list);
 	}
 	
-	@ResponseBody
-	@RequestMapping(value="/list1", method=RequestMethod.POST)
-	public ResultVO<List<WeeklyDTO>> listApp1(@RequestBody WeeklyVO week) throws Exception{
-		logger.info("weekly1 list post.......");
-
-		List<WeeklyDTO> list = new ArrayList<WeeklyDTO>();
-
-		list=weeklyService.weeklyListApp(week.getCafeName(), week.getwFlag());
-		
-		return new ResultVO<>(list);
-	}
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void weeklySearchListGET(@RequestParam("cafeName") String cafeName, 
 			@RequestParam("detailName") String detailName,

@@ -35,7 +35,4 @@ public class LikeDAOImpl implements LikeDAO{
 		session.insert(namespace+".delete", like);
 	}
 	
-	
-
-	
 }

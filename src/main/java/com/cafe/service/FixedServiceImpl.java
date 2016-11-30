@@ -75,4 +75,10 @@ public class FixedServiceImpl implements FixedService{
 		}
 	}
 
+	@Override
+	public List<MenuVO> fixedListApp(String cafeName) throws Exception {
+
+		return fixedDao.fixedListApp(cafeName);
+	}
+
 }

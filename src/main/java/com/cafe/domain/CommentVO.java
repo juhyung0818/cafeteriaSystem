@@ -9,6 +9,7 @@ public class CommentVO {
 	private String contents;
 	private String uid;
 	private int likeNum;
+	private String name;
 	private String regDate;
 	
 	/* getter, setter, toString method */
@@ -53,6 +54,12 @@ public class CommentVO {
 	}
 	public void setLikeNum(int likeNum) {
 		this.likeNum = likeNum;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getRegDate() {
 		return regDate;

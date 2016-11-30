@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.cafe.domain.FixedVO;
+import com.cafe.domain.MenuVO;
 
 /**
  * Fixed menu dao class
@@ -47,6 +48,12 @@ public class FixedDAOImpl implements FixedDAO{
 		return session.selectList(namespace + ".searchFixed", param);
 	}
 
+	@Override
+	public List<MenuVO> fixedListApp(String cafeName) throws Exception {
+
+		return session.selectList(namespace+".fixedListApp", cafeName);
+	}
+	
 	@Override
 	public int check(FixedVO fixed) throws Exception {
 		return session.selectOne(namespace + ".check", fixed);
