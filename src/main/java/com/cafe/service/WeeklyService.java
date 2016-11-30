@@ -17,5 +17,5 @@ public interface WeeklyService {
 	// weekly list
 	public List<WeeklyVO> weeklyList(String cafeName) throws Exception;
 	
-	public List<WeeklyDTO> weeklyListApp(String cafeName, WeeklyFlag wFlag) throws Exception;
+	public List<WeeklyDTO> weeklyListApp(String cafeName, WeeklyFlag wFlag, String uid) throws Exception;
 }

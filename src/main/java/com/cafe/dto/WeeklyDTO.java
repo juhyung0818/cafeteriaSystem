@@ -13,8 +13,9 @@ public class WeeklyDTO {
    private float point;
    private int likeNum;
    private String path;
-   private   WeeklyFlag wFlag;
+   private WeeklyFlag wFlag;
    private DateFlag dateFlag;
+   private boolean isLike;
    
    public String getCafeName() {
       return cafeName;
@@ -70,13 +71,19 @@ public class WeeklyDTO {
    public void setDateFlag(DateFlag dateFlag) {
       this.dateFlag = dateFlag;
    }
-   @Override
-   public String toString() {
-      return "WeeklyDTO [cafeName=" + cafeName + ", menuName=" + menuName + ", detailName=" + detailName + ", price="
-            + price + ", point=" + point + ", likeNum=" + likeNum + ", path=" + path + ", wFlag=" + wFlag
-            + ", dateFlag=" + dateFlag + "]";
-   }
-   
-   
+	public boolean getIsLike() {
+		return isLike;
+	}
+	public void setIsLike(boolean isLike) {
+		this.isLike = isLike;
+	}
+	@Override
+	public String toString() {
+		return "WeeklyDTO [cafeName=" + cafeName + ", menuName=" + menuName + ", detailName=" + detailName + ", price="
+				+ price + ", point=" + point + ", likeNum=" + likeNum + ", path=" + path + ", wFlag=" + wFlag
+				+ ", dateFlag=" + dateFlag + ", isLike=" + isLike + "]";
+	}
+	
+	
       
 }

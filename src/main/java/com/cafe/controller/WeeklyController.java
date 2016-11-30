@@ -40,6 +40,7 @@ public class WeeklyController {
 	//use log4j
 	private static final Logger logger = LoggerFactory.getLogger(WeeklyController.class);
 	//inject needed service 
+	
 	@Inject
 	private WeeklyService weeklyService;
 	@Inject
@@ -48,7 +49,6 @@ public class WeeklyController {
 	private MenuService menuService;
 	@Inject
 	private DetailService detailService;
-
 
 	@RequestMapping(value="/weeklyList", method = RequestMethod.GET)
 	public void weeklyListGET(@RequestParam("cafeName") String cafeName,
@@ -114,7 +114,7 @@ public class WeeklyController {
 
 		List<WeeklyDTO> list = new ArrayList<WeeklyDTO>();
 
-		list=weeklyService.weeklyListApp(week.getCafeName(), week.getwFlag());
+		list=weeklyService.weeklyListApp(week.getCafeName(), week.getwFlag(), week.getUid());
 		
 		return new ResultVO<>(list);
 	}
