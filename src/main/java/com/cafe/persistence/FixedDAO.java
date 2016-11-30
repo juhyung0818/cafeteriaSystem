@@ -2,6 +2,7 @@ package com.cafe.persistence;
 
 import java.util.List;
 
+import com.cafe.domain.DetailVO;
 import com.cafe.domain.FixedVO;
 import com.cafe.domain.MenuVO;
 
@@ -20,6 +21,9 @@ public interface FixedDAO {
 	public List<FixedVO> fixedList(String cafeName) throws Exception;
 	//dispaly fixed menu search list
 	public List<FixedVO> fixedSearch(String cafeName, String keyword) throws Exception;
-	
+
 	public List<MenuVO> fixedListApp(String cafeName) throws Exception;
+	//check already exist
+	public int check(FixedVO fixed) throws Exception;
+	
 }

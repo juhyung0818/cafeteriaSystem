@@ -153,7 +153,7 @@ table tr:hover td {
 	<h1> DETAIL LIST </h1>
 	
 	<form action="/detail/register" method="post">
-		<label for="detailName">코너 변경</label>
+		<label for="detailName">코너 추가</label>
 		<input type="hidden" name="cafeName" value="${cafeName}">
 		<input type="text" name="detailName" placeholder="Detail name"/>
 		<input type='hidden' name='keyword' value="${keyword}">
@@ -179,9 +179,11 @@ table tr:hover td {
 				${detailVO.detailName}
 			</td>
 			<td>
-				<form action="/detail/delete?cafeName=${detailVO.cafeName}&detailName=${detailVO.detailName}" method="post">
+				<form action="/detail/delete" method="post">
+					<input type="hidden" name="cafeName" value="${detailVO.cafeName}">
+					<input type="hidden" name="detailName" value="${detailVO.detailName}">
 					<input type='hidden' name='keyword' value="${keyword}">
-					<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
+					<button type="submit" class="w3-btn w3-white w3-border btn-danger">REMOVE</button>
 				</form>
 			</td>
 		</tr>

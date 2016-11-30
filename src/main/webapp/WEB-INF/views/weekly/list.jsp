@@ -155,8 +155,13 @@ table tr:hover td {
 	<br>
 	<h3>주간 메뉴</h3>
 
-	<form action="/menu/search?cafeName=${cafeName}" method="post">
-		<label for="keyword" id="text1">SEARCH</label>
+	<form action="/weekly/search" method="post">
+		<label for="keyword" id="text1">SEARCH</label>					
+			<input type='hidden' name='cafeName' value="${cafeName}">
+			<input type='hidden' name='detailName' value="${detailName}">
+			<input type='hidden' name='menuName' value="${menuName}">
+			<input type='hidden' name='wFlag' value="${wFlag}">
+			<input type='hidden' name='dateFlag' value="${dateFlag}">
 		<input type="text" name="keyword" placeholder="Write menu name" value="${keyword}"/>
 		<button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
 	</form>

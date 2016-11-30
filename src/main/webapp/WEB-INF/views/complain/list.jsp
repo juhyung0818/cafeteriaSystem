@@ -157,7 +157,6 @@ table tr:hover td {
 			<th>작성자</th>
 			<th>작성시간</th>
 			<th>답변여부</th>
-			
 		</tr>
 
 		<c:forEach items="${complains}" var="complainVO">
@@ -179,7 +178,8 @@ table tr:hover td {
 					}
 				</script>
 			</td>
-			</tr>
+			<td>${complainVO.regDate}</td>
+		</tr>
 
 		</c:forEach>
 

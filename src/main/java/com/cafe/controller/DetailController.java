@@ -101,7 +101,7 @@ public class DetailController {
 		
 		detailService.deleteDetail(cafeName, detailName);
 		rttr.addAttribute("cafeName", cafeName);
-		rttr.addAttribute("keyword", key.getKeyword());
+		rttr.addAttribute("keyword", "");
 
 		return "redirect:/detail/list";
 	}

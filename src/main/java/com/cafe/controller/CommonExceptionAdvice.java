@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cafe.domain.ResultVO;
-import com.cafe.exception.InvalidTypeException;
-import com.cafe.exception.NotAuthoriedException;
 import com.cafe.exception.NotAuthorityException;
 import com.cafe.exception.NotExistException;
+import com.cafe.exception.NotExistResultException;
+import com.cafe.exception.NotExistURLException;
 import com.cafe.exception.PrimaryKeyDuplicatedException;
 
 /**
@@ -25,69 +25,79 @@ public class CommonExceptionAdvice {
 
 	private static final Logger logger = LoggerFactory.getLogger(CommonExceptionAdvice.class);
 
-	// @ExceptionHandler(Exception.class)
-	public String common(Exception e) {
+	@ExceptionHandler(Exception.class)
+	private ModelAndView errorModelAndView(Exception e) {
 
-		logger.info(e.toString());
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/error_common");
+		modelAndView.addObject("exception", e);
 
-		return "error_common";
+		return modelAndView;
 	}
-	
-//	@ExceptionHandler(Exception.class)
-//	private ModelAndView errorModelAndView(Exception e) {
-//
-//		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.setViewName("/error_common");
-//		modelAndView.addObject("exception", e);
-//
-//		return modelAndView;
-//	}
 
+
+	/**
+	 * alreay exist object 
+	 * @param e
+	 * @author YJH
+	 */
 	@ResponseBody
 	@ExceptionHandler(PrimaryKeyDuplicatedException.class)
 	public ModelAndView highfiveException(PrimaryKeyDuplicatedException e) {
 
+		//error log
 		logger.error(e.getMessage());
+		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/primary_key_duplication");
-		modelAndView.addObject("exception", e);
+		modelAndView.setViewName("/exception/exception_handler");
+		modelAndView.addObject("code", e.getExceptionCode());
 
 		return modelAndView;
 	}
 
-	@ResponseBody
-	@ExceptionHandler(InvalidTypeException.class)
-	public ModelAndView invalidFormatException(InvalidTypeException e) {
-
-		logger.error(e.getMessage(), e.getStackTrace());
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/error_common");
-		modelAndView.addObject("exception", e);
-
-		return modelAndView;
-
-	}
-
+	/**
+	 * not eixst object
+	 * @param e
+	 * @author YJH
+	 */
 	@ResponseBody
 	@ExceptionHandler(NotExistException.class)
 	public ModelAndView notExistException(NotExistException e) {
 
+		//error log
 		logger.error(e.getMessage());
+		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/error_common");
-		modelAndView.addObject("exception", e);
+		modelAndView.setViewName("/exception/exception_handler");
+		modelAndView.addObject("code", e.getExceptionCode());
 
 		return modelAndView;
 	}
-
+	
 	@ResponseBody
-	@ExceptionHandler(NotAuthoriedException.class)
-	public ModelAndView notAuthoriedException(NotAuthoriedException e) {
+	@ExceptionHandler(NotExistResultException.class)
+	public ModelAndView notExistResultException(NotExistResultException e) {
 
+		//error log
 		logger.error(e.getMessage());
+		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/error_common");
-		modelAndView.addObject("exception", e);
+		modelAndView.setViewName("/exception/exception_handler");
+		modelAndView.addObject("code", e.getExceptionCode());
+
+		return modelAndView;
+	}
+	
+	@ResponseBody
+	@ExceptionHandler(NotExistURLException.class)
+	public ModelAndView notExistURLException(NotExistURLException e) {
+
+		//error log
+		logger.error(e.getMessage());
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/exception/exception_handler");
+		modelAndView.addObject("code", e.getExceptionCode());
 
 		return modelAndView;
 	}

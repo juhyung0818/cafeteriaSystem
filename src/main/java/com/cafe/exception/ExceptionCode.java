@@ -10,11 +10,11 @@ public enum ExceptionCode {
 	//exception enums
 	NONE(200, "success"),
 	PRIMARY_KEY_DUPLICATE(100, "primary key duplicated"),
-	INVALID_TYPE(300, "invalid type"),
 	NOT_EXIST(400, "not exist"),
+		NOT_EXIST_RESULT(410, "search result is not exist "),
+		NOT_EXIST_URL(420, "URL is not exist "),
 	ACCESS_DENIED(500, "you don't have permission."),
-	NOT_AUTHORITY(1000, "you don't have authority.")
-	;
+	NOT_AUTHORITY(1000, "you don't have authority.");
 	
 	//fields
 	private int code;

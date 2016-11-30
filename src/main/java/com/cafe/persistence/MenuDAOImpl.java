@@ -45,9 +45,10 @@ public class MenuDAOImpl implements MenuDAO{
 	}
 
 	@Override
-	public int checkMenu(String cafeName, String menuName) throws Exception {
+	public int checkMenu(String cafeName, String detailName, String menuName) throws Exception {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
 		param.put("menuName", menuName);
 		return session.selectOne(namespace + ".check", param);
 	}
@@ -122,15 +123,35 @@ public class MenuDAOImpl implements MenuDAO{
 
 	@Override
 	public void setPoint(String cafeName, String detailName, String menuName, float point) throws Exception {
-
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("cafeName", cafeName);
 		param.put("detailName", detailName);
 		param.put("menuName", menuName);
 		param.put("point", point);
-		
-		session.update(namespace+".setPoint", param);
-		
+
+		session.update(namespace + ".setPoint", param);
+	}
+
+	/**
+	 * menu price modify
+	 * @author YJH
+	 */
+	@Override
+	public void modify(String cafeName, String detailName, String menuName, int price) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		param.put("price", price);
+		session.update(namespace + ".modify", param);
+	}
+
+	@Override
+	public List<MenuVO> menuList(String cafeName, String detailName) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		return session.selectList(namespace +".menuDetailList", param);
 	}
 
 }
