@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		self.location="/";
+		self.location="/notice/list";
 	</script>
 </body>
 </html>
