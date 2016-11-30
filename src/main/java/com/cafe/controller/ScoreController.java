@@ -39,7 +39,7 @@ public class ScoreController {
 	 * 2016.11.25.Fri
 	 */
 	@ResponseBody
-	@RequestMapping(value="/register", method=RequestMethod.POST)
+	@RequestMapping(value="/registerApp", method=RequestMethod.POST)
 	public ResultVO scoreRegisterPOST(@RequestBody ScoreVO score) throws Exception{
 		logger.info("score register post.......");
 

@@ -34,4 +34,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<select id="fixedListApp" resultType="com.cafe.domain.MenuVO">
+		select  *
+		from menu as m, fixed as f
+		where m.cafeName=f.cafeName and m.detailName=f.detailName and m.menuName=f.menuName
+		and m.cafeName=#{cafeName}
+	</select>	
 </mapper>

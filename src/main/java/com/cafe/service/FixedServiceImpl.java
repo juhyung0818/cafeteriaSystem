@@ -58,4 +58,10 @@ public class FixedServiceImpl implements FixedService{
 		return fixedDao.fixedSearch(cafeName, keyword);
 	}
 
+	@Override
+	public List<MenuVO> fixedListApp(String cafeName) throws Exception {
+
+		return fixedDao.fixedListApp(cafeName);
+	}
+
 }
