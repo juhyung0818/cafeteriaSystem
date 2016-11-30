@@ -115,7 +115,9 @@ public class WeeklyController {
 		List<WeeklyDTO> list = new ArrayList<WeeklyDTO>();
 
 		list=weeklyService.weeklyListApp(week.getCafeName(), week.getwFlag(), week.getUid());
-		
+		for (WeeklyDTO weeklyDTO : list) {
+			logger.info(weeklyDTO.toString());
+		}
 		return new ResultVO<>(list);
 	}
 	

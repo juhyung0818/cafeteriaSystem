@@ -40,6 +40,7 @@
 			<mapping path="/fixed/*"/>
 			<mapping path="/menu/*"/>
 			<mapping path="/notice/*"/>
+			
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 	</interceptors>

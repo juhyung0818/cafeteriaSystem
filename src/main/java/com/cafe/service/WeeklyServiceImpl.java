@@ -69,14 +69,15 @@ public class WeeklyServiceImpl implements WeeklyService{
 		List<WeeklyDTO> list = weeklyDao.weeklyListApp(cafeName, wFlag);
 		
 		for (WeeklyDTO weeklyDTO : list) {
+			
 			LikeVO testLike=new LikeVO();
 			
 			testLike.setCafeName(weeklyDTO.getCafeName());
 			testLike.setDetailName(weeklyDTO.getDetailName());
 			testLike.setMenuName(weeklyDTO.getMenuName());
 			testLike.setUid(uid);
-			
-			if(likeDao.checkLike(testLike)<1)
+			int temp=likeDao.checkLike(testLike);
+			if(temp<1)
 			{
 				weeklyDTO.setIsLike(false);
 			}

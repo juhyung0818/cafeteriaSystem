@@ -106,7 +106,7 @@ input[type="checkbox"] {
 
 		<!-- Header -->
 		<header class="w3-panel w3-center w3-opacity">
-			<div class="w3-panel w3-pink">
+			<div class="w3-panel w3-orange">
 				<h1 class="w3-opacity">순성닷컴</h1>
 			</div>
 		</header>
