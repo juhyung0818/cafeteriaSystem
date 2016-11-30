@@ -10,6 +10,7 @@ public class CommentVO {
 	private String detailName;
 	private String contents;
 	private String uid;
+	private String name;
 	private String regDate;
 	public int getCommentNum() {
 		return commentNum;
@@ -29,6 +30,12 @@ public class CommentVO {
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
 	}
+	public String getDetailName() {
+		return detailName;
+	}
+	public void setDetailName(String detailName) {
+		this.detailName = detailName;
+	}
 	public String getContents() {
 		return contents;
 	}
@@ -41,23 +48,23 @@ public class CommentVO {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getRegDate() {
 		return regDate;
 	}
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	public String getDetailName() {
-		return detailName;
-	}
-	public void setDetailName(String detailName) {
-		this.detailName = detailName;
-	}
 	@Override
 	public String toString() {
 		return "CommentVO [commentNum=" + commentNum + ", cafeName=" + cafeName + ", menuName=" + menuName
-				+ ", detailName=" + detailName + ", contents=" + contents + ", uid=" + uid + ", regDate=" + regDate
-				+ "]";
+				+ ", detailName=" + detailName + ", contents=" + contents + ", uid=" + uid + ", name=" + name
+				+ ", regDate=" + regDate + "]";
 	}
 	
 	
