@@ -149,35 +149,31 @@ table tr:hover td {
 <br>
 <br>
   <div align="center">
+   <form action="/notice/register" method="post">
    <table>
   <tr>
     <td>제목</td>
     <td colspan="2"><input type="text"  name='title'
-            " value="${notice.title}" size=60 readonly="readonly"></td>
+            " value="${notice.title}" size=60 ></td>
 		
   </tr>
   <tr>
     <td>내용</td>
-    <td colspan="2"><textarea class="form-control" name="content" cols=60 rows="10"
-            readonly="readonly">${notice.content}</textarea></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td colspan="1"> ${notice.regDate}</td>
+    <td colspan="2">
+    	<textarea class="form-control" name="content" cols=60 rows="10">${notice.content}</textarea>
+    </td>
   </tr>
    
 </table>
 <br>
 <br>
    <div>
-   <form action="/notice/delete?noticeNum=${notice.noticeNum}" method="post">
-   		<button type="submit" class="w3-btn w3-white w3-border">글 삭제</button>
+   		<button type="submit" class="w3-btn w3-white w3-border">글 등록</button>
 	    <a href="/notice/list">
-    	   	<input type="button" class="w3-btn w3-white w3-border" value="뒤로가기">
+       	<input type="button" class="w3-btn w3-white w3-border" value="뒤로가기">
     	</a>
 	</form>
    	</div>
-</div>
 
 </body>
 </html>

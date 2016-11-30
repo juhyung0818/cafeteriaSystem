@@ -150,7 +150,10 @@ table tr:hover td {
 <br>
 <br>
 <div class="box-body">
-	<table class="table table-bordered">
+
+
+
+	<table align="center">
 		<tr>
 			<th>글 번호</th>
 			<th>제목</th>
@@ -160,13 +163,17 @@ table tr:hover td {
 		<c:forEach items="${notices}" var="noticeVO">
 		<tr>
 			<td>
-				<a href='/notice/read?complainNum=${noticeVO.noticeNum}'>
+				<a href='/notice/read?noticeNum=${noticeVO.noticeNum}'>
 					${noticeVO.noticeNum} </a></td>
 			<td>${noticeVO.title}</td>
-			<td>"${noticeVO.regDate}"
+			<td>${noticeVO.regDate}</td>
 		</tr>
-
 		</c:forEach>
+		<tr>
+			<td colspan="3" style="text-align:'right';">
+				<a href="/notice/register"> &nbsp글쓰기&nbsp </a>
+			</td>
+		</tr>
 
 		<!-- Table Body -->
 

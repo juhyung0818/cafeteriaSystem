@@ -8,18 +8,22 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.NoticeVO;
 import com.cafe.domain.ResultVO;
+import com.cafe.service.CafeService;
 import com.cafe.service.NoticeService;
 
 /**
  * Menu Controller class
- * @author YJH, kwon 
+ * @author kwon, YJH 
  * 2016.11.29.Tue
  */
 @Controller
@@ -30,7 +34,9 @@ public class NoticeController {
 	private static final Logger logger = LoggerFactory.getLogger(ScoreController.class);
 	
 	@Inject
-	NoticeService noticeService;
+	private NoticeService noticeService;
+	@Inject
+	private CafeService cafeService;
 	
 	@ResponseBody
 	@RequestMapping(value="/listApp", method=RequestMethod.POST)
@@ -39,8 +45,68 @@ public class NoticeController {
 
 		List<NoticeVO> list = new ArrayList<NoticeVO>();
 
-		list=noticeService.listApp();
+		list=noticeService.list();
 		
 		return new ResultVO<>(list);
+	}
+	
+	/**
+	 * display notice list
+	 * this url use only Web Application
+	 * @author YJH
+	 */
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public void noticeListGET(Model model) throws Exception {
+		logger.info("notice list web...");
+		model.addAttribute("list", cafeService.cafeList()); //list for menu bar
+		List<NoticeVO> notices = noticeService.list();
+		model.addAttribute("notices", notices);
+	}
+
+	/**
+	 * read notice
+	 * this url use only Web Application
+	 * @author YJH
+	 */
+	@RequestMapping(value = "/read", method = RequestMethod.GET)
+	public void noticeReadGET(@RequestParam("noticeNum") int noticeNum, Model model) throws Exception {
+		logger.info("notice read...");
+		model.addAttribute("list", cafeService.cafeList()); //list for menu bar
+		model.addAttribute("notice", noticeService.read(noticeNum));
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String noticeDeletePOST(@RequestParam("noticeNum") int noticeNum, Model model) throws Exception {
+		
+		logger.info("notice delete...");
+		noticeService.delete(noticeNum);
+			
+		return "redirect:/notice/list";
+	}
+	
+	/**
+	 * register notice GET method
+	 * this url use only Web Application
+	 * @author YJH
+	 */
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public void noticeRegisterGET(NoticeVO notice, Model model) throws Exception {
+		
+		logger.info("notice read...");
+		model.addAttribute("list", cafeService.cafeList()); //list for menu bar
+	}
+	
+	/**
+	 * register notice POST method
+	 * this url use only Web Application
+	 * @author YJH
+	 */
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String noticeRegisterPOST(NoticeVO notice, Model model) throws Exception {
+		
+		logger.info("notice read...");
+		noticeService.register(notice);
+		
+		return "redirect:/notice/list";
 	}
 }

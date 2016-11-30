@@ -5,8 +5,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.cafe.mapper.NoticeMapper">
 	
-	<select id="listApp" resultType="com.cafe.domain.NoticeVO">
-		select * from notice;
+	<!-- notice list -->
+	<select id="list" resultType="com.cafe.domain.NoticeVO">
+		select * 
+		from notice 
+		order by regDate desc;
 	</select>
+	
+	<!-- delete notice -->
+	<delete id="delete">
+		delete from notice
+		where noticeNum=#{noticeNum}
+	</delete>
+	
+	<!-- notice read -->
+	<select id="read" resultType="com.cafe.domain.NoticeVO">
+		select *
+		from notice
+		where noticeNum=#{noticeNum}
+	</select>
+	
+	<!-- notice register -->
+	<insert id="register">
+		insert into notice (title, content)
+		value(#{title}, #{content})
+	</insert>
+	
 	
 </mapper>

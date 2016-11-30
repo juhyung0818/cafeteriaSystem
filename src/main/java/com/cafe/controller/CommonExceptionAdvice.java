@@ -29,7 +29,7 @@ public class CommonExceptionAdvice {
 	private ModelAndView errorModelAndView(Exception e) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/error_common");
+		modelAndView.setViewName("/exception/error_common");
 		modelAndView.addObject("exception", e);
 
 		return modelAndView;
