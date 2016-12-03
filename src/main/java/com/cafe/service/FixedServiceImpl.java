@@ -7,10 +7,12 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.cafe.domain.FixedVO;
-import com.cafe.domain.MenuVO;
+import com.cafe.domain.LikeVO;
+import com.cafe.dto.FixedDTO;
 import com.cafe.exception.NotExistResultException;
 import com.cafe.exception.PrimaryKeyDuplicatedException;
 import com.cafe.persistence.FixedDAO;
+import com.cafe.persistence.LikeDAO;
 
 /**
  * Fixed menu service class
@@ -23,6 +25,8 @@ public class FixedServiceImpl implements FixedService{
 	//data access object about fixed menu
 	@Inject
 	private FixedDAO fixedDao;
+	@Inject
+	private LikeDAO likeDao;
 	
 	/**
 	 * add fixed menu
@@ -76,9 +80,25 @@ public class FixedServiceImpl implements FixedService{
 	}
 
 	@Override
-	public List<MenuVO> fixedListApp(String cafeName) throws Exception {
+	public List<FixedDTO> fixedListApp(String cafeName, String uid) throws Exception {
 
-		return fixedDao.fixedListApp(cafeName);
+		List<FixedDTO> list=fixedDao.fixedListApp(cafeName);
+		
+		for (FixedDTO fixedDTO : list) {
+			LikeVO tempLike=new LikeVO();
+			
+			tempLike.setCafeName(fixedDTO.getCafeName());
+			tempLike.setDetailName(fixedDTO.getDetailName());
+			tempLike.setMenuName(fixedDTO.getMenuName());
+			tempLike.setUid(uid);
+			int temp=likeDao.checkLike(tempLike);
+			if(temp<1)
+				fixedDTO.setIsLike(false);
+			else
+				fixedDTO.setIsLike(true);
+				
+		}
+		return list;
 	}
 
 }

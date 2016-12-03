@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cafe.domain.FixedVO;
 import com.cafe.domain.MenuVO;
 import com.cafe.domain.ResultVO;
+import com.cafe.dto.FixedDTO;
 import com.cafe.service.CafeService;
 import com.cafe.service.FixedService;
 import com.cafe.service.MenuService;
@@ -52,12 +53,12 @@ public class FixedController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/listApp", method=RequestMethod.POST)
-	public ResultVO<List<MenuVO>> listApp(@RequestBody FixedVO fix) throws Exception{
-		logger.info("fixed menu list post.......");
+	public ResultVO<List<FixedDTO>> listApp(@RequestBody FixedDTO fix) throws Exception{
+		logger.info("fixed menu list post App.......");
 
-		List<MenuVO> list = new ArrayList<MenuVO>();
+		List<FixedDTO> list = new ArrayList<FixedDTO>();
 
-		list=fixedService.fixedListApp(fix.getCafeName());
+		list=fixedService.fixedListApp(fix.getCafeName(), fix.getUid());
 		return new ResultVO<>(list);
 	}
 	

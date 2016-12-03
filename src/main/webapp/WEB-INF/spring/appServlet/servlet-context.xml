@@ -35,11 +35,7 @@
 		
 		<interceptor>
 			<mapping path="/cafe/*"/>
-			<mapping path="/complain/*"/>
-			<mapping path="/detail/*"/>
-			<mapping path="/fixed/*"/>
-			<mapping path="/menu/*"/>
-			<mapping path="/notice/*"/>
+			
 			
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
