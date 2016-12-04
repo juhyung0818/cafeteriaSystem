@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.cafe.domain.MenuVO;
+import com.cafe.dto.MenuDTO;
 /**
  * Menu dao class
  * @author YJH
@@ -63,13 +64,13 @@ public class MenuDAOImpl implements MenuDAO{
 	}
 
 	@Override
-	public List<MenuVO> top10Like() throws Exception {
+	public List<MenuDTO> top10Like() throws Exception {
 		
 		return session.selectList(namespace+".top10Like");
 	}
 
 	@Override
-	public List<MenuVO> top10Point() throws Exception {
+	public List<MenuDTO> top10Point() throws Exception {
 		
 		return session.selectList(namespace+".top10Point");
 	}
@@ -161,6 +162,12 @@ public class MenuDAOImpl implements MenuDAO{
 		param.put("detailName", detailName);
 		param.put("menuName", menuName);
 		return session.selectOne(namespace + ".getMenu", param);
+	}
+
+	@Override
+	public List<MenuDTO> searchApp(String keyword) throws Exception {
+
+		return session.selectList(namespace +".searchApp", keyword);
 	}
 
 }

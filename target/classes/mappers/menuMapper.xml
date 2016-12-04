@@ -54,14 +54,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where menuName=#{menuName} and detailName=#{detailName} and cafeName=#{cafeName}
 	</select>
 	
-	<select id="top10Like" resultType="com.cafe.domain.MenuVO">
+	<select id="top10Like" resultType="com.cafe.dto.MenuDTO">
 		select * from menu
 		order by likeNum desc
 	</select>
 	
-	<select id="top10Point" resultType="com.cafe.domain.MenuVO">
+	<select id="top10Point" resultType="com.cafe.dto.MenuDTO">
 		select * from menu
 		order by point desc
+	</select>
+	
+	<select id="searchApp" resultType="com.cafe.dto.MenuDTO">
+		<![CDATA[
+			select *
+			from menu
+			where menuName like CONCAT('%', #{keyword}, '%')
+		]]>
 	</select>
 	
 	<update id="count">

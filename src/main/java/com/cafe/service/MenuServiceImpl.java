@@ -7,10 +7,13 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.cafe.domain.LikeVO;
 import com.cafe.domain.MenuVO;
+import com.cafe.dto.MenuDTO;
 import com.cafe.exception.NotExistResultException;
 import com.cafe.exception.PrimaryKeyDuplicatedException;
 import com.cafe.persistence.DetailDAO;
+import com.cafe.persistence.LikeDAO;
 import com.cafe.persistence.MenuDAO;
 /**
  * Menu Service class
@@ -25,6 +28,8 @@ public class MenuServiceImpl implements MenuService{
 	private MenuDAO menuDao;
 	@Inject
 	private DetailDAO detailDao;
+	@Inject
+	private LikeDAO likeDao;
 	
 	@Override
 	public void menuRegister(MenuVO menu) throws Exception {
@@ -65,19 +70,47 @@ public class MenuServiceImpl implements MenuService{
 		menuDao.deleteMenu(cafeName, detailName, menuName);
 	}
 	@Override
-	public List<MenuVO> top10Like() throws Exception{
-		List<MenuVO> list = new ArrayList<>();
+	public List<MenuDTO> top10Like(String uid) throws Exception{
+		List<MenuDTO> list = new ArrayList<>();
 		list= menuDao.top10Like();
+		
+		for (MenuDTO menuDTO : list) {
+			LikeVO tempLike=new LikeVO();
+			
+			tempLike.setCafeName(menuDTO.getCafeName());
+			tempLike.setDetailName(menuDTO.getDetailName());
+			tempLike.setMenuName(menuDTO.getMenuName());
+			tempLike.setUid(uid);
+			int temp=likeDao.checkLike(tempLike);
+			if(temp<1)
+				menuDTO.setIsLike(false);
+			else
+				menuDTO.setIsLike(true);
+		}
 		//show top 10
 		list=list.subList(0, 9);
 		return list;
 	}
 
 	@Override
-	public List<MenuVO> top10Point() throws Exception {
+	public List<MenuDTO> top10Point(String uid) throws Exception {
 		
-		List<MenuVO> list = new ArrayList<>();
+		List<MenuDTO> list = new ArrayList<>();
 		list= menuDao.top10Point();
+		
+		for (MenuDTO menuDTO : list) {
+			LikeVO tempLike=new LikeVO();
+			
+			tempLike.setCafeName(menuDTO.getCafeName());
+			tempLike.setDetailName(menuDTO.getDetailName());
+			tempLike.setMenuName(menuDTO.getMenuName());
+			tempLike.setUid(uid);
+			int temp=likeDao.checkLike(tempLike);
+			if(temp<1)
+				menuDTO.setIsLike(false);
+			else
+				menuDTO.setIsLike(true);
+		}
 		//show top 10
 		list=list.subList(0, 9);
 		return list;
@@ -117,5 +150,27 @@ public class MenuServiceImpl implements MenuService{
 	public MenuVO getMenu(String cafeName, String detailName, String menuName) throws Exception {
 		return menuDao.getMenu(cafeName, detailName, menuName)
 				;
+	}
+
+	@Override
+	public List<MenuDTO> searchApp(String uid, String keyword) throws Exception {
+
+		List<MenuDTO> list = new ArrayList<>();
+		list=menuDao.searchApp(keyword);
+
+		for (MenuDTO menuDTO : list) {
+			LikeVO tempLike=new LikeVO();
+			
+			tempLike.setCafeName(menuDTO.getCafeName());
+			tempLike.setDetailName(menuDTO.getDetailName());
+			tempLike.setMenuName(menuDTO.getMenuName());
+			tempLike.setUid(uid);
+			int temp=likeDao.checkLike(tempLike);
+			if(temp<1)
+				menuDTO.setIsLike(false);
+			else
+				menuDTO.setIsLike(true);
+		}
+		return list;
 	}
 }
