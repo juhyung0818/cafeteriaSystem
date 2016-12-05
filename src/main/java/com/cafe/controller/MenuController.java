@@ -22,6 +22,8 @@ import com.cafe.domain.DetailVO;
 import com.cafe.domain.MenuVO;
 import com.cafe.domain.ResultVO;
 import com.cafe.domain.SearchKeywordVO;
+import com.cafe.dto.MenuDTO;
+import com.cafe.dto.searchDTO;
 import com.cafe.service.CafeService;
 import com.cafe.service.CommentService;
 import com.cafe.service.DetailService;
@@ -148,12 +150,12 @@ public class MenuController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/top10LikeApp", method=RequestMethod.POST)
-	public ResultVO<List<MenuVO>> top10LikeApp() throws Exception
+	public ResultVO<List<MenuDTO>> top10LikeApp(@RequestBody MenuDTO menu) throws Exception
 	{
 		logger.info("top 10 like..");
 		
-		List<MenuVO> list = new ArrayList<MenuVO>();
-		list = menuService.top10Like();
+		List<MenuDTO> list = new ArrayList<MenuDTO>();
+		list = menuService.top10Like(menu.getUid());
 		
 		return new ResultVO<>(list);
 	}
@@ -166,34 +168,28 @@ public class MenuController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/top10PointApp", method=RequestMethod.POST)
-	public ResultVO<List<MenuVO>> top10PointApp() throws Exception
+	public ResultVO<List<MenuDTO>> top10PointApp(@RequestBody MenuDTO menu) throws Exception
 	{
 		logger.info("top 10 like..");
 		
-		List<MenuVO> list = new ArrayList<MenuVO>();
-		list = menuService.top10Point();
+		List<MenuDTO> list = new ArrayList<MenuDTO>();
+		list = menuService.top10Point(menu.getUid());
 		
 		return new ResultVO<>(list);
 	}
 
-	/**
-	 * app : show one menu
-	 * @return
-	 * @throws Exception
-	 * @author kwon
-	 * 2016.11.29.Tue
-	 */
-//	@ResponseBody
-//	@RequestMapping(value="/readOneApp", method=RequestMethod.POST)
-//	public ResultVO<MenuVO> readOneApp() throws Exception
-//	{
-//		logger.info("menu read one..");
-//		
-//		List<MenuVO> list = new ArrayList<MenuVO>();
-//		list = menuService.top10Point();
-//		MenuVO returnMenu=menuService.
-//		return new ResultVO<>();
-//	}
+	@ResponseBody
+	@RequestMapping(value="/searchApp", method=RequestMethod.POST)
+	public ResultVO<List<MenuDTO>> searchApp(@RequestBody searchDTO menu) throws Exception
+	{
+		logger.info("search menu app..");
+		
+		List<MenuDTO> list = new ArrayList<MenuDTO>();
+		//list = menuService.top10Point(menu.getUid());
+		list=menuService.searchApp(menu.getUid(), menu.getKeyword());
+		
+		return new ResultVO<>(list);
+	}
 	
 	/**
 	 * web : admin read comment of menu

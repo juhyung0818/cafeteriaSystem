@@ -3,6 +3,7 @@ package com.cafe.service;
 import java.util.List;
 
 import com.cafe.domain.MenuVO;
+import com.cafe.dto.MenuDTO;
 /**
  * Menu service interface
  * @author YJH
@@ -25,7 +26,7 @@ public interface MenuService {
 	 * @author kwon
 	 * 2016.11.29.Tue
 	 */
-	public List<MenuVO> top10Like() throws Exception;
+	public List<MenuDTO> top10Like(String uid) throws Exception;
 	/**
 	 * app : show top10 menu list order by point
 	 * @return
@@ -33,7 +34,9 @@ public interface MenuService {
 	 * @author kwon
 	 * 2016.11.29.Tue
 	 */
-	public List<MenuVO> top10Point() throws Exception;
+	public List<MenuDTO> top10Point(String uid) throws Exception;
+	
+	public List<MenuDTO> searchApp(String uid, String keyword) throws Exception;
 	/**
 	 * menu price modify
 	 * @author YJH

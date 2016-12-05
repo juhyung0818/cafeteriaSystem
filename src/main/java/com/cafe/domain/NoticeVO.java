@@ -1,6 +1,5 @@
 package com.cafe.domain;
 
-import java.security.Timestamp;
 
 /**
  * Value Object about notice

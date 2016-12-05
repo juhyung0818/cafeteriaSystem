@@ -2,9 +2,8 @@ package com.cafe.persistence;
 
 import java.util.List;
 
-import com.cafe.domain.DetailVO;
 import com.cafe.domain.FixedVO;
-import com.cafe.domain.MenuVO;
+import com.cafe.dto.FixedDTO;
 
 /**
  * Fixed menu dao interface
@@ -22,7 +21,7 @@ public interface FixedDAO {
 	//dispaly fixed menu search list
 	public List<FixedVO> fixedSearch(String cafeName, String keyword) throws Exception;
 
-	public List<MenuVO> fixedListApp(String cafeName) throws Exception;
+	public List<FixedDTO> fixedListApp(String cafeName) throws Exception;
 	//check already exist
 	public int check(FixedVO fixed) throws Exception;
 	

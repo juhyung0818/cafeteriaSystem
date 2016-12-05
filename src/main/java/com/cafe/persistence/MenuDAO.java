@@ -3,6 +3,7 @@ package com.cafe.persistence;
 import java.util.List;
 
 import com.cafe.domain.MenuVO;
+import com.cafe.dto.MenuDTO;
 /**
  * Cafeteria dao interface
  * @author YJH
@@ -30,7 +31,7 @@ public interface MenuDAO {
 	 * @author kwon
 	 * 2016.11.29.Tue
 	 */
-	public List<MenuVO> top10Like() throws Exception;
+	public List<MenuDTO> top10Like() throws Exception;
 	/**
 	 * app : show top10 menu list order by point
 	 * @return
@@ -38,7 +39,9 @@ public interface MenuDAO {
 	 * @author kwon
 	 * 2016.11.29.Tue
 	 */
-	public List<MenuVO> top10Point() throws Exception;
+	public List<MenuDTO> top10Point() throws Exception;
+	
+	public List<MenuDTO> searchApp(String keyword) throws Exception;
 	
 	public void count(String cafeName, String detailName, String menuName)throws Exception;
 	public void discount(String cafeName, String detailName, String menuName)throws Exception;
