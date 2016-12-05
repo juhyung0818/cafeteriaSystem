@@ -201,7 +201,7 @@ table tr:hover td {
                   <input type='hidden' name='detailName' value="${menuVO.detailName}">
                   <input type='hidden' name='menuName' value="${menuVO.menuName}">
                   <input type='hidden' name='keyword' value="${keyword}">
-                  <button type="submit" class="w3-btn w3-white w3-border btn-warning">MODIFY</button>
+                  <button type="submit" class="w3-btn w3-white w3-border">MODIFY</button>
                </form>
             </td>
             <td>
@@ -210,7 +210,7 @@ table tr:hover td {
                   	<input type='hidden' name='detailName' value="${menuVO.detailName}">
                   	<input type='hidden' name='menuName' value="${menuVO.menuName}">
                   	<input type='hidden' name='keyword' value="${keyword}">
-                  	<button type="submit" class="w3-btn w3-white w3-border btn-danger" value="${keyword}">REMOVE</button>
+                  	<button type="submit" class="w3-btn w3-white w3-border" value="${keyword}">REMOVE</button>
                </form>
             </td>
          </tr>

@@ -269,7 +269,9 @@ h1 {
 <body bgcolor="#EF6C00">
 	<div align="center">
 		<h1>학 식 세 끼</h1>
-
+	</div>
+	<div align ="right">
+		<a class='w3-btn w3-white w3-border' href='/user/logout'>logout</a>
 	</div>
 	<div class='menu'>
 		<ul>

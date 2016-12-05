@@ -10,4 +10,5 @@ public interface UserService {
 	public void check(UserVO user)throws Exception;
 	
 	public AdminVO login(LoginDTO dto) throws Exception;
+	
 }

@@ -122,18 +122,19 @@ public class MenuServiceImpl implements MenuService{
 	 */
 	@Override
 	public List<MenuVO> searchMenu(String cafeName, String detailName, String keyword) throws Exception {
-		List<MenuVO> searchList = menuDao.searchMenu(cafeName, detailName, keyword);
-		List<MenuVO> list = menuDao.menuList(cafeName, detailName);
+//		List<MenuVO> searchList =
+				return menuDao.searchMenu(cafeName, detailName, keyword);
+//		List<MenuVO> list = menuDao.menuList(cafeName, detailName);
 
-		if(list.size() > 0){//list is exist case
-			if(searchList.size() > 0){
-				return searchList;
-			}else{ //list is exist && search list is not exist
-				throw new NotExistResultException();
-			}
-		}else{ //list is not exist
-			return list;
-		}
+//		if(list.size() > 0){//list is exist case
+//			if(searchList.size() > 0){
+//				return searchList;
+//			}else{ //list is exist && search list is not exist
+//				throw new NotExistResultException();
+//			}
+//		}else{ //list is not exist
+//			return list;
+//		}
 	}
 
 	/**
