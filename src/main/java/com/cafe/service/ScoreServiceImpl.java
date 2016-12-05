@@ -24,12 +24,12 @@ public class ScoreServiceImpl implements ScoreService{
 	public void scoreRegister(ScoreVO score) throws Exception {
 		
 		if(scoreDao.isScored(score)<1)
-			scoreDao.scoreRegister(score);	
+			scoreDao.scoreRegister(score);
+				
 		else
 			scoreDao.scoreUpdate(score);
 		
 		menuDao.setPoint(score.getCafeName(), score.getDetailName(), score.getMenuName(), scoreDao.getAVG(score));
-		
 	}
 //
 //	@Override

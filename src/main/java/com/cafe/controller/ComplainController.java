@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.ComplainVO;
 import com.cafe.domain.ResultVO;
+import com.cafe.domain.UserVO;
 import com.cafe.dto.ComplainDTO;
 import com.cafe.service.CafeService;
 import com.cafe.service.ComplainService;

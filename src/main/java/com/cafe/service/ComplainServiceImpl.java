@@ -58,13 +58,17 @@ public class ComplainServiceImpl implements ComplainService{
 	public List<ComplainDTO> complainListApp() throws Exception {
 		
 		List<ComplainDTO> list= complainDao.complainListApp();
-		for(int i=0; i<list.size(); i++)
-		{
-			if(list.get(i).getReply() != null)
-			{
-				list.get(i).setIsReply(true);
-			}
+		
+		for (ComplainDTO complainDTO : list) {
+			
+			if(complainDTO.getReply()!=null)
+				complainDTO.setIsReply(true);
+			else
+				complainDTO.setIsReply(false);
+			
+			complainDTO.setName(userDao.getUserNick( complainDTO.getUid()));
 		}
+		
 		return list;
 	}
 
@@ -100,7 +104,7 @@ public class ComplainServiceImpl implements ComplainService{
 			dto.setTitle(vo.getTitle());
 			dto.setContent(vo.getContent());
 			dto.setUid(vo.getUid());
-			dto.setNick(userDao.getUserNick(vo.getUid()));
+			dto.setName(userDao.getUserNick(vo.getUid()));
 			dto.setRegDate(vo.getRegDate().toString());
 			
 			try {

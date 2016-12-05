@@ -11,6 +11,7 @@ public class MenuDTO {
 	private String path;
 	private boolean isLike;
 	private String uid;
+	
 	public String getCafeName() {
 		return cafeName;
 	}

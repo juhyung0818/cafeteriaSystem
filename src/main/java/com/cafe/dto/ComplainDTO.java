@@ -10,7 +10,7 @@ public class ComplainDTO {
 	private String title;
 	private String content;
 	private String uid;
-	private String nick;
+	private String name;
 	private String regDate;
 	private boolean isReply;
 	private String reply; 
@@ -39,11 +39,11 @@ public class ComplainDTO {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
-	public String getNick() {
-		return nick;
+	public String getName() {
+		return name;
 	}
-	public void setNick(String nick) {
-		this.nick = nick;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getRegDate() {
 		return regDate;
@@ -72,7 +72,7 @@ public class ComplainDTO {
 	@Override
 	public String toString() {
 		return "ComplainDTO [complainNum=" + complainNum + ", title=" + title + ", content=" + content + ", uid=" + uid
-				+ ", nick=" + nick + ", regDate=" + regDate + ", isReply=" + isReply + ", reply=" + reply
+				+ ", name=" + name + ", regDate=" + regDate + ", isReply=" + isReply + ", reply=" + reply
 				+ ", replyDate=" + replyDate + "]";
 	}
 	

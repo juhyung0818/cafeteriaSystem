@@ -19,13 +19,13 @@ public class LikeServiceImpl implements LikeService{
 	
 	@Transactional
 	@Override
-	public String checkLike(LikeVO like) throws Exception {
+	public Boolean checkLike(LikeVO like) throws Exception {
 		int temp=likeDao.checkLike(like);
 		if(temp<1)
 		{
 			menuDao.count(like.getCafeName(), like.getDetailName(), like.getMenuName());
 			likeDao.register(like);
-			return "1";
+			return true;
 		}
 		else
 		{
@@ -35,7 +35,7 @@ public class LikeServiceImpl implements LikeService{
 				menuDao.discount(like.getCafeName(), like.getDetailName(), like.getMenuName());
 				likeDao.delete(like);
 			}
-			return "0";
+			return false;
 		}
 	}
 

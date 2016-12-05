@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.cafe.domain.CommentVO;
 import com.cafe.exception.NotAuthorityException;
 import com.cafe.persistence.CommentDAO;
+import com.cafe.persistence.UserDAO;
 /**
  * 
  * @author kwom
@@ -20,7 +21,8 @@ public class CommentServiceImpl implements CommentService{
 
 	@Inject
 	CommentDAO commentDao;
-	
+	@Inject
+	UserDAO userDao;
 	@Override
 	public void commentRegister(CommentVO comment) throws Exception {
 		
@@ -32,13 +34,9 @@ public class CommentServiceImpl implements CommentService{
 		List<CommentVO> list = new ArrayList<CommentVO>();
 		list=commentDao.commentList(cafeName, menuName, detailName);
 		
-//		while(list.iterator().hasNext())
-//		{
-//		
-//			Timestamp.valueOf(arg0)
-//			dateFormat.format(date)
-//			list.iterator().next().getRegDate();
-//		}
+		for (CommentVO commentVO : list) {
+			commentVO.setName(userDao.getUserNick(commentVO.getUid()));
+		}
 		return list;
 	}
 

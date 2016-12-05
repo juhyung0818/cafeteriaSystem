@@ -10,7 +10,7 @@ public class ScoreVO {
 	private String detailName;
 	private String menuName;
 	private String uid;
-	private double score;
+	private float score;
 	
 	public String getCafeName() {
 		return cafeName;
@@ -36,10 +36,10 @@ public class ScoreVO {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
-	public double getScore() {
+	public float getScore() {
 		return score;
 	}
-	public void setScore(double score) {
+	public void setScore(float score) {
 		this.score = score;
 	}
 	@Override
