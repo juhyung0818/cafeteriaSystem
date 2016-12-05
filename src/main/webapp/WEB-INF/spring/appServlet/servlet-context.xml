@@ -35,7 +35,11 @@
 		
 		<interceptor>
 			<mapping path="/cafe/*"/>
-			
+			<mapping path="/complain/inReply"/>
+			<mapping path="/complain/outReply"/>
+			<mapping path="/complain/delete"/>
+			<mapping path="/notice/register"/>
+			<mapping path="/notice/delete"/>
 			
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>

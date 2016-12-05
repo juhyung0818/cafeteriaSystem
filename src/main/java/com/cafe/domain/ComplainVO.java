@@ -16,9 +16,17 @@ public class ComplainVO {
 	private Timestamp regDate;
 	private String reply;
 	private Timestamp replyDate;
+	private String nick;
 	
+	/* getter, setter methods*/
 	public int getComplainNum() {
 		return complainNum;
+	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 	public void setComplainNum(int complainNum) {
 		this.complainNum = complainNum;
@@ -59,10 +67,5 @@ public class ComplainVO {
 	public void setReplyDate(Timestamp replyDate) {
 		this.replyDate = replyDate;
 	}
-//	@Override
-//	public String toString() {
-//		return "ComplainVO [complainNum=" + complainNum + ", title=" + title + ", content=" + content + ", uid=" + uid
-//				+ ", reply=" + reply + ", regDate=" + regDate + ", replyDate=" + replyDate + "]";
-//	}
 	
 }

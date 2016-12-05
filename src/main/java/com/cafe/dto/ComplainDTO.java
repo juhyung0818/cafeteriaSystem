@@ -15,6 +15,7 @@ public class ComplainDTO {
 	private boolean isReply;
 	private String reply; 
 	private String replyDate;
+	
 	public int getComplainNum() {
 		return complainNum;
 	}

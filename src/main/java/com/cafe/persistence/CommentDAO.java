@@ -15,8 +15,6 @@ public interface CommentDAO {
 	public List<CommentVO> commentList(String cafeName, String menuName, String detailName) throws Exception;
 	public void commentDelete(int commentNum, String uid)throws Exception;
 	
-	public CommentVO read(int commnetNum)throws Exception;
-	
 	public int checkAuth(int commentNum, String uid) throws Exception;
 	//admin delete comment
 	public void commentDelete(int commentNum)throws Exception;

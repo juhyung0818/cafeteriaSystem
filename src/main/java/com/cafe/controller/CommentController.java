@@ -11,11 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.CommentVO;
 import com.cafe.domain.ResultVO;
 import com.cafe.service.CommentService;
+import com.cafe.service.UserService;
 
 /**
  * Comment Controller class
@@ -30,9 +33,10 @@ public class CommentController {
 	//use log4j
 	private static final Logger logger = LoggerFactory.getLogger(CommentController.class);
 	
+	//create service objects
 	@Inject
 	private CommentService commentService;
-
+	
 	/**
 	 * app : register comment
 	 * @param cafe
@@ -84,14 +88,18 @@ public class CommentController {
 		return new ResultVO<>(list);
 	}
 	
-	@ResponseBody
-	@RequestMapping(value="/readApp", method=RequestMethod.POST)
-	public ResultVO readApp(@RequestBody CommentVO comment) throws Exception{
-		logger.info("comment read post.......");
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public String delete(@RequestParam("cafeName") String cafeName, 
+			@RequestParam("detailName") String detailName, 
+			@RequestParam("menuName") String menuName, 
+			@RequestParam("commentNum") int commentNum,
+			RedirectAttributes rttr) throws Exception{
+		logger.info("comment delete post.......");
 
-		CommentVO returnComment=commentService.read(comment.getCommentNum());
-
-		return new ResultVO<>(returnComment);
+		commentService.commentDelete(commentNum);
+		rttr.addAttribute("cafeName", cafeName);
+		rttr.addAttribute("detailName", detailName);
+		rttr.addAttribute("menuName", menuName);
+		return "redirect:/menu/read";
 	}
-	
 }

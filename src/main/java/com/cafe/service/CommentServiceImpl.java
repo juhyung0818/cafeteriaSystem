@@ -25,7 +25,6 @@ public class CommentServiceImpl implements CommentService{
 	UserDAO userDao;
 	@Override
 	public void commentRegister(CommentVO comment) throws Exception {
-		
 		commentDao.commentRegister(comment);
 	}
 
@@ -35,7 +34,7 @@ public class CommentServiceImpl implements CommentService{
 		list=commentDao.commentList(cafeName, menuName, detailName);
 		
 		for (CommentVO commentVO : list) {
-			commentVO.setName(userDao.getUserNick(commentVO.getUid()));
+			commentVO.setNick(userDao.getUserNick(commentVO.getUid()));
 		}
 		return list;
 	}
@@ -49,19 +48,12 @@ public class CommentServiceImpl implements CommentService{
 			throw new NotAuthorityException();
 	}
 
-	@Override
-	public CommentVO read(int commnetNum) throws Exception {
-		
-		return commentDao.read(commnetNum);
-	}
-
 	/**
 	 * @author YJH
 	 */
 	@Override
 	public void commentDelete(int commentNum) throws Exception {
-		// TODO Auto-generated method stub
-		
+		commentDao.commentDelete(commentNum);
 	}
 
 }

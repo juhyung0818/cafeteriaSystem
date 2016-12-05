@@ -163,7 +163,7 @@ table tr:hover td {
   <tr>
     <td class="tg-031e">작성자</td>
     <td class="tg-031e" colspan="2"> <input type="text" name="uid" size=60
-            class="form-control" value="${complainVO.uid}"
+            class="form-control" value="${complainVO.nick}"
             readonly="readonly"></td>
   </tr>
   <tr>

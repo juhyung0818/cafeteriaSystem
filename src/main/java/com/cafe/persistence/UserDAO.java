@@ -11,4 +11,5 @@ public interface UserDAO {
 	public String getUserNick(String uid)throws Exception;
 	
 	public AdminVO login(LoginDTO dto)throws Exception;
+
 }

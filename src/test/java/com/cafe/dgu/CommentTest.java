@@ -42,7 +42,8 @@ public class CommentTest {
 	
 	//read comment of a menu
 	@Test
-	public void testReadComment() throws Exception{
+	public void testListComment() throws Exception{
+		logger.info(commentDao.commentList("상록원", "강된장비빔밥", "솥앤누들").toString());
 		
 	}
 }

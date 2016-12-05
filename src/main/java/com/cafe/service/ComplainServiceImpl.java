@@ -74,7 +74,6 @@ public class ComplainServiceImpl implements ComplainService{
 
 	@Override
 	public void registerApp(ComplainVO complain) throws Exception {
-		
 		complainDao.registerApp(complain);
 	}
 
@@ -98,7 +97,7 @@ public class ComplainServiceImpl implements ComplainService{
 		ComplainVO vo=complainDao.readOne(complainNum);
 		ComplainDTO dto=new ComplainDTO();
 		
-		//vo°¡ nullÀÎ°æ¿ì ¿¹¿Ü
+		//voï¿½ï¿½ nullï¿½Î°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		try {
 			dto.setComplainNum(complainNum);
 			dto.setTitle(vo.getTitle());
@@ -127,7 +126,7 @@ public class ComplainServiceImpl implements ComplainService{
 
 			}
 		} catch (Exception e) {
-			System.out.println("vo°¡ null");
+			System.out.println("voï¿½ï¿½ null");
 		}
 		
 		return dto;

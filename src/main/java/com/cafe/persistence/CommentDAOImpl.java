@@ -61,11 +61,6 @@ public class CommentDAOImpl implements CommentDAO{
 	}
 
 	@Override
-	public CommentVO read(int commnetNum) throws Exception {
-		return session.selectOne(namespace+"readApp", commnetNum);
-	}
-
-	@Override
 	public int checkAuth(int commentNum, String uid) throws Exception {
 
 		Map<String, Object> param = new HashMap<String, Object>();
@@ -74,6 +69,9 @@ public class CommentDAOImpl implements CommentDAO{
 		return session.selectOne(namespace+".checkAuth", param);
 	}
 
+	/**
+	 * @author YJH
+	 */
 	@Override
 	public void commentDelete(int commentNum) throws Exception {
 		session.delete(namespace + ".deleteAdmin", commentNum);
