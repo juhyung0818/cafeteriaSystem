@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.cafe.domain.CafeVO;
+import com.cafe.domain.MenuVO;
 import com.cafe.exception.NotExistResultException;
 import com.cafe.exception.PrimaryKeyDuplicatedException;
 import com.cafe.persistence.CafeDAO;
@@ -61,11 +62,17 @@ public class CafeServiceImpl implements CafeService{
 	 */
 	@Override
 	public List<CafeVO> cafeSearch(String keyword) throws Exception {
-		List<CafeVO> list = cafeDao.cafeSearch(keyword);
-		if(list.size() > 0){
+		List<CafeVO> searchList = cafeDao.cafeSearch(keyword);
+		List<CafeVO> list = cafeDao.cafeList();
+
+		if(list.size() > 0){//list is exist case
+			if(searchList.size() > 0){
+				return searchList;
+			}else{ //list is exist && search list is not exist
+				throw new NotExistResultException();
+			}
+		}else{ //list is not exist
 			return list;
-		}else{
-			throw new NotExistResultException();
 		}
 	}
 

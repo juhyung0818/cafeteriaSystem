@@ -21,6 +21,14 @@
 }
    </style>
    <body>
+		<h4>${exception.getMessage()}</h4>
+		
+		<ul>
+		<c:forEach items="${exception.getStackTrace()}" var="stack">
+			<li>${stack.toString()}</li>
+		</ul>
+		</c:forEach>
+	
       <img class='contentsimg' src="/resources/error1.png" align="center">
       <div align="center"><h1> 존재하지 않는 페이지 입니다.</h1></div>
    </body>

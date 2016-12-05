@@ -59,7 +59,7 @@ fieldset {
 </style>
 	<body bgcolor="#e1e1e1">
 	
-	<h2 align="center">Login Form</h2>
+	<h2 align="center">로그인</h2>
 	
 	<center>
 		<fieldset>
