@@ -75,7 +75,6 @@ public class MenuServiceImpl implements MenuService{
 		list= menuDao.top10Like();
 		
 		for (MenuDTO menuDTO : list) {
-			menuDTO.setCommentCnt(menuDao.getCommentCnt(menuDTO.getCafeName(), menuDTO.getDetailName(), menuDTO.getMenuName()));
 			
 			LikeVO tempLike=new LikeVO();
 			

@@ -16,6 +16,10 @@ public class WeeklyDTO {
    private WeeklyFlag wFlag;
    private DateFlag dateFlag;
    private boolean isLike;
+   private int commentCnt;
+
+   public int getCommentCnt() {return commentCnt;}
+   public void setCommentCnt(int commentCnt) {this.commentCnt = commentCnt;}
    
    public String getCafeName() {
       return cafeName;

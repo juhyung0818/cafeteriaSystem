@@ -8,12 +8,12 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.cafe.domain.LikeVO;
-import com.cafe.domain.ScoreVO;
 import com.cafe.domain.WeeklyVO;
 import com.cafe.dto.WeeklyDTO;
 import com.cafe.exception.PrimaryKeyDuplicatedException;
 import com.cafe.flag.WeeklyFlag;
 import com.cafe.persistence.LikeDAO;
+import com.cafe.persistence.MenuDAO;
 import com.cafe.persistence.WeeklyDAO;
 
 /**
@@ -27,7 +27,8 @@ public class WeeklyServiceImpl implements WeeklyService{
 
 	@Inject
 	private WeeklyDAO weeklyDao;
-	
+	@Inject
+	private MenuDAO menuDao;	
 	@Inject
 	private LikeDAO likeDao;
 	
@@ -69,6 +70,7 @@ public class WeeklyServiceImpl implements WeeklyService{
 		List<WeeklyDTO> list = weeklyDao.weeklyListApp(cafeName, wFlag);
 		
 		for (WeeklyDTO weeklyDTO : list) {
+			weeklyDTO.setCommentCnt(menuDao.getCommentCnt(weeklyDTO.getCafeName(), weeklyDTO.getDetailName(), weeklyDTO.getMenuName()));
 			
 			LikeVO testLike=new LikeVO();
 			

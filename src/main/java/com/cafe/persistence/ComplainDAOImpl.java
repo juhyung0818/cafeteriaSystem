@@ -64,7 +64,7 @@ public class ComplainDAOImpl implements ComplainDAO{
 			System.out.println("temp입니다 ?" + temp + "으아아");
 			
 			try {
-				if(temp.equals("") || temp.equals(null)){
+				if(temp.equals("") || temp.equals(null) ){
 					complainDTO.setIsReply(false);
 					complainDTO.setReplyDate("-");
 				}else{

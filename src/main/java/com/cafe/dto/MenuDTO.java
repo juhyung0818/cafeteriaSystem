@@ -11,14 +11,7 @@ public class MenuDTO {
 	private String path;
 	private boolean isLike;
 	private String uid;
-	private int commentCnt;
-	
-	public int getCommentCnt() {
-		return commentCnt;
-	}
-	public void setCommentCnt(int commentCnt) {
-		this.commentCnt = commentCnt;
-	}
+
 	public String getCafeName() {
 		return cafeName;
 	}

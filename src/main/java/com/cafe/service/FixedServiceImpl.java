@@ -13,6 +13,7 @@ import com.cafe.exception.NotExistResultException;
 import com.cafe.exception.PrimaryKeyDuplicatedException;
 import com.cafe.persistence.FixedDAO;
 import com.cafe.persistence.LikeDAO;
+import com.cafe.persistence.MenuDAO;
 
 /**
  * Fixed menu service class
@@ -25,6 +26,8 @@ public class FixedServiceImpl implements FixedService{
 	//data access object about fixed menu
 	@Inject
 	private FixedDAO fixedDao;
+	@Inject
+	private MenuDAO menuDao;
 	@Inject
 	private LikeDAO likeDao;
 	
@@ -85,6 +88,8 @@ public class FixedServiceImpl implements FixedService{
 		List<FixedDTO> list=fixedDao.fixedListApp(cafeName);
 		
 		for (FixedDTO fixedDTO : list) {
+			fixedDTO.setCommentCnt(menuDao.getCommentCnt(fixedDTO.getCafeName(), fixedDTO.getDetailName(), fixedDTO.getMenuName()));
+
 			LikeVO tempLike=new LikeVO();
 			
 			tempLike.setCafeName(fixedDTO.getCafeName());
