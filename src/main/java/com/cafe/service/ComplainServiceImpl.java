@@ -60,7 +60,7 @@ public class ComplainServiceImpl implements ComplainService{
 		List<ComplainDTO> list= complainDao.complainListApp();
 		
 		for (ComplainDTO complainDTO : list) {
-			complainDTO.setName(userDao.getUserNick( complainDTO.getUid()));
+			complainDTO.setName(userDao.getUserNick(complainDTO.getUid()));
 		}
 		
 		return list;
@@ -101,7 +101,7 @@ public class ComplainServiceImpl implements ComplainService{
 			dto.setRegDate(vo.getRegDate().toString());
 			
 			try {
-				if(vo.getReply()!=null || vo.getReply().equals(""))
+				if(vo.getReply()!=null || !vo.getReply().equals(""))
 				{
 					dto.setIsReply(true);
 					dto.setReply(vo.getReply());

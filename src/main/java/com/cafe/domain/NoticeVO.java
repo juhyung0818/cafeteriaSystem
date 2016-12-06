@@ -12,8 +12,7 @@ public class NoticeVO {
 	private String title;
 	private String content;
 	private String regDate;
-	
-	/* getter, setter, toString methods */
+	private int viewCount;
 	public int getNoticeNum() {
 		return noticeNum;
 	}
@@ -38,10 +37,17 @@ public class NoticeVO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+	public int getViewCount() {
+		return viewCount;
+	}
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
 	@Override
 	public String toString() {
 		return "NoticeVO [noticeNum=" + noticeNum + ", title=" + title + ", content=" + content + ", regDate=" + regDate
-				+ "]";
+				+ ", viewCount=" + viewCount + "]";
 	}
+
 	
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cafe.domain.NoticeVO;
 import com.cafe.domain.ResultVO;
@@ -49,7 +48,7 @@ public class NoticeController {
 		
 		return new ResultVO<>(list);
 	}
-	
+
 	/**
 	 * display notice list
 	 * this url use only Web Application
@@ -121,4 +120,5 @@ public class NoticeController {
 
 		return new ResultVO<>(one);
 	}
+	
 }

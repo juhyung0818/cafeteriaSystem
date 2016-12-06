@@ -18,4 +18,6 @@ public interface NoticeDAO {
 	public NoticeVO read (int noticeNum) throws Exception;
 	// insert notice
 	public void register(NoticeVO notice) throws Exception;
+	
+	public void increViewCount(int noticeNum)  throws Exception;
 }
