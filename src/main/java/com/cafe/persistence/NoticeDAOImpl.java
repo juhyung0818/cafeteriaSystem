@@ -39,4 +39,10 @@ public class NoticeDAOImpl implements NoticeDAO{
 		session.insert(namespace + ".register", notice);
 	}
 
+	@Override
+	public void increViewCount(int noticeNum) throws Exception {
+
+		session.update(namespace+".increViewCount", noticeNum);
+	}
+
 }

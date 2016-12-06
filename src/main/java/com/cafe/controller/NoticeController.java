@@ -50,6 +50,19 @@ public class NoticeController {
 		return new ResultVO<>(list);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/readApp", method=RequestMethod.POST)
+	public ResultVO<NoticeVO> readApp(@RequestBody NoticeVO notice) throws Exception{
+		logger.info("notice read post.......");
+
+		NoticeVO one = new NoticeVO();
+
+		noticeService.increViewCount(notice.getNoticeNum());
+		one=noticeService.read(notice.getNoticeNum());
+		
+		return new ResultVO<>(one);
+	}
+	
 	/**
 	 * display notice list
 	 * this url use only Web Application
@@ -109,4 +122,5 @@ public class NoticeController {
 		
 		return "redirect:/notice/list";
 	}
+	
 }

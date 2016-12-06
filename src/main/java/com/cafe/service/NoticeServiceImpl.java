@@ -40,4 +40,11 @@ public class NoticeServiceImpl implements NoticeService{
 		
 	}
 
+	@Override
+	public void increViewCount(int noticeNum) throws Exception {
+		
+		noticeDao.increViewCount(noticeNum);
+	}
+	
+
 }

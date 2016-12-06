@@ -31,5 +31,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		value(#{title}, #{content})
 	</insert>
 	
+	<update id="increViewCount">
+		update notice set viewCount=viewCount+1 where noticeNum=#{noticeNum}
+	</update>
 	
 </mapper>
