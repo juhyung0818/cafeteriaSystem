@@ -28,6 +28,7 @@ import com.cafe.service.CafeService;
 import com.cafe.service.CommentService;
 import com.cafe.service.DetailService;
 import com.cafe.service.MenuService;
+import com.cafe.service.UserService;
 
 /**
  * Menu Controller class
@@ -48,6 +49,8 @@ public class MenuController {
 	private CafeService cafeService;
 	@Inject
 	private CommentService commentService;
+	@Inject
+	private UserService userService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void menuListGET(@RequestParam("cafeName") String cafeName,
@@ -210,6 +213,6 @@ public class MenuController {
 		// select menu to show comment
 		MenuVO menu = menuService.getMenu(cafeName, detailName, menuName);
 		model.addAttribute("menu", menu);
-		
+		model.addAttribute("list", cafeService.cafeList());
 	}	
 }

@@ -176,22 +176,20 @@ table tr:hover td {
          <tr>
             <th> 댓글 </th>
             <th> 작성자 </th>
-            <th> 좋아요 </th>
             <th> 등록시간 </th>
             <th> 삭제 </th>
          </tr>
          <c:forEach items="${comments}" var="commentVO">
          <tr>
             <td>${commentVO.contents}</td>
-   			<td>${commentVO.uid}</td>
-   			<td>${commentVO.likeNum}</td>
+   			<td>${commentVO.nick}</td>
    			<td>${commentVO.regDate}</td>
    			<td>               
-	   			<form action="/fixed/delete" method="post">
-	   			<input type="hidden" name="cafeName" value="${fixedVO.cafeName}">
-	   			<input type="hidden" name="detailName" value="${fixedVO.detailName}">
-	   			<input type="hidden" name="menuName" value="${fixedVO.menuName}">
-	   			<input type="hidden" name="keyword" value="${keyword}">
+	   			<form action="/comment/delete" method="post">
+	   			<input type="hidden" name="cafeName" value="${commentVO.cafeName}">
+	   			<input type="hidden" name="detailName" value="${commentVO.detailName}">
+	   			<input type="hidden" name="menuName" value="${commentVO.menuName}">
+	   			<input type="hidden" name="commentNum" value="${commentVO.commentNum}">
 	   			<button type="submit" class="w3-btn w3-white w3-border btn-danger">REMOVE</button>
 	   			</form>
 	   		</td>

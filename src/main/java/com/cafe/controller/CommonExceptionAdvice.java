@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cafe.domain.ResultVO;
+import com.cafe.exception.NotAuthoriedException;
 import com.cafe.exception.NotAuthorityException;
 import com.cafe.exception.NotExistException;
 import com.cafe.exception.NotExistResultException;
@@ -43,7 +44,7 @@ public class CommonExceptionAdvice {
 	 */
 	@ResponseBody
 	@ExceptionHandler(PrimaryKeyDuplicatedException.class)
-	public ModelAndView highfiveException(PrimaryKeyDuplicatedException e) {
+	public ModelAndView primaryKeyDuplicatedException(PrimaryKeyDuplicatedException e) {
 
 		//error log
 		logger.error(e.getMessage());
@@ -103,13 +104,16 @@ public class CommonExceptionAdvice {
 	}
 	
 	@ResponseBody
-	@ExceptionHandler(NotAuthorityException.class)
-	public ResultVO notAuthorityException(NotAuthorityException e) {
+	@ExceptionHandler(NotAuthoriedException.class)
+	public ModelAndView notAuthoriedException(NotAuthoriedException e) {
 
+		//error log
 		logger.error(e.getMessage());
-		ResultVO result = new ResultVO<>();
-		result.setCode(e.getExceptionCode().getCode());
-		result.setMessage(e.getExceptionCode().getMessage());
-		return result;
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/exception/exception_handler");
+		modelAndView.addObject("code", e.getExceptionCode());
+		
+		return modelAndView;
 	}
 }

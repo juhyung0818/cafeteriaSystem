@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.cafe.exception.NotAuthoriedException;
+import com.cafe.exception.NotAuthorityException;
+
 public class AuthInterceptor extends HandlerInterceptorAdapter{
 
 	private static final Logger logger=LoggerFactory.getLogger(LoginInterceptor.class);
@@ -22,8 +25,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 		{
 			logger.info("current user is not logined");
 			
-			response.sendRedirect("/user/login");
-			return false;
+			throw new NotAuthoriedException();
 		}
 		return true;
 	}

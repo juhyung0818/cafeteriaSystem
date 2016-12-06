@@ -20,5 +20,9 @@ var result = '${code}';
 		alert("이미 존재합니다.");
 		history.back();
 	}
+	if(result == "ACCESS_DENIED"){
+		alert("로그인이 필요한 기능입니다.");
+		self.location.href = "/";
+	}
 
 </script>	

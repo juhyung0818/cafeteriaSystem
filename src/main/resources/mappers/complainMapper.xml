@@ -8,8 +8,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- display cafe list -->
 	<select id="complainList" resultType="com.cafe.domain.ComplainVO">
-		select *
-		from complain
+		select c.complainNum, c.title, c.content, c.uid, c.regDate, c.reply, c.replyDate, u.nick
+		from complain as c, user as u
+		where u.uid=c.uid
 		order by regDate desc
 	</select>
 	
@@ -21,9 +22,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- admin read a complain-->
 	<select id="read" resultType="com.cafe.domain.ComplainVO">
-		select *
-		from complain
-		where complainNum=#{complainNum}
+		select c.complainNum, c.title, c.content, c.uid, c.regDate, c.reply, c.replyDate, u.nick
+		from complain as c, user as u
+		where u.uid=c.uid and complainNum=#{complainNum}
 	</select>
 	
 	<!-- register reply -->

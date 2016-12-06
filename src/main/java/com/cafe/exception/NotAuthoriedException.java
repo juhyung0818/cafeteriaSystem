@@ -1,8 +1,8 @@
 package com.cafe.exception;
 
 /**
- * Accesing user have not authority
- * @author kwon
+ * User is not authority 
+ * @author YJH
  * 2016.11.20.Sun
  */
 public class NotAuthoriedException extends CafeException{

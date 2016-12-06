@@ -163,7 +163,7 @@ table tr:hover td {
 			<td>
 				<a href='/complain/read?complainNum=${complainVO.complainNum}'>
 					${complainVO.title} </a></td>
-			<td>${complainVO.uid}</td>
+			<td>${complainVO.nick}</td>
 			<td>
 				<!-- reply check null or not null -->
 				<script type = "text/javascript">
