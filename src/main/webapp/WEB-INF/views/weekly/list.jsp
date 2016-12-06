@@ -153,7 +153,7 @@ table tr:hover td {
 <body>
 	<br>
 	<br>
-	<h3>주간 메뉴</h3>
+	<h3>${cafeName}</h3>
 
 	<form action="/weekly/search" method="post">
 		<label for="keyword" id="text1">SEARCH</label>					

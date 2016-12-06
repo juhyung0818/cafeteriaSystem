@@ -64,7 +64,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="top10Like" resultType="com.cafe.dto.MenuDTO">
 		select * from menu
+		where likeNum > 0		
 		order by likeNum desc
+		limit 0, 10
 	</select>
 	
 	<select id="top10Point" resultType="com.cafe.dto.MenuDTO">
@@ -105,5 +107,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from menu
 		where menuName=#{menuName} and detailName=#{detailName} and cafeName=#{cafeName}
 	</select>
+	
+	<select id="commentCnt" resultType="int">
+		select count(*) from comment where cafeName=#{cafeName} and menuName=#{menuName} and detailName=#{detailName}
+	</select>
+	
 	
 </mapper>

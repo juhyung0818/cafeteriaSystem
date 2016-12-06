@@ -26,11 +26,11 @@ public class LikeController {
 	
 	@ResponseBody
 	@RequestMapping(value="/checkLike", method=RequestMethod.POST)
-	public ResultVO<Boolean> registerAppPOST(@RequestBody LikeVO like) throws Exception{
+	public ResultVO<String> registerAppPOST(@RequestBody LikeVO like) throws Exception{
 		
 		logger.info("check like app post.......");
 		
-		Boolean result=likeService.checkLike(like);
+		String result=likeService.checkLike(like);
 		
 		return new ResultVO(result);
 	}

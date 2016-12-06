@@ -20,7 +20,6 @@
 <script
    src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
    
-<title>학 식 세 끼</title>
 
 <style>
 table a:link {
@@ -154,7 +153,7 @@ table tr:hover td {
 
    <br>
    <br>
-      <h1>고정 메뉴 목록</h1>
+      <h1>${cafeName}(항시 메뉴 목록)</h1>
       <table>
       	<tr>
 	      	<td>

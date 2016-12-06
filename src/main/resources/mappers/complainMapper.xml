@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<select id="listApp" resultType="com.cafe.dto.ComplainDTO">
-		select * from complain
+		select * from complain order by regDate desc
 	</select>
 	
 	<insert id="registerApp">

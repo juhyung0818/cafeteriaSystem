@@ -61,16 +61,15 @@ public class ComplainDAOImpl implements ComplainDAO{
 		
 		for (ComplainDTO complainDTO : returnList) {
 			String temp=session.selectOne(namespace+".isReply", complainDTO.getComplainNum());
+			System.out.println("temp입니다 ?" + temp + "으아아");
 			
 			try {
-				if(temp.equals("") || temp.equals(null))
-				{
+				if(temp.equals("") || temp.equals(null)){
 					complainDTO.setIsReply(false);
 					complainDTO.setReplyDate("-");
-				}
-					
-				else
+				}else{
 					complainDTO.setIsReply(true);
+				}
 			} catch (Exception e) {
 				complainDTO.setIsReply(false);
 				complainDTO.setReplyDate("-");

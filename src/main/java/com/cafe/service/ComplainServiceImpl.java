@@ -60,12 +60,6 @@ public class ComplainServiceImpl implements ComplainService{
 		List<ComplainDTO> list= complainDao.complainListApp();
 		
 		for (ComplainDTO complainDTO : list) {
-			
-			if(complainDTO.getReply()!=null)
-				complainDTO.setIsReply(true);
-			else
-				complainDTO.setIsReply(false);
-			
 			complainDTO.setName(userDao.getUserNick( complainDTO.getUid()));
 		}
 		

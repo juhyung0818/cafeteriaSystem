@@ -189,8 +189,9 @@ a#add_pop:hover {
 </script>
 <body>
 
-   <!-- 월요일 -->
    <div align="center">
+	<h3>${cafeName}</h3>
+   <!-- 월요일 -->
       <h5>월</h5>
       <table class="tg">
          <tr>

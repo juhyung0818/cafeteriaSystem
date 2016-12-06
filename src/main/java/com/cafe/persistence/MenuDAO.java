@@ -58,4 +58,9 @@ public interface MenuDAO {
 	 * @author YJH
 	 */
 	public MenuVO getMenu(String cafeName, String detailName, String menuName) throws Exception;
+	/**
+	 * number of comment
+	 * @author YJH
+	 */
+	public int getCommentCnt(String cafeName, String detailName, String menuName) throws Exception;
 }
