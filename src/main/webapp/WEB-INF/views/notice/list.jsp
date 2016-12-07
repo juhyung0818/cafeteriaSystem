@@ -158,6 +158,7 @@ table tr:hover td {
 			<th>글 번호</th>
 			<th>제목</th>
 			<th>작성시간</th>
+			<th>조회수</th>
 		</tr>
 
 		<c:forEach items="${notices}" var="noticeVO">
@@ -167,10 +168,11 @@ table tr:hover td {
 					${noticeVO.noticeNum} </a></td>
 			<td>${noticeVO.title}</td>
 			<td>${noticeVO.regDate}</td>
+			<td>${noticeVO.viewCount}</td>
 		</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="3" style="text-align:'right';">
+			<td colspan="4" style="text-align:'right';">
 				<a href="/notice/register"> &nbsp글쓰기&nbsp </a>
 			</td>
 		</tr>

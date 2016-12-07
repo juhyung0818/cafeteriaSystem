@@ -60,4 +60,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from complain
 		where complainNum=#{complainNum}
 	</select>
+	
+	<!-- complain exist check -->
+	<select id="checkAdmin" resultType="int">
+		select count(*)
+		from complain
+		where complainNum=#{complaiNum}
+	</select>
 </mapper>

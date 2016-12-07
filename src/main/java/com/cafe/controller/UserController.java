@@ -47,8 +47,10 @@ public class UserController {
 	 * @author YJH
 	 */
 	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public void loginGET(@ModelAttribute("dto") LoginDTO dto, Model model){
+	public void loginGET(@ModelAttribute("dto") LoginDTO dto, Model model, HttpSession session){
 		logger.info("user login...");
+		UserVO user = (UserVO)session.getAttribute("login");
+		model.addAttribute("user", user.getUid());
 	}
 	
 	@RequestMapping(value="/loginPost", method = RequestMethod.POST)
@@ -90,7 +92,7 @@ public class UserController {
 				response.addCookie(userCookie);
 			}
 		}
-		return "redirect:/user/login";
+		return "redirect:/";
 	}
 
 }

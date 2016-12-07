@@ -11,6 +11,7 @@ import com.cafe.domain.LikeVO;
 import com.cafe.domain.MenuVO;
 import com.cafe.dto.MenuDTO;
 import com.cafe.exception.NotExistResultException;
+import com.cafe.exception.NotExistURLException;
 import com.cafe.exception.PrimaryKeyDuplicatedException;
 import com.cafe.persistence.DetailDAO;
 import com.cafe.persistence.LikeDAO;
@@ -75,6 +76,7 @@ public class MenuServiceImpl implements MenuService{
 		list= menuDao.top10Like();
 		
 		for (MenuDTO menuDTO : list) {
+			menuDTO.setCommentCnt(menuDao.getCommentCnt(menuDTO.getCafeName(), menuDTO.getDetailName(), menuDTO.getMenuName()));
 			
 			LikeVO tempLike=new LikeVO();
 			
@@ -99,6 +101,8 @@ public class MenuServiceImpl implements MenuService{
 		list= menuDao.top10Point();
 		
 		for (MenuDTO menuDTO : list) {
+			menuDTO.setCommentCnt(menuDao.getCommentCnt(menuDTO.getCafeName(), menuDTO.getDetailName(), menuDTO.getMenuName()));
+
 			LikeVO tempLike=new LikeVO();
 			
 			tempLike.setCafeName(menuDTO.getCafeName());
@@ -121,7 +125,7 @@ public class MenuServiceImpl implements MenuService{
 	 */
 	@Override
 	public List<MenuVO> searchMenu(String cafeName, String detailName, String keyword) throws Exception {
-				return menuDao.searchMenu(cafeName, detailName, keyword);
+		 return menuDao.searchMenu(cafeName, detailName, keyword);
 	}
 
 	/**
@@ -136,17 +140,21 @@ public class MenuServiceImpl implements MenuService{
 
 	@Override
 	public MenuVO getMenu(String cafeName, String detailName, String menuName) throws Exception {
-		return menuDao.getMenu(cafeName, detailName, menuName)
-				;
+		if(menuDao.check(cafeName, detailName, menuName) == 0){
+			throw new NotExistURLException();
+		}else{
+			return menuDao.getMenu(cafeName, detailName, menuName);
+		}
 	}
 
 	@Override
 	public List<MenuDTO> searchApp(String uid, String keyword) throws Exception {
 
-		List<MenuDTO> list = new ArrayList<>();
-		list=menuDao.searchApp(keyword);
+		List<MenuDTO> list = menuDao.searchApp(keyword);
 
 		for (MenuDTO menuDTO : list) {
+			menuDTO.setCommentCnt(menuDao.getCommentCnt(menuDTO.getCafeName(), menuDTO.getDetailName(), menuDTO.getMenuName()));
+
 			LikeVO tempLike=new LikeVO();
 			
 			tempLike.setCafeName(menuDTO.getCafeName());

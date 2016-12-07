@@ -190,7 +190,7 @@ public class MenuController {
 		List<MenuDTO> list = new ArrayList<MenuDTO>();
 		//list = menuService.top10Point(menu.getUid());
 		list=menuService.searchApp(menu.getUid(), menu.getKeyword());
-		
+		logger.info(list.toString());
 		return new ResultVO<>(list);
 	}
 	

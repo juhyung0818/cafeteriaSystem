@@ -71,4 +71,11 @@ public class ComplainTest {
 		int complainNum =2;
 		complainDao.deleteReply(complainNum);
 	}
+	
+	//check
+	@Test
+	public void testCheck() throws Exception{
+		int complainNum = 1200;
+		System.out.println("count : " + complainDao.check(complainNum));
+	}
 }

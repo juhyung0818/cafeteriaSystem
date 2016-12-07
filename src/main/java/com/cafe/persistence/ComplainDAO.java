@@ -53,4 +53,11 @@ public interface ComplainDAO {
 	public int complainCheck(int complainNum, String uid)throws Exception;
 	
 	public ComplainVO readOne(int complainNum)throws Exception;
+	
+	/**
+	 * web : admin access complain 
+	 * @author YJH
+	 */
+	public int check(int complainNum) throws Exception;
+
 }

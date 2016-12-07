@@ -153,6 +153,7 @@ table tr:hover td {
 
    <br>
    <br>
+   <div align="center">
       <h1>${cafeName}(항시 메뉴 목록)</h1>
       <table>
       	<tr>
@@ -179,7 +180,11 @@ table tr:hover td {
          </tr>
          <c:forEach items="${fixeds}" var="fixedVO">
          <tr>
-            <td>${fixedVO.menuName}(${fixedVO.detailName}) </td>
+            <td>
+            	<a href="/menu/read?cafeName=${fixedVO.cafeName}&detailName=${fixedVO.detailName}&menuName=${fixedVO.menuName}"> 
+            	${fixedVO.menuName}(${fixedVO.detailName}) </a> 
+            
+            </td>
             <td>
                <form action="/fixed/delete" method="post">
 	               <input type="hidden" name="cafeName" value="${fixedVO.cafeName}">

@@ -150,7 +150,7 @@ table tr:hover td {
 
 <div align="center">
 <section class="content">
-	<h1> DETAIL LIST </h1>
+	<h1> ${cafeName} </h1>
 	
 	<form action="/detail/register" method="post">
 		<label for="detailName">코너 추가</label>

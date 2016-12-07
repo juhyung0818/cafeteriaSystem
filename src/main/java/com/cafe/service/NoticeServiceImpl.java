@@ -6,8 +6,10 @@ import javax.inject.Inject;
 
 import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cafe.domain.NoticeVO;
+import com.cafe.exception.NotExistURLException;
 import com.cafe.persistence.NoticeDAO;
 
 @Service
@@ -28,9 +30,15 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	//read a notice
+	@Transactional
 	@Override
 	public NoticeVO read(int noticeNum) throws Exception {
-		return noticeDao.read(noticeNum);
+		if(noticeDao.check(noticeNum) == 0){
+			throw new NotExistURLException();
+		}else{
+			noticeDao.increViewCount(noticeNum);
+			return noticeDao.read(noticeNum);
+		}
 	}
 
 	//add notice
@@ -39,12 +47,5 @@ public class NoticeServiceImpl implements NoticeService{
 		noticeDao.register(notice);
 		
 	}
-
-	@Override
-	public void increViewCount(int noticeNum) throws Exception {
-		
-		noticeDao.increViewCount(noticeNum);
-	}
-	
 
 }

@@ -182,6 +182,8 @@ table tr:hover td {
 		<!-- Table Body -->
 
 	</table>
+	</div>
+
 
 </body>
 </html>

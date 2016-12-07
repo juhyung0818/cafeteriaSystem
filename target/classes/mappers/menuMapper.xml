@@ -112,5 +112,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from comment where cafeName=#{cafeName} and menuName=#{menuName} and detailName=#{detailName}
 	</select>
 	
+	<!-- check menu -->
+	<select id="checkAdmin" resultType="int">
+		select count(*) from menu where cafeName=#{cafeName} and menuName=#{menuName} and detailName=#{detailName}
+	</select>
+	
 	
 </mapper>

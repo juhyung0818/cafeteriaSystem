@@ -8,12 +8,16 @@
 <script>
 var result = '${code}';
 
-	if(result == "NOT_EXIST_URL"){
+	if(result == "NOT_EXIST"){
 		alert("잘못된 접근입니다.");
 		history.back();
 	}
 	if(result == "NOT_EXIST_RESULT"){
 		alert("검색결과가 없습니다.");
+		history.back();
+	}
+	if(result == "NOT_EXIST_URL"){
+		alert("잘못된 접근입니다.");
 		history.back();
 	}
 	if(result == "PRIMARY_KEY_DUPLICATE"){

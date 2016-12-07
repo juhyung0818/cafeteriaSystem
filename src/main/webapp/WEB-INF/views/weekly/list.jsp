@@ -153,6 +153,7 @@ table tr:hover td {
 <body>
 	<br>
 	<br>
+	<div align="center">
 	<h3>${cafeName}</h3>
 
 	<form action="/weekly/search" method="post">
@@ -199,5 +200,5 @@ table tr:hover td {
 			</c:forEach>
 		</table>
 
-
+	</div>
 </body>

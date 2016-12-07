@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.cafe.domain.ComplainVO;
 import com.cafe.dto.ComplainDTO;
+import com.cafe.exception.NotExistException;
+import com.cafe.exception.NotExistURLException;
 import com.cafe.persistence.ComplainDAO;
 import com.cafe.persistence.UserDAO;
 
@@ -33,7 +35,11 @@ public class ComplainServiceImpl implements ComplainService{
 	//read a complain
 	@Override
 	public ComplainVO complainRead(int complainNum) throws Exception {
-		return complainDao.complainRead(complainNum);
+		if(complainDao.check(complainNum) == 0){
+			throw new NotExistURLException();
+		}else{
+			return complainDao.complainRead(complainNum);
+		}
 	}
 	
 	//register reply

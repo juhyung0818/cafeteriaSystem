@@ -179,4 +179,13 @@ public class MenuDAOImpl implements MenuDAO{
 		return session.selectOne(namespace + ".commentCnt", param);
 	}
 
+	@Override
+	public int check(String cafeName, String detailName, String menuName) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("cafeName", cafeName);
+		param.put("detailName", detailName);
+		param.put("menuName", menuName);
+		return session.selectOne(namespace + ".checkAdmin", param);
+	}
+
 }

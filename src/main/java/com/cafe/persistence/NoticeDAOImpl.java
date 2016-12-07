@@ -45,4 +45,9 @@ public class NoticeDAOImpl implements NoticeDAO{
 		session.update(namespace+".increViewCount", noticeNum);
 	}
 
+	@Override
+	public int check(int noticeNum) throws Exception {
+		return session.selectOne(namespace + ".checkAdmin", noticeNum);
+	}
+
 }

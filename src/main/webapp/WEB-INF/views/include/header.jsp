@@ -268,11 +268,24 @@ h1 {
 </head>
 <body bgcolor="#EF6C00">
 	<div align="center">
-		<h1>학 식 세 끼</h1>
+	<a href = "/notice/list">
+      <img class='contentsimg' src="/resources/haksik.png" align="center">
+	</a>
 	</div>
+	
 	<div align ="right">
-		<a class='w3-btn w3-white w3-border' href='/user/logout'>logout</a>
+<!--
+ 	<script>
+	if("${user}"){
+		document.write(
+			"<a class='w3-btn w3-white w3-border' href='/user/logout'>logout</a>"
+		)
+	} 
+	</script>
+	-->
+	<a class='w3-btn w3-white w3-border' href='/user/logout'>logout</a>
 	</div>
+	
 	<div class='menu'>
 		<ul>
 
@@ -314,7 +327,7 @@ h1 {
 
 				</table>
 			</li>
-			<li class='last'><a href='/cafe/list?keyword=${keyword}'>식당관리</a></li>
+			<li class='last'><a href='/cafe/list?keyword='>식당관리</a></li>
 			<li class='last'><a href='/complain/list'>소리함</a></li>
 			<li class='last'><a href='/notice/list'>공지사항</a></li>
 		</ul>

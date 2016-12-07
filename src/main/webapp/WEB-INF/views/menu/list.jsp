@@ -152,6 +152,9 @@ table tr:hover td {
 <body>
    <br>
    <br>
+   <div align="center">
+         <h1>${cafeName}</h1>
+   
    <form action="/menu/register" method="post">
         <label for="cafeName">메뉴 추가</label>
         <input type="text" name="menuName" placeholder="Write menu name"/>
@@ -168,7 +171,6 @@ table tr:hover td {
 	</form>
    
       
-      <p><h1>메뉴 목록</h1>
       <form action="/menu/search" method="post">
          <label for="keyword">검색</label>
          <input type="hidden" name="cafeName" value="${cafeName}"/>
@@ -216,4 +218,5 @@ table tr:hover td {
          </tr>
          </c:forEach>
       </table>
+      </div>
 </body>

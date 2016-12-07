@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ import com.cafe.domain.CafeVO;
 import com.cafe.domain.MenuVO;
 import com.cafe.domain.ResultVO;
 import com.cafe.domain.SearchKeywordVO;
+import com.cafe.domain.UserVO;
 import com.cafe.service.CafeService;
 
 /**

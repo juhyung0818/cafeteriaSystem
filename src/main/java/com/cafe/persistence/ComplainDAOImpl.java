@@ -108,4 +108,9 @@ public class ComplainDAOImpl implements ComplainDAO{
 		ComplainVO vo=session.selectOne(namespace+".readOne", complainNum);
 		return vo;
 	}
+
+	@Override
+	public int check(int complainNum) throws Exception {
+		return session.selectOne(namespace + ".checkAdmin", complainNum);
+	}
 }

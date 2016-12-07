@@ -152,7 +152,7 @@ table tr:hover td {
 
 <div align="center">
 <section class="content">
-   <h3> 식당 추가 및 검색 </h3>
+   <h3> 식당 관리 </h3>
    
       <form action="/cafe/register" method="post">
          <label for="cafeName">식당 이름</label>
@@ -165,7 +165,7 @@ table tr:hover td {
       <form action="/cafe/search" method="post">
          <label for="keyword">검색</label>
          <input type='hidden' name='cafeName' value="${cafeName}">
-         <input type="text" name="keyword" placeholder="Write keyword name"/>
+         <input type="text" name="keyword" placeholder="Write keyword name" value="${keyword}"/>
          <button type="submit" class="w3-btn w3-white w3-border "> 검색 </button>
       </form>
    
@@ -177,7 +177,7 @@ table tr:hover td {
          <c:forEach items="${cafes}" var="cafeVO">
          <tr>
             <td>
-               <a href="/detail/list?cafeName=${cafeVO.cafeName}&keyword=${keyword}">
+               <a href="/detail/list?cafeName=${cafeVO.cafeName}&keyword=">
                   ${cafeVO.cafeName}
                </a>
             </td>

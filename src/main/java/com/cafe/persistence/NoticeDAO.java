@@ -20,4 +20,6 @@ public interface NoticeDAO {
 	public void register(NoticeVO notice) throws Exception;
 	
 	public void increViewCount(int noticeNum)  throws Exception;
+	//chek notice
+	public int check(int noticeNum) throws Exception;
 }

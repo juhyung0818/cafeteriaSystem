@@ -63,4 +63,6 @@ public interface MenuDAO {
 	 * @author YJH
 	 */
 	public int getCommentCnt(String cafeName, String detailName, String menuName) throws Exception;
+	//chekc menu
+	public int check(String cafeName, String detailName, String menuName) throws Exception;
 }
