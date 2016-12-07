@@ -1,11 +1,14 @@
 package com.cafe.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.cafe.domain.LikeVO;
+import com.cafe.dto.MenuDTO;
 
 @Repository
 public class LikeDAOImpl implements LikeDAO{
@@ -40,6 +43,13 @@ public class LikeDAOImpl implements LikeDAO{
 	public double getLike(String uid) throws Exception {
 
 		return session.selectOne(namespace+".getLike", uid);
+	}
+
+
+	@Override
+	public List<MenuDTO> myList(String uid) throws Exception {
+
+		return session.selectList(namespace+".mylist",uid);
 	}
 	
 }
