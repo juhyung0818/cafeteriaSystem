@@ -15,5 +15,5 @@ public interface ScoreDAO {
 	
 	public int isScored(ScoreVO score) throws Exception;
 	public float getAVG(ScoreVO score) throws Exception;
-	
+	public double getScore(String uid) throws Exception;
 }

@@ -66,6 +66,12 @@ public class ScoreDAOImpl implements ScoreDAO{
 		
 		return session.selectOne(namespace+".getAVG", score);
 	}
+
+	@Override
+	public double getScore(String uid) throws Exception {
+
+		return session.selectOne(namespace+".getScore", uid);
+	}
 	
 
 }

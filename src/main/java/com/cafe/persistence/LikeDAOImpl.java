@@ -34,5 +34,12 @@ public class LikeDAOImpl implements LikeDAO{
 
 		session.insert(namespace+".delete", like);
 	}
+
+
+	@Override
+	public double getLike(String uid) throws Exception {
+
+		return session.selectOne(namespace+".getLike", uid);
+	}
 	
 }

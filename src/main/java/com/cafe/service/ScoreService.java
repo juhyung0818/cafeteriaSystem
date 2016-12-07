@@ -10,4 +10,5 @@ public interface ScoreService {
 
 	public void scoreRegister(ScoreVO score) throws Exception;
 	
+	public double getScore(String uid) throws Exception;
 }

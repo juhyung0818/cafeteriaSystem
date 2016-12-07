@@ -30,4 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName}	
 	</select>
 	
+	<select id="getScore" resultType="double">
+		select score from score where uid=#{uid}
+	</select>
 </mapper>

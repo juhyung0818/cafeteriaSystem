@@ -31,10 +31,10 @@ public class ScoreServiceImpl implements ScoreService{
 		
 		menuDao.setPoint(score.getCafeName(), score.getDetailName(), score.getMenuName(), scoreDao.getAVG(score));
 	}
-//
-//	@Override
-//	public void scoreDelete(ScoreVO score) throws Exception {
-//
-//		scoreDao.scoreDelete(score);
-//	}
+
+	@Override
+	public double getScore(String uid) throws Exception {
+
+		return scoreDao.getScore(uid);
+	}
 }
