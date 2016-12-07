@@ -20,4 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where uid=#{uid} and cafeName=#{cafeName} and detailName=#{detailName} and menuName=#{menuName}
 	</delete>
 	
+	<select id="myList" resultType="com.cafe.dto.MenuDTO">
+		select m.cafeName, m.detailName, m.menuName, m.price, m.point, m.likeNum, m.path
+		from isLike as i join menu as m
+		where i.cafeName=m.cafeName and i.detailName=m.detailName and i.menuName=m.menuName 
+		and uid=#{uid}
+	</select>
 </mapper>
